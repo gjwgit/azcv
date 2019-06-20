@@ -1,7 +1,17 @@
 Identifying Landmarks and Tags
 ==============================
 
-Here are a few examples of identifying landmarks and tagging the images:
+Here are a few examples of identifying landmarks and tagging
+images.
+
+A key benefit from using command line tools is that each task can be
+wrapped up into other pipelines. Simply place a shell for loop around
+the command and we can operate on a folder of images or indeed, a disk
+of images.
+
+*ToDo* Some command line use cases in the pipeline include analysing a
+photo to add tags and the primary landmarks as meta-data to the image
+itself.
 
 ![](https://images.pexels.com/photos/338515/pexels-photo-338515.jpeg)
 
