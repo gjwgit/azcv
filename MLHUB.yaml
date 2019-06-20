@@ -1,0 +1,28 @@
+--- # Azure Computer Vision
+meta:
+  name         : azcv
+  title        : Azure Computer Vision.
+  keywords     : azure, computer vision, ocr, thumbnail, image to text, cloud
+  version      : 2.1.0
+  languages    : py
+  display      : demo
+  license      : mit
+  author       : Graham.Williams@microsoft.com
+  url          : https://github.com/Azure/azcv
+dependencies:
+  pip3:
+    - azure-cognitiveservices-vision-computervision
+  files:
+    - https://mlhub.ai/empty.txt: private.txt
+    - README.md
+    - demo.py
+    - ocr.py
+    - landmark.py
+    - tag.py
+    - describe.py
+commands:
+  demo     : Demonstrate the functionality of computer vision models.
+  tag      : Extract tags for an image.
+  describe : Describe the main element(s) of the image.
+  ocr      : Extract text from images.
+  landmark : Identify landmark in a photo.
