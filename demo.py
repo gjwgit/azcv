@@ -245,8 +245,10 @@ Path: {}""".format(url1, url2), begin="\n")
 
 mlpreview(url)
 
-width = 100
-height = 100
+# 100 below results in error.
+
+width = 50 
+height = 50
 
 thumbnail = client.generate_thumbnail(width, height, url)
 
@@ -257,11 +259,3 @@ image.save('thumbnail.jpg')
 
 mlask()
 mlpreview('thumbnail.jpg')
-
-
-
-
-
-
-
-    
