@@ -68,7 +68,7 @@ else:
     path = os.path.join(get_cmd_cwd(), url)
     with open(path, 'rb') as fstream:
         analysis = client.generate_thumbnail_in_stream(width, height, fstream)
-    sname = re.sub('\.(\w+)$', r'-thumbnail.\1', os.path.basename(url))
+    sname = re.sub('\.(\w+)$', r'-thumbnail.\1', path)
 
 for x in analysis:
     image = Image.open(io.BytesIO(x))
