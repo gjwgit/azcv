@@ -5,15 +5,42 @@ Examples of embedding the azcv commands within a Unix/Linux pipeline.
 
 
 
-How Many Tags Identified in an Image
-------------------------------------
+*How Many Tags Identified in an Image*
 
 ```console
-$ ml tag azcv img.png | wc -l
+$ ml tag azcv img.jpg | wc -l
+6
+```
+*How Many High Confidence Tags Identified*
+
+```console
+$ ml tag azcv img.jpg | awk '$1 > 0.90 {print}' | wc -l
+5
 ```
 
-Mark up Bounding Boxes for Text in Image
-----------------------------------------
+*Identify Tags from a Folder of Images*
+
+```console
+$ for f in *.jpg; do echo ==== $f ====; ml tag azcv $f; done
+==== 20190610_133243.jpg ====
+1.00 indoor
+0.99 furniture
+0.95 bathroom
+0.90 design
+0.75 sink
+0.61 drawer
+0.60 home appliance
+==== 20190610_143537.jpg ====
+0.94 screenshot
+0.92 book
+0.91 poster
+0.88 indoor
+0.63 art
+0.59 mobile phone
+[...]
+```
+
+*Mark up Bounding Boxes for Text in Image*
 
 In this example the bounding boxes are captured into the text
 file and then drawn on to a copy of the image.
@@ -37,8 +64,7 @@ Here's the result for the Abbey Road sign post:
 
 ![](abbey_with_bb.jpg)
 
-Add Text to the Image
----------------------
+*Add Text to the Image*
 
 Starting with the bounding box marked up image, we can add the
 identified text to each box.
