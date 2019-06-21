@@ -68,10 +68,8 @@ display momentarily:
 
 Location: {}
 Path:     {}
-Filename: {}
-""".format(url0, url1, url2), begin="\n")
+Filename: {}""".format(url0, url1, url2), begin="\n")
 
-mlask()
 mlpreview(url)
 mlask(end="\n")
 
@@ -111,14 +109,12 @@ remote image file.
 For our demonstration we will analyze the following image which we will also 
 display momentarily.
 
-Location: {}
-      """.format(url))
+Location: {}""".format(url))
 
 # Type of prediction.
 
 domain = "landmarks"
 
-mlask()
 mlpreview(url)
 
 # English language response.
@@ -149,14 +145,12 @@ display momentarily:
 
 Location: {}
 Path:     {}
-Filename: {}
-""".format(url1, url2, url3))
+Filename: {}""".format(url1, url2, url3))
 
 domain = "landmarks"
 language = "en"
 max_descriptions = 3
 
-mlask()
 mlpreview(url)
 
 analysis = client.describe_image(url, max_descriptions, language)
@@ -187,10 +181,8 @@ image.
 For our demonstration we will analyze the following image which we will also 
 display momentarily:
 
-  {}
-""".format(url), begin="\n")
+  {}""".format(url), begin="\n")
 
-mlask()
 mlpreview(url)
 
 # This requires two calls using batch_read_file() and
@@ -249,10 +241,8 @@ For our demonstration we will analyze the following image which we will also
 display momentarily:
 
 Site: {}
-Path: {}
-""".format(url1, url2), begin="\n")
+Path: {}""".format(url1, url2), begin="\n")
 
-mlask()
 mlpreview(url)
 
 width = 100
