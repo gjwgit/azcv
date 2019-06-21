@@ -60,7 +60,7 @@ and identifies the main landmark contained within the image. The
 confidence of the identification is also returned.
 
 ```console
-$ ml landmark img.jpg
+$ ml landmark azcv img.jpg
 0.95 Marina Bay Sands
 ```
 
@@ -69,7 +69,7 @@ generates a collection of tags that identify key elements of the
 image. Each tag has a confidence.
 
 ```console
-$ ml tag img.jpg
+$ ml tag azcv img.jpg
 0.96 landscape
 0.86 desert
 ...
@@ -82,7 +82,7 @@ The *ocr* command is useful for extracting text from a variety of
 images. See the specific examples:
 
 ```console
-$ ml ocr img.jpg
+$ ml ocr azcv img.jpg
 [325, 305, 1297, 290, 1302, 594, 329, 609] ABBEY
 ...
 ```
@@ -90,6 +90,18 @@ $ ml ocr img.jpg
 - [Extract Text for Handwriting](HAND_WRITING.md)
 - [Reading Street Signs](STREET.md)
 - [Extract Code from Python](CODE.md)
+
+*Thumbnails*
+
+Thumbnails require more than simply generating a small square section
+from an image. Ideally it is in some way representative of the
+image. The *thumbnail* command will choose a "good" region of the
+image to display as a thumbnail.
+
+```console
+$ ml thumbnail azcv img.jpg
+img-thumbnail.jpg
+```
 
 *WorkFlow*
 
