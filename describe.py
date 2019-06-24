@@ -74,4 +74,4 @@ else:
         analysis = client.describe_image_in_stream(fstream, max_descriptions, language)
 
 for caption in analysis.captions:
-    print(fill("{} {}".format(round(caption.confidence, 2), caption.text)) + "\n")
+    print("{},{}".format(round(caption.confidence, 2), caption.text))

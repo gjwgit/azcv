@@ -104,7 +104,7 @@ while True:
 if result.status == TextOperationStatusCodes.succeeded:
     for textResult in result.recognition_results:
         for line in textResult.lines:
-            print('[{}] {}'.format(", ".join(map(str, line.bounding_box)), line.text))
+            print('{},{}'.format(" ".join(map(str, line.bounding_box)), line.text))#format(", ".join(map(str, line.bounding_box)), line.text))
 
 # Generate locally annotated image
 

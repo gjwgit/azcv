@@ -66,4 +66,4 @@ else:
 
 for tag in analysis.tags:
     if tag.confidence > 0.2:
-        print("{:4.2f} {}".format(round(tag.confidence, 2), tag.name))
+        print("{:4.2f},{}".format(round(tag.confidence, 2), tag.name))

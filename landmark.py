@@ -68,7 +68,7 @@ else:
         analysis = client.analyze_image_by_domain_in_stream(domain, fstream, language)
     
 for landmark in analysis.result["landmarks"]:
-    print('{} {}'.format(round(landmark["confidence"],2), landmark["name"], ))
+    print('{},{}'.format(round(landmark["confidence"],2), landmark["name"], ))
 
 # Write results to stdout
 
