@@ -23,20 +23,20 @@ $ ml tag azcv img.jpg | awk '$1 > 0.90 {print}' | wc -l
 ```console
 $ for f in *.jpg; do echo ==== $f ====; ml tag azcv $f; done
 ==== 20190610_133243.jpg ====
-1.00 indoor
-0.99 furniture
-0.95 bathroom
-0.90 design
-0.75 sink
-0.61 drawer
-0.60 home appliance
+1.00,indoor
+0.99,furniture
+0.95,bathroom
+0.90,design
+0.75,sink
+0.61,drawer
+0.60,home appliance
 ==== 20190610_143537.jpg ====
-0.94 screenshot
-0.92 book
-0.91 poster
-0.88 indoor
-0.63 art
-0.59 mobile phone
+0.94,screenshot
+0.92,book
+0.91,poster
+0.88,indoor
+0.63,art
+0.59,mobile phone
 [...]
 ```
 
@@ -49,10 +49,9 @@ file and then drawn on to a copy of the image.
 $ ml ocr azcv img.jpg > img_bb.txt
 
 $ cat img_bb.txt |
-  cut -d']' -f1 |
-  tr -d '[,' |
+  cut -d',' -f1 |
   xargs printf '-draw "polygon %s,%s %s,%s %s,%s %s,%s" ' |
-  awk '{print "img.jpg -fill none -stroke red " $0 "img_bb.jpg"}' |
+  awk '{print "img.jpg -fill none -stroke red -strokewidth 5 " $0 "img_bb.jpg"}' |
   xargs convert
   
 $ montage -background '#336699' -geometry +4+4 img.jpg img_bb.jpg montage.jpg
@@ -71,7 +70,7 @@ identified text to each box.
 
 ```console
 $ cat img_bb.txt |
-  tr -d '[],' | 
+  tr -d ',' ' '| 
   cut -d' ' -f1,2,9- | 
   perl -pe 's|(\d+) (\d+) (.+)|-annotate +\1+\2 \\"\3\\"|' | 
   xargs | 

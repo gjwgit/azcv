@@ -61,7 +61,7 @@ confidence of the identification is also returned.
 
 ```console
 $ ml landmark azcv img.jpg
-0.95 Marina Bay Sands
+0.95,Marina Bay Sands
 ```
 
 The *tag* command takes an image (url or path to a local file) and
@@ -70,8 +70,8 @@ image. Each tag has a confidence.
 
 ```console
 $ ml tag azcv img.jpg
-0.96 landscape
-0.86 desert
+0.96,landscape
+0.86,desert
 ...
 ```
 See [Landmarks and Tags](TAGS.md) for details.
@@ -83,7 +83,7 @@ images. See the specific examples:
 
 ```console
 $ ml ocr azcv img.jpg
-[325, 305, 1297, 290, 1302, 594, 329, 609] ABBEY
+325 305 1297 290 1302 594 329 609,ABBEY
 ...
 ```
 
