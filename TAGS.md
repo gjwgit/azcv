@@ -17,7 +17,7 @@ itself.
 
 ```console
 $ ml landmark azcv https://images.pexels.com/photos/338515/pexels-photo-338515.jpeg
-0.97 Eiffel Tower
+0.97,Eiffel Tower
 
 $ ml tag azcv https://images.pexels.com/photos/338515/pexels-photo-338515.jpeg
 1.00,sky
@@ -26,6 +26,11 @@ $ ml tag azcv https://images.pexels.com/photos/338515/pexels-photo-338515.jpeg
 0.94,cloud
 0.80,city
 0.79,skyscraper
+
+$ ml describe azcv https://images.pexels.com/photos/338515/pexels-photo-338515.jpeg
+0.71,a large clock tower towering over Eiffel Tower
+0.66,a large clock tower towering over the city of london with Eiffel Tower in the background
+0.66,the tower of the city with Eiffel Tower in the background
 ```
 ![](http://cdn1.thr.com/sites/default/files/2013/11/marina_bay_sands_singapore_a_l.jpg)
 ```console
@@ -48,6 +53,11 @@ $ ml tag azcv http://cdn1.thr.com/sites/default/files/2013/11/marina_bay_sands_s
 0.67,building
 0.51,dock
 0.40,docked
+
+$ ml describe azcv http://cdn1.thr.com/sites/default/files/2013/11/marina_bay_sands_singapore_a_l.jpg
+0.65,a boat is docked next to a body of water with Marina Bay Sands in the background
+0.65,a large body of water with Marina Bay Sands in the background
+0.65,a boat docked next to a body of water with Marina Bay Sands in the background
 ```
 ![](https://www.wayoutback.com.au/assets/Uploads/Uluru.jpg)
 ```console
@@ -74,11 +84,31 @@ $ ml tag azcv https://www.wayoutback.com.au/assets/Uploads/Uluru.jpg
 0.49,tall
 0.35,overlooking
 0.23,painting
+
+$ ml describe azcv https://www.wayoutback.com.au/assets/Uploads/Uluru.jpg
+0.92,a canyon with a sunset in the background with Uluru in the background
+0.88,a view of a canyon with a sunset in the background with Uluru in the background
+0.86,a close up of a canyon with a sunset in the background with Uluru in the background
 ```
 ![](https://access.togaware.com/landmark02.jpg)
 ```console
 $ ml landmark azcv https://access.togaware.com/landmark02.jpg
 0.98,Taipei 101
+
+$ ml tag azcv https://access.togaware.com/landmark02.jpg
+1.00,building
+0.99,outdoor
+0.99,sky
+0.85,city
+0.74,window
+0.57,skyscraper
+0.55,architecture
+0.51,tall
+
+$ ml describe azcv https://access.togaware.com/landmark02.jpg
+0.92,a large skyscraper in front of Taipei 101
+0.92,a large skyscraper in front of a tall building with Taipei 101 in the background
+0.92,a tall building with Taipei 101 in the background
 ```
 ![](https://access.togaware.com/landmark01.jpg)
 ```console
