@@ -7,8 +7,9 @@ Cognitive Services. This service analyses images to extract
 descriptions and text found in the images.
 
 In addition to the demonstration this package provides a collection of
-commands that turn the service into a useful command line tool for
-ocr, landmark identification, and thumbnail generation.
+commands that turn the service into useful *command line tools* for
+word recognition from images, landmark identification, and thumbnail
+generation.
 
 A free Azure subscription allowing up to 20,000 transactions per month
 is available from https://azure.microsoft.com/free/. Once set up visit
