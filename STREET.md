@@ -60,7 +60,12 @@ $ eog montage.jpg
 ![](abbey_with_bb_text.jpg)
 
 Below are some further street sign text (and other text) extracted
-from photos.
+from photos. 
+
+With this first one, an extra challenge beyond the example here, we
+want to also identify the direction indications so that we know which
+way to turn, based on the street sign itself to confirm, perhaps, what
+our map is telling us.
 
 ![](https://farm4.staticflickr.com/3883/15144849957_f326e03f75_b.jpg)
 ```console
