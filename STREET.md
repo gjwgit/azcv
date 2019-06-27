@@ -1,13 +1,20 @@
 Use Case: Reading Street Signs
 ==============================
 
-Extracting text from photos becomes more important in the context of
-autonomous vehicles where street signs may play an important role. The
-challenge for this task is to not only extract text from the image,
-but to identify the text that was on a street sign. Text otherwise can
-be found in many locations within a photo. In the examples below we do
-not yet consider that task of limiting the text extration to the
-street signs.
+Extracting text from photos is crucial in the context of autonomous
+vehicles where seeing and understanding street signs plays an
+increasingly important role. The challenge for this task is to not
+only extract text from the image, but to identify the text that was on
+a street sign as distinct from that which might be visible on a bus or
+advertising sign across different locations within the photo. In the
+examples below we do not yet consider the task of limiting the text
+extration to the street signs. 
+
+As a command line pipeline tool the opportunity is to rely on the
+expertise of the ocr tool to extract the text, combined with
+processing by other specialist tools to capture the background colour
+and location of the text in relation to other objects in the
+photo. Stay tuned for examples.
 
 ![](https://sharpie51.files.wordpress.com/2010/02/street_sign_for_abbey_road_in_westminster_london_england_img_1461.jpg)
 
