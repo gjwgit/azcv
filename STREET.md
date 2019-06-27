@@ -24,6 +24,44 @@ $ ml ocr azcv https://sharpie51.files.wordpress.com/2010/02/street_sign_for_abbe
 311 664 1937 652 1940 943 314 955,ROAD NW8
 343 1142 1784 1121 1786 1253 345 1273,CITY OF WESTMINSTER
 ```
+Here we identify the actual location of the text and annotate the
+image with the bounding box and the identified text.
+
+```console
+$ ml ocr azcv img.jpg > img_bb.txt
+
+# Add bounding boxes to the image.
+
+$ cat img_bb.txt |
+  cut -d',' -f1 |
+  xargs printf '-draw "polygon %s,%s %s,%s %s,%s %s,%s" ' |
+  awk '{print "img.jpg -fill none -stroke red -strokewidth 5 " $0 "img_bb.jpg"}' |
+  xargs convert
+
+# Add the identified text to the image.
+
+$ cat img_bb.txt |
+  tr -d ',' ' '| 
+  cut -d' ' -f1,2,9- | 
+  perl -pe 's|(\d+) (\d+) (.+)|-annotate +\1+\2 \\"\3\\"|' | 
+  xargs | 
+  awk '{print "img_bb.jpg -pointsize 50 " $0 " img_bb_text.jpg"}' | 
+  xargs convert
+
+# Create a montage of the original and final image.
+
+$ montage -background '#336699' -geometry +4+4 img.jpg img_bb_text.jpg montage.jpg
+
+# Display the image.
+
+$ eog montage.jpg
+```
+
+![](abbey_with_bb_text.jpg)
+
+Below are some further street sign text (and other text) extracted
+from photos.
+
 ![](https://farm4.staticflickr.com/3883/15144849957_f326e03f75_b.jpg)
 ```console
 $ ml ocr azcv https://farm4.staticflickr.com/3883/15144849957_f326e03f75_b.jpg
