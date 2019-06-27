@@ -65,11 +65,13 @@ from photos.
 With this first one an extra challenge beyond the example here is to
 identify the direction indications of the sign, so that we know which
 way to turn, based on the street sign itself to confirm, perhaps, what
-our map is telling us. As we begin to augment the skill of reading
-text and identifying objects within a photo, with understanding the
-spatial relationship between the text and objects in the photo, and
-then using heuristics to understand the sign, we begin to demonstrate
-intelligence beyond simple vision.
+our map is telling us. 
+
+As we begin to augment the skill of reading text and identifying
+objects within a photo, with understanding the spatial relationship
+between the text and objects in the photo, and then using heuristics
+to understand the sign, we begin to demonstrate intelligence beyond
+simple vision.
 
 ![](https://farm4.staticflickr.com/3883/15144849957_f326e03f75_b.jpg)
 ```console
