@@ -64,6 +64,7 @@ height = 50
 if is_url(url):
     analysis = client.generate_thumbnail(width, height, url)
     sname = re.sub('\.(\w+)$', r'-thumbnail.\1', os.path.basename(urlparse(url).path))
+    sname = os.path.join(get_cmd_cwd(), sname)
 else:
     path = os.path.join(get_cmd_cwd(), url)
     with open(path, 'rb') as fstream:
