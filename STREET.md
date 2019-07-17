@@ -111,3 +111,47 @@ $ ml ocr azcv https://upload.wikimedia.org/wikipedia/commons/7/7e/Indonesian_Roa
 356 802 1088 811 1086 946 354 937,Magelang
 1340 747 1404 745 1410 832 1346 834,3
 ```
+
+*Mark up Bounding Boxes for Text in Image*
+
+In this example the bounding boxes are captured into the text
+file and then drawn on to a copy of the image.
+
+```console
+$ ml ocr azcv img.jpg > img_bb.txt
+
+$ cat img_bb.txt |
+  cut -d',' -f1 |
+  xargs printf '-draw "polygon %s,%s %s,%s %s,%s %s,%s" ' |
+  awk '{print "img.jpg -fill none -stroke red -strokewidth 5 " $0 "img_bb.jpg"}' |
+  xargs convert
+  
+$ montage -background '#336699' -geometry +4+4 img.jpg img_bb.jpg montage.jpg
+
+$ eog montage.jpg
+```
+
+Here's the result for the Abbey Road sign post:
+
+![](abbey_with_bb.jpg)
+
+*Add Text to the Image*
+
+Starting with the bounding box marked up image, we can add the
+identified text to each box.
+
+```console
+$ cat img_bb.txt |
+  tr -d ',' ' '| 
+  cut -d' ' -f1,2,9- | 
+  perl -pe 's|(\d+) (\d+) (.+)|-annotate +\1+\2 \\"\3\\"|' | 
+  xargs | 
+  awk '{print "img_bb.jpg -pointsize 50 " $0 " img_bb_text.jpg"}' | 
+  xargs convert
+
+$ montage -background '#336699' -geometry +4+4 img.jpg img_bb_text.jpg montage.jpg
+
+$ eog montage.jpg
+```
+
+![](abbey_with_bb_text.jpg)
