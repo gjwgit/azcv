@@ -121,3 +121,38 @@ $ ml landmark azcv https://www.arrivalguides.com/s3/ag-images-eu/18/20870ca6f7bc
 0.96,Ha Long Bay
 ```
 
+*How Many Tags Identified in an Image*
+
+```console
+$ ml tag azcv img.jpg | wc -l
+6
+```
+*How Many High Confidence Tags Identified*
+
+```console
+$ ml tag azcv img.jpg | awk '$1 > 0.90 {print}' | wc -l
+5
+```
+
+*Identify Tags from a Folder of Images*
+
+```console
+$ for f in *.jpg; do echo ==== $f ====; ml tag azcv $f; done
+==== 20190610_133243.jpg ====
+1.00,indoor
+0.99,furniture
+0.95,bathroom
+0.90,design
+0.75,sink
+0.61,drawer
+0.60,home appliance
+==== 20190610_143537.jpg ====
+0.94,screenshot
+0.92,book
+0.91,poster
+0.88,indoor
+0.63,art
+0.59,mobile phone
+[...]
+```
+
