@@ -103,6 +103,7 @@ image to display as a thumbnail.
 $ ml thumbnail azcv img.jpg
 img-thumbnail.jpg
 ```
+- [Thumbnail Examples](THUMBNAIL.md)
 
 *WorkFlow*
 
