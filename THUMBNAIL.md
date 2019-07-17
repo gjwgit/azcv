@@ -11,16 +11,23 @@ As a command line tool an input image file is supplied and a thumbnail
 image file is created with the same name but with -thumbnail appended
 to the file name and saved locally.
 
-![](https://images.pexels.com/photos/338515/pexels-photo-338515.jpeg)
 ```console
 $ ml thumbnail azcv https://images.pexels.com/photos/338515/pexels-photo-338515.jpeg
 pexels-photo-338515-thumbnail.jpeg
 ```
+![](https://images.pexels.com/photos/338515/pexels-photo-338515.jpeg)
 ![](pexels-photo-338515-thumbnail.jpeg)
 
-![](http://cdn1.thr.com/sites/default/files/2013/11/marina_bay_sands_singapore_a_l.jpg)
 ```console
 $ ml thumbnail azcv http://cdn1.thr.com/sites/default/files/2013/11/marina_bay_sands_singapore_a_l.jpg
 marina_bay_sands_singapore_a_l-thumbnail.jpg
 ```
+![](http://cdn1.thr.com/sites/default/files/2013/11/marina_bay_sands_singapore_a_l.jpg)
 ![](marina_bay_sands_singapore_a_l-thumbnail.jpg)
+
+```console
+$ ml thumbnail azcv https://access.togaware.com/landmark02.jpg
+landmark02-thumbnail.jpg
+```
+![](https://access.togaware.com/landmark02.jpg)
+![](landmark02-thumbnail.jpg)
