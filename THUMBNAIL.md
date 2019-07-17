@@ -26,8 +26,8 @@ marina_bay_sands_singapore_a_l-thumbnail.jpg
 ![](marina_bay_sands_singapore_a_l-thumbnail.jpg)
 
 ```console
-$ ml thumbnail azcv https://access.togaware.com/landmark02.jpg
+$ ml thumbnail azcv https://access.togaware.com/landmark01.jpg
 landmark02-thumbnail.jpg
 ```
-![](https://access.togaware.com/landmark02.jpg)
-![](landmark02-thumbnail.jpg)
+![](https://access.togaware.com/landmark01.jpg)
+![](landmark01-thumbnail.jpg)
