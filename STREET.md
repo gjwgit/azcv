@@ -71,7 +71,10 @@ As we begin to augment the skill of reading text and identifying
 objects within a photo, with understanding the spatial relationship
 between the text and objects in the photo, and then using heuristics
 to understand the sign, we begin to demonstrate intelligence beyond
-simple vision.
+vision.
+
+In the first instance, transfer learning can be used to distinguish
+the street sign, and to then identify the directions.
 
 ![](https://farm4.staticflickr.com/3883/15144849957_f326e03f75_b.jpg)
 ```console
