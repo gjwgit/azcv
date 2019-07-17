@@ -105,14 +105,6 @@ img-thumbnail.jpg
 ```
 - [Thumbnail Examples](THUMBNAIL.md)
 
-*WorkFlow*
-
-We collect together examples of using the commands within different
-workflow pipelines here, including adding bounding boxes by command
-line:
-
-- [Workflow Pipelines](WORKFLOWS.md)
-
 Demonstration
 -------------
 
