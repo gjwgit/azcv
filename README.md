@@ -1,5 +1,4 @@
-Azure Computer Vision
-=====================
+# Azure Computer Vision
 
 This [MLHub](https://mlhub.ai) package provides a quick introduction
 to the pre-built Computer Vision model provided through Azure's
@@ -32,8 +31,7 @@ Vision SDK for
 Python](https://docs.microsoft.com/en-us/azure/cognitive-services/Computer-vision/quickstarts-sdk/python-sdk)
 Quick Start guide.
 
-Usage
------
+## Usage
 
 - To install mlhub (Ubuntu 18.04 LTS)
 
@@ -48,13 +46,12 @@ $ ml install   azcv
 $ ml configure azcv
 ```
 
-Command Line Tools
-------------------
+## Command Line Tools
 
 In addition to the *demo* presented below, the *azcv* package provides
 a number of useful command line tools.
 
-*Landmarks and Tags*
+**Landmarks and Tags**
 
 The *landmark* command takes an image (url or path to a local file)
 and identifies the main landmark contained within the image. The
@@ -77,7 +74,7 @@ $ ml tag azcv img.jpg
 ```
 See [Landmarks and Tags](TAGS.md) for details.
 
-*Optical Character Recognition*
+**Optical Character Recognition**
 
 The *ocr* command is useful for extracting text from a variety of
 images. See the specific examples:
@@ -92,7 +89,7 @@ $ ml ocr azcv img.jpg
 - [Reading Street Signs](STREET.md)
 - [Extract Code from Python](CODE.md)
 
-*Thumbnails*
+**Thumbnails**
 
 Thumbnails require more than simply generating a small square section
 from an image. Ideally it is in some way representative of the
@@ -105,8 +102,7 @@ img-thumbnail.jpg
 ```
 - [Thumbnail Examples](THUMBNAIL.md)
 
-Demonstration
--------------
+## Demonstration
 
 ```console
 $ ml demo azcv
