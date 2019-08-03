@@ -72,7 +72,7 @@ $ ml tag azcv img.jpg
 0.86,desert
 ...
 ```
-See [Landmarks and Tags](TAGS.md) for details.
+- See [Landmarks and Tags](TAGS.md) for further details and examples.
 
 **Optical Character Recognition**
 
@@ -85,9 +85,9 @@ $ ml ocr azcv img.jpg
 ...
 ```
 
-- [Extract Text for Handwriting](HAND_WRITING.md)
-- [Reading Street Signs](STREET.md)
-- [Extract Code from Python](CODE.md)
+- See [Extract Text for Handwriting](HAND_WRITING.md) for further details and examples.
+- See [Reading Street Signs](STREET.md) for further details and examples.
+- See [Extract Code from Screenshots](CODE.md) for further details and examples.
 
 **Thumbnails**
 
@@ -100,7 +100,7 @@ image to display as a thumbnail.
 $ ml thumbnail azcv img.jpg
 img-thumbnail.jpg
 ```
-- [Thumbnail Examples](THUMBNAIL.md)
+- See [Thumbnail Examples](THUMBNAIL.md) for further details and examples.
 
 ## Demonstration
 
