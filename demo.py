@@ -18,36 +18,42 @@ tools for specific tasks, including tag, describe, landmark, ocr, and
 thumbnail.
 """)
 
+# ----------------------------------------------------------------------
+# Setup
+# ----------------------------------------------------------------------
+
+# Import the required libraries.
+
+import os
+import io 			# Create local image.
+import time
+
+from textwrap import fill
+from PIL import Image
+
 # pip3 install azure-cognitiveservices-vision-computervision
 
 from azure.cognitiveservices.vision.computervision import ComputerVisionClient
+from azure.cognitiveservices.vision.computervision import VERSION as azver
 from azure.cognitiveservices.vision.computervision.models import VisualFeatureTypes
 from msrest.authentication import CognitiveServicesCredentials
 from azure.cognitiveservices.vision.computervision.models import TextRecognitionMode
 from azure.cognitiveservices.vision.computervision.models import TextOperationStatusCodes
 
-import time
-import os
-#import json
-#import statistics
-from textwrap import fill
-from PIL import Image
-import io 			# Create local image.
-
-# Constants.
+# ----------------------------------------------------------------------
+# Request subscription key and endpoint from user.
+# ----------------------------------------------------------------------
 
 SERVICE   = "Computer Vision"
 KEY_FILE  = os.path.join(os.getcwd(), "private.txt")
 
-# Request subscription key and endpoint from user.
-
-subscription_key, endpoint = azkey(KEY_FILE, SERVICE)
+key, endpoint = azkey(KEY_FILE, SERVICE)
 
 mlask()
 
 # Set credentials.
 
-credentials = CognitiveServicesCredentials(subscription_key)
+credentials = CognitiveServicesCredentials(key)
 
 # Create client.
 
@@ -199,7 +205,10 @@ custom_headers = None
 numberOfCharsInOperationId = 36
 
 # Async SDK call
-rawHttpResponse = client.batch_read_file(url, mode, custom_headers,  raw)
+if ver(azver) > ver("0.3.0"):
+    rawHttpResponse = client.batch_read_file(url, custom_headers,  raw)
+else:
+    rawHttpResponse = client.batch_read_file(url, mode, custom_headers,  raw)
 
 # Get ID from returned headers
 operationLocation = rawHttpResponse.headers["Operation-Location"]
