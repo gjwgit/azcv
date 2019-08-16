@@ -12,18 +12,21 @@
 # ml ocr azcv http://www.handwrittenocr.com/images/Handwriting/16.jpg
 # ml ocr azcv http://www.handwrittenocr.com/images/Handwriting/9.jpg
 
-from azure.cognitiveservices.vision.computervision import ComputerVisionClient
-from msrest.authentication import CognitiveServicesCredentials
-from azure.cognitiveservices.vision.computervision.models import TextRecognitionMode
-from azure.cognitiveservices.vision.computervision.models import TextOperationStatusCodes
-
 import os
 import sys
 import time
 import argparse
 
+from distutils.version import StrictVersion as ver
+
 from mlhub.pkg import azkey, is_url
 from mlhub.utils import get_cmd_cwd
+
+from azure.cognitiveservices.vision.computervision import ComputerVisionClient
+from azure.cognitiveservices.vision.computervision import VERSION as azver
+from msrest.authentication import CognitiveServicesCredentials
+from azure.cognitiveservices.vision.computervision.models import TextRecognitionMode
+from azure.cognitiveservices.vision.computervision.models import TextOperationStatusCodes
 
 # ----------------------------------------------------------------------
 # Parse command line arguments
@@ -58,6 +61,7 @@ credentials = CognitiveServicesCredentials(subscription_key)
 # Create client.
 
 client = ComputerVisionClient(endpoint, credentials)
+apiver = client.api_version
 
 # Check the URL supplied or path exists and is an image.
 
@@ -66,7 +70,12 @@ client = ComputerVisionClient(endpoint, credentials)
 url = args.path
 
 # Choose between handwritten and printed. Default is printed. Use
-# --handwritten to use the handwritten model.
+# --handwritten to use the handwritten model. New release of the pip
+# package 0.4.0 does not have a mode anymore. We won't use it if
+# version is > 0.3.0.
+
+# https://github.com/Azure/azure-sdk-for-python/issues/5889
+
 
 if args.handwritten:
     mode = TextRecognitionMode.handwritten
@@ -78,12 +87,20 @@ numberOfCharsInOperationId = 36
 
 # Asynchronous call.
 
-if is_url(url):
-    rawHttpResponse = client.batch_read_file(url, mode, custom_headers,  raw)
+if ver(azver) > ver("0.3.0"):
+    if is_url(url):
+        rawHttpResponse = client.batch_read_file(url, custom_headers,  raw)
+    else:
+        path = os.path.join(get_cmd_cwd(), url)
+        with open(path, 'rb') as fstream:
+            rawHttpResponse = client.batch_read_file_in_stream(fstream, custom_headers, raw)
 else:
-    path = os.path.join(get_cmd_cwd(), url)
-    with open(path, 'rb') as fstream:
-        rawHttpResponse = client.batch_read_file_in_stream(fstream, mode, custom_headers, raw)
+    if is_url(url):
+        rawHttpResponse = client.batch_read_file(url, mode, custom_headers,  raw)
+    else:
+        path = os.path.join(get_cmd_cwd(), url)
+        with open(path, 'rb') as fstream:
+            rawHttpResponse = client.batch_read_file_in_stream(fstream, mode, custom_headers, raw)
 
 # Get ID from returned headers.
 
