@@ -14,43 +14,43 @@ indentation.
 ![](https://pbs.twimg.com/media/D69F90QV4AA9d59.png)
 ```console
 $ ml ocr azcv https://pbs.twimg.com/media/D69F90QV4AA9d59.png
-7 19 167 18 168 35 8 36,require (ggplot2)
-8 62 1118 61 1118 83 9 84,nobel_winners <- read. csv ("https://raw. githubusercontent . com/rfordatascience/tidytuesday/master/data/2019/2019-05
-12 85 236 86 235 104 11 103,-14/nobel_winners . csv")
-6 146 1013 145 1014 168 7 169,nobel_winners$birth_year <- substring (nobel_winners$birth_date, 1, 4) #pulling year out of the birthdate
-8 209 955 208 956 228 9 229,nobel_winners$birth_year <- as . integer (nobel_winners$birth_year) #changing birth year to integer
-7 269 1034 268 1035 290 8 291,nobel_winners$award_age <- (nobel_winners$prize_year - nobel_winners$birth_year) #creating the award age
-10 330 771 329 772 351 11 352,#ggplot (nobel_winners, aes (x=prize_year, y=award age) ) + #making a basic plot
-30 356 158 355 159 372 31 373,#geom point ()
-9 414 1120 413 1120 434 10 436,nobel_winners$category <- ordered (nobel_winners$category, levels = c("Medicine", "Physics", "Chemistry", "Economics"
-13 437 503 437 502 457 12 456,, "Literature", "Peace") ) #reordering the categories
-9 459 303 460 302 481 8 479,levels (nobel_winners$category)
-10 521 181 519 182 540 11 542,## [1] "Medicine"
-207 519 301 520 300 540 206 539,"Physics"
-329 520 708 520 707 540 328 539,"Chemistry" "Economics" "Literature"
-12 543 147 544 146 562 11 561,## [6] "Peace"
-6 605 1120 604 1121 625 7 626,levels (nobel_winners$category) <- c ("Medicine", "Physics", "Chemistry", "Economics*", "Literature", "Peace") #to chang
-10 628 155 629 154 648 9 647,e facet titles
-12 688 798 689 797 711 11 710,chart <- ggplot (nobel_winners, aes (x=prize_year, y=award_age, color=category) ) +
-28 713 315 712 316 732 29 734,geom_point (shape=1, size = 1)
-30 734 448 734 448 755 31 755,chart + facet_grid (cols = vars (category) ) +
-30 757 545 756 545 776 31 778,geom_smooth (aes (color=category) , se=FALSE, 1wd=1.5) +
-30 779 1118 780 1118 800 29 799,labs (title = 'Senescience', subtitle = 'Age of Nobel laureates, at date of award', caption = 'Source: Nobelpri
-11 804 74 805 74 824 10 822,ze . org
-861 801 1120 801 1120 822 862 822,* the economics prize was f
-10 825 711 826 710 845 9 844,irst awarded in 1969' ) + #add titles, not sure how to add two captions
-49 870 1120 869 1121 890 50 891,theme (plot . title = element_text (face = "bold"), legend. position = "none", strip. text. x = element_text (angle =
-22 892 1121 891 1122 912 23 913,0, hjust=0, face="bold", color = c("#014d64", "#90353B", "#EE6A50", "#2D6D66", "#EE9A00", "#01A209") ) ) + #attempt at
-22 916 250 914 251 934 23 935,changing x facet titles
-53 937 779 938 779 959 52 958,theme (plot . caption = element_text (hjust = 0, size = 9) ) + #moving caption
-27 959 1118 959 1119 980 28 980,scale_x_continuous (name= "", breaks= c (1900, 1925, 1950, 1975, 2000) , labels=c (1900, "",50, "", 2000), limits=c (1900, 2
-12 981 306 982 305 1003 11 1002,025) ) + #edit x axis and breaks
-33 1005 1120 1004 1120 1026 34 1027,scale_y_continuous (name="", breaks=c (25, 50, 75, 100) , labels=c (25, 50, 75, 100), position = "right", 25, limits=c(15
-10 1029 98 1027 98 1047 11 1050,, 101) ) +
-50 1051 1092 1050 1093 1071 51 1072,theme (panel . grid. major. x = element_blank (), panel. grid. minor. x = element_blank () , ) + #edit y axis and grid
-42 1073 1080 1072 1081 1092 43 1093,scale_colour_manual (values=c ("#014d64", "#90353B", "#EE6A50", "#2D6066", "#EE9A00", "#01A209") ) + #manual color
-48 1096 1106 1094 1107 1116 49 1117,annotate ("text", x= Inf, y= 96, label = "Oldest winner \n Leonid Hurwicz, 90", hjust = 1, size = 2.5, colour
-37 1119 750 1117 751 1139 38 1141,c ("grey92", "grey92", "grey92", "#2D6066", "grey92", "grey92") ) + #add Oldest
-47 1141 1117 1140 1118 1161 48 1162,annotate ("text", x= Inf, y= 25, label = "Youngest winner \n Malala Yousafzai, 17", hjust = 1, size = 2.5, col
-11 1163 779 1162 780 1184 12 1185,our = c ("grey92", "grey92", "grey92", "grey92", "grey92", "#01A209") ) #add youngest
+7.0 19.0 167.0 18.0 168.0 35.0 8.0 36.0,require (ggplot2)
+8.0 62.0 1118.0 61.0 1118.0 83.0 9.0 84.0,nobel_winners <- read. csv ("https://raw. githubusercontent . com/rfordatascience/tidytuesday/master/data/2019/2019-05
+12.0 85.0 236.0 86.0 235.0 104.0 11.0 103.0,-14/nobel_winners . csv")
+6.0 146.0 1013.0 145.0 1014.0 168.0 7.0 169.0,nobel_winners$birth_year <- substring (nobel_winners$birth_date, 1, 4) #pulling year out of the birthdate
+8.0 209.0 955.0 208.0 956.0 228.0 9.0 229.0,nobel_winners$birth_year <- as . integer (nobel_winners$birth_year) #changing birth year to integer
+7.0 269.0 1034.0 268.0 1035.0 290.0 8.0 291.0,nobel_winners$award_age <- (nobel_winners$prize_year - nobel_winners$birth_year) #creating the award age
+10.0 330.0 771.0 329.0 772.0 351.0 11.0 352.0,#ggplot (nobel_winners, aes (x=prize_year, y=award age) ) + #making a basic plot
+30.0 356.0 158.0 355.0 159.0 372.0 31.0 373.0,#geom point ()
+9.0 414.0 1120.0 413.0 1120.0 434.0 10.0 436.0,nobel_winners$category <- ordered (nobel_winners$category, levels = c("Medicine", "Physics", "Chemistry", "Economics"
+13.0 437.0 503.0 437.0 502.0 457.0 12.0 456.0,, "Literature", "Peace") ) #reordering the categories
+9.0 459.0 303.0 460.0 302.0 481.0 8.0 479.0,levels (nobel_winners$category)
+10.0 521.0 181.0 519.0 182.0 540.0 11.0 542.0,## [1] "Medicine"
+207.0 519.0 301.0 520.0 300.0 540.0 206.0 539.0,"Physics"
+329.0 520.0 708.0 520.0 707.0 540.0 328.0 539.0,"Chemistry" "Economics" "Literature"
+12.0 543.0 147.0 544.0 146.0 562.0 11.0 561.0,## [6] "Peace"
+6.0 605.0 1120.0 604.0 1121.0 625.0 7.0 626.0,levels (nobel_winners$category) <- c ("Medicine", "Physics", "Chemistry", "Economics*", "Literature", "Peace") #to chang
+10.0 628.0 155.0 629.0 154.0 648.0 9.0 647.0,e facet titles
+12.0 688.0 798.0 689.0 797.0 711.0 11.0 710.0,chart <- ggplot (nobel_winners, aes (x=prize_year, y=award_age, color=category) ) +
+28.0 713.0 315.0 712.0 316.0 732.0 29.0 734.0,geom_point (shape=1, size = 1)
+30.0 734.0 448.0 734.0 448.0 755.0 31.0 755.0,chart + facet_grid (cols = vars (category) ) +
+30.0 757.0 545.0 756.0 545.0 776.0 31.0 778.0,geom_smooth (aes (color=category) , se=FALSE, 1wd=1.5) +
+30.0 779.0 1118.0 780.0 1118.0 800.0 29.0 799.0,labs (title = 'Senescience', subtitle = 'Age of Nobel laureates, at date of award', caption = 'Source: Nobelpri
+11.0 804.0 74.0 805.0 74.0 824.0 10.0 822.0,ze . org
+861.0 801.0 1120.0 801.0 1120.0 822.0 862.0 822.0,* the economics prize was f
+10.0 825.0 711.0 826.0 710.0 845.0 9.0 844.0,irst awarded in 1969' ) + #add titles, not sure how to add two captions
+49.0 870.0 1120.0 869.0 1121.0 890.0 50.0 891.0,theme (plot . title = element_text (face = "bold"), legend. position = "none", strip. text. x = element_text (angle =
+22.0 892.0 1121.0 891.0 1122.0 912.0 23.0 913.0,0, hjust=0, face="bold", color = c("#014d64", "#90353B", "#EE6A50", "#2D6D66", "#EE9A00", "#01A209") ) ) + #attempt at
+22.0 916.0 250.0 914.0 251.0 934.0 23.0 935.0,changing x facet titles
+53.0 937.0 779.0 938.0 779.0 959.0 52.0 958.0,theme (plot . caption = element_text (hjust = 0, size = 9) ) + #moving caption
+27.0 959.0 1118.0 959.0 1119.0 980.0 28.0 980.0,scale_x_continuous (name= "", breaks= c (1900, 1925, 1950, 1975, 2000) , labels=c (1900, "",50, "", 2000), limits=c (1900, 2
+12.0 981.0 306.0 982.0 305.0 1003.0 11.0 1002.0,025) ) + #edit x axis and breaks
+33.0 1005.0 1120.0 1004.0 1120.0 1026.0 34.0 1027.0,scale_y_continuous (name="", breaks=c (25, 50, 75, 100) , labels=c (25, 50, 75, 100), position = "right", 25, limits=c(15
+10.0 1029.0 98.0 1027.0 98.0 1047.0 11.0 1050.0,, 101) ) +
+50.0 1051.0 1092.0 1050.0 1093.0 1071.0 51.0 1072.0,theme (panel . grid. major. x = element_blank (), panel. grid. minor. x = element_blank () , ) + #edit y axis and grid
+42.0 1073.0 1080.0 1072.0 1081.0 1092.0 43.0 1093.0,scale_colour_manual (values=c ("#014d64", "#90353B", "#EE6A50", "#2D6066", "#EE9A00", "#01A209") ) + #manual color
+48.0 1096.0 1106.0 1094.0 1107.0 1116.0 49.0 1117.0,annotate ("text", x= Inf, y= 96, label = "Oldest winner \n Leonid Hurwicz, 90", hjust = 1, size = 2.5, colour
+37.0 1119.0 750.0 1117.0 751.0 1139.0 38.0 1141.0,c ("grey92", "grey92", "grey92", "#2D6066", "grey92", "grey92") ) + #add Oldest
+47.0 1141.0 1117.0 1140.0 1118.0 1161.0 48.0 1162.0,annotate ("text", x= Inf, y= 25, label = "Youngest winner \n Malala Yousafzai, 17", hjust = 1, size = 2.5, col
+11.0 1163.0 779.0 1162.0 780.0 1184.0 12.0 1185.0,our = c ("grey92", "grey92", "grey92", "grey92", "grey92", "#01A209") ) #add youngest
 ```
