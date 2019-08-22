@@ -97,6 +97,10 @@ $ ml ocr azcv https://farm4.staticflickr.com/3883/15144849957_f326e03f75_b.jpg
 99.0 629.0 204.0 627.0 205.0 638.0 99.0 640.0,Tahun Ajaran 2014 2015
 91.0 666.0 170.0 662.0 171.0 673.0 92.0 678.0,EXNIX TENAGA LISTRIN
 ```
+Creating a montage using the above commands as a script:
+![](semarang.jpg)
+
+
 ![](http://brombeer.net/signs/id_approach.jpg)
 ```console
 $ ml ocr azcv http://brombeer.net/signs/id_approach.jpg
