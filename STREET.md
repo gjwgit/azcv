@@ -108,6 +108,9 @@ $ ml ocr azcv http://brombeer.net/signs/id_approach.jpg
 234.0 223.0 293.0 224.0 293.0 245.0 234.0 244.0,1 km
 728.0 367.0 760.0 371.0 756.0 409.0 724.0 405.0,R
 ```
+
+*Observations:* The arrows are picked up as R in two instances.
+
 ![](https://upload.wikimedia.org/wikipedia/commons/7/7e/Indonesian_Road_Sign_-_NR_Directional.png)
 ```console
 $ ml ocr azcv https://upload.wikimedia.org/wikipedia/commons/7/7e/Indonesian_Road_Sign_-_NR_Directional.png
@@ -120,7 +123,6 @@ $ ml ocr azcv https://upload.wikimedia.org/wikipedia/commons/7/7e/Indonesian_Roa
 1340.0 747.0 1404.0 745.0 1410.0 832.0 1346.0 834.0,3
 ```
 
-Observations: Notice that the "NASIONAL 3" logo appears twice yet for
-one of them NASIONAL is picked up and for the other 3 is picked
-up.
+*Observations:* The "NASIONAL 3" logo appears twice yet for one of them
+NASIONAL is picked up and for the other 3 is picked up.
 
