@@ -133,6 +133,9 @@ $ ml ocr azcv https://upload.wikimedia.org/wikipedia/commons/7/7e/Indonesian_Roa
 1340.0 747.0 1404.0 745.0 1410.0 832.0 1346.0 834.0,3
 ```
 
-*Observations:* The "NASIONAL 3" logo appears twice yet for one of them
-NASIONAL is picked up and for the other 3 is picked up.
+Creating a montage using the above commands as a script:
+![](jogja.jpg)
+
+*Observations:* The "NASIONAL 3" logo appears twice and for only one
+of them is the 3 identified.
 
