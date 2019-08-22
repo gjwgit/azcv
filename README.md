@@ -81,7 +81,7 @@ images. See the specific examples:
 
 ```console
 $ ml ocr azcv img.jpg
-325 305 1297 290 1302 594 329 609,ABBEY
+325.0 305.0 1297.0 290.0 1302.0 594.0 329.0 609.0,ABBEY
 ...
 ```
 
