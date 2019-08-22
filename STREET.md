@@ -36,6 +36,7 @@ Here we identify the actual location of the text and annotate the
 image with the bounding box and the identified text.
 
 ```console
+$ wget -O img.jpg https://sharpie51.files.wordpress.com/2010/02/street_sign_for_abbey_road_in_westminster_london_england_img_1461.jpg
 $ ml ocr azcv img.jpg > img_bb.txt
 
 # Add bounding boxes to the image.
@@ -51,7 +52,7 @@ $ cat img_bb.txt |
 $ cat img_bb.txt |
   tr ',' ' '| 
   cut -d' ' -f1,2,9- | 
-  perl -pe 's|(\d+) (\d+) (.+)|-annotate +\1+\2 \\"\3\\"|' | 
+  perl -pe 's|([\d\.]+) ([\d\.]+) (.+)|-annotate +\1+\2 \\"\3\\"|' | 
   xargs | 
   awk '{print "img_bb.jpg -pointsize 50 " $0 " img_bb_text.jpg"}' | 
   xargs convert
