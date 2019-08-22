@@ -120,6 +120,10 @@ $ ml ocr azcv https://upload.wikimedia.org/wikipedia/commons/7/7e/Indonesian_Roa
 1340.0 747.0 1404.0 745.0 1410.0 832.0 1346.0 834.0,3
 ```
 
+Observations: Notice that the "NASIONAL 3" logo appears twice yet for
+one of them NASIONAL is picked up and for the other 3 is picked
+up.
+
 *Mark up Bounding Boxes for Text in Image*
 
 In this example the bounding boxes are captured into the text
