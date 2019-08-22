@@ -2,11 +2,23 @@
 
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License.
-# Author: Graham.Williams@togaware.com
+# Author: Graham.Williams@microsoft.com
 #
-# A script to propose tags for an image.
+# A command line script to propose tags for an image.
 #
 # ml tag azcv <path>
+
+# ----------------------------------------------------------------------
+# Setup
+# ----------------------------------------------------------------------
+
+# Import the required libraries.
+
+import os
+import argparse
+
+from mlhub.pkg import azkey, is_url
+from mlhub.utils import get_cmd_cwd
 
 from msrest.authentication import CognitiveServicesCredentials
 from azure.cognitiveservices.vision.computervision import ComputerVisionClient
@@ -14,13 +26,10 @@ from azure.cognitiveservices.vision.computervision.models import VisualFeatureTy
 #from azure.cognitiveservices.vision.computervision.models import TextRecognitionMode
 #from azure.cognitiveservices.vision.computervision.models import TextOperationStatusCodes
 
-import os
-#import sys
-#import time
-import argparse
+# Defaults.
 
-from mlhub.pkg import azkey, is_url
-from mlhub.utils import get_cmd_cwd
+SERVICE   = "Computer Vision"
+KEY_FILE  = os.path.join(os.getcwd(), "private.txt")
 
 # ----------------------------------------------------------------------
 # Parse command line arguments
@@ -35,11 +44,8 @@ option_parser.add_argument(
 args = option_parser.parse_args()
 
 # ----------------------------------------------------------------------
-
-SERVICE   = "Computer Vision"
-KEY_FILE  = os.path.join(os.getcwd(), "private.txt")
-
 # Request subscription key and endpoint from user.
+# ----------------------------------------------------------------------
 
 subscription_key, endpoint = azkey(KEY_FILE, SERVICE, verbose=False)
 
