@@ -97,7 +97,7 @@ $ ml ocr azcv https://farm4.staticflickr.com/3883/15144849957_f326e03f75_b.jpg
 99.0 629.0 204.0 627.0 205.0 638.0 99.0 640.0,Tahun Ajaran 2014 2015
 91.0 666.0 170.0 662.0 171.0 673.0 92.0 678.0,EXNIX TENAGA LISTRIN
 ```
-Creating a montage using the above commands as a script, modified to
+Creating a montage using the above command script, modified to
 include -stroke white -pointsize 10:
 ![](semarang.jpg)
 
@@ -115,7 +115,7 @@ $ ml ocr azcv http://brombeer.net/signs/id_approach.jpg
 234.0 223.0 293.0 224.0 293.0 245.0 234.0 244.0,1 km
 728.0 367.0 760.0 371.0 756.0 409.0 724.0 405.0,R
 ```
-Creating a montage using the above commands as a script, modified to
+Creating a montage using the above command script, modified to
 include -stroke white -pointsize 10:
 ![](serpong.jpg)
 
@@ -133,7 +133,8 @@ $ ml ocr azcv https://upload.wikimedia.org/wikipedia/commons/7/7e/Indonesian_Roa
 1340.0 747.0 1404.0 745.0 1410.0 832.0 1346.0 834.0,3
 ```
 
-Creating a montage using the above commands as a script:
+Creating a montage using the above command script, modified to
+include -stroke red -pointsize 10:
 ![](jogja.jpg)
 
 *Observations:* The "NASIONAL 3" logo appears twice and for only one
