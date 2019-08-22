@@ -3,7 +3,7 @@ meta:
   name         : azcv
   title        : Azure Computer Vision.
   keywords     : azure, computer vision, ocr, thumbnail, image to text, cloud
-  version      : 2.3.2
+  version      : 2.3.3
   languages    : py
   display      : demo
   license      : mit
