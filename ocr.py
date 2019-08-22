@@ -79,6 +79,8 @@ url = args.path
 
 if args.handwritten:
     mode = TextRecognitionMode.handwritten
+    if ver(azver) > ver("0.3.0"):
+        sys.stderr.write("The --handwritten option is no longer required.\n")
 else:
     mode = TextRecognitionMode.printed
 raw = True
