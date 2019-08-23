@@ -1,6 +1,11 @@
 Identifying Landmarks and Tags
 ==============================
 
+Here we demonstrate one specific capability of Azure Computer Vision
+cognitive service, tagging photos, as exposed through the
+[MLHub](https://mlhub.ai) package
+[azcv](https://github.com/Azure/azcv).
+
 Here are a few examples of identifying landmarks and tagging
 images.
 
