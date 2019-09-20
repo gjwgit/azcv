@@ -111,10 +111,11 @@ the command.
 
 **Extract Programming Code from Screenshots using OCR**
 
-A rather interesting use case might be that for whatever reason we may
-have access to an image of some programming code and want to recover
-that code for an actual program. We can again use OCR. Here the
-bounding boxes have been filtered out and just the code is shown.
+Imagine the use case where we may have access to an image of some
+programming code and want to recover that code to include it into an
+actual program, without manually re-typing it. We can again use
+OCR. Here the bounding boxes have been filtered out and just the code
+is shown.
 
 ![](code_demo.png)
 
