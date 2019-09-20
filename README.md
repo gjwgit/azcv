@@ -80,6 +80,14 @@ $ ml tag azcv img.jpg
 
 **Optical Character Recognition to Read Street Signs**
 
+The *ocr* command is useful for extracting text from a variety of
+images.
+
+An important use case for OCR today is the reading of street
+signs. Here we use OCR to identify all text in the image, including
+the street sign, the bus text, and even text from a sign post. The
+bounding boxes are returned together with the identified text.
+
 ![](semarang.jpg)
 
 ```console
@@ -88,19 +96,25 @@ $ ml ocr azcv img.jpg
 ...
 ```
 
-The *ocr* command is useful for extracting text from a variety of
-images. See the specific examples:
-
 - See [Reading Street Signs](STREET.md) for further details and examples.
 
 
-**Extracting Text from Handwritting using OCR**
+**Extracting Text from Handwriting using OCR**
+
+Even handwriting is recognisable with today's OCR. Once again the
+bounding box of the text together with the text itself is returned by
+the command.
 
 ![](handwriting_demo.png)
 
 - See [Extract Text for Handwriting](HAND_WRITING.md) for further details and examples.
 
 **Extract Programming Code from Screenshots using OCR**
+
+A rather interesting use case might be that for whatever reason we may
+have access to an image of some programming code and want to recover
+that code for an actual program. We can again use OCR. Here the
+bounding boxes have been filtered out and just the code is shown.
 
 ![](code_demo.png)
 
