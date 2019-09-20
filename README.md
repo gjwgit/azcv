@@ -57,6 +57,8 @@ The *landmark* command takes an image (url or path to a local file)
 and identifies the main landmark contained within the image. The
 confidence of the identification is also returned.
 
+![](http://cdn1.thr.com/sites/default/files/2013/11/marina_bay_sands_singapore_a_l.jpg)
+
 ```console
 $ ml landmark azcv img.jpg
 0.95,Marina Bay Sands
@@ -86,7 +88,9 @@ $ ml ocr azcv img.jpg
 ```
 
 - See [Extract Text for Handwriting](HAND_WRITING.md) for further details and examples.
+
 - See [Reading Street Signs](STREET.md) for further details and examples.
+
 - See [Extract Code from Screenshots](CODE.md) for further details and examples.
 
 **Thumbnails**
