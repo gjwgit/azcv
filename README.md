@@ -68,6 +68,8 @@ The *tag* command takes an image (url or path to a local file) and
 generates a collection of tags that identify key elements of the
 image. Each tag has a confidence.
 
+![](https://www.wayoutback.com.au/assets/Uploads/Uluru.jpg)
+
 ```console
 $ ml tag azcv img.jpg
 0.96,landscape
@@ -80,6 +82,8 @@ $ ml tag azcv img.jpg
 
 The *ocr* command is useful for extracting text from a variety of
 images. See the specific examples:
+
+![](https://sharpie51.files.wordpress.com/2010/02/street_sign_for_abbey_road_in_westminster_london_england_img_1461.jpg)
 
 ```console
 $ ml ocr azcv img.jpg
