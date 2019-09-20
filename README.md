@@ -78,10 +78,7 @@ $ ml tag azcv img.jpg
 ```
 - See [Landmarks and Tags](TAGS.md) for further details and examples.
 
-**Optical Character Recognition**
-
-The *ocr* command is useful for extracting text from a variety of
-images. See the specific examples:
+**Optical Character Recognition to Read Street Signs**
 
 ![](semarang.jpg)
 
@@ -91,9 +88,21 @@ $ ml ocr azcv img.jpg
 ...
 ```
 
-- See [Extract Text for Handwriting](HAND_WRITING.md) for further details and examples.
+The *ocr* command is useful for extracting text from a variety of
+images. See the specific examples:
 
 - See [Reading Street Signs](STREET.md) for further details and examples.
+
+
+**Extracting Text from Handwritting using OCR**
+
+![](handwriting_demo.png)
+
+- See [Extract Text for Handwriting](HAND_WRITING.md) for further details and examples.
+
+**Extract Programming Code from Screenshots using OCR**
+
+![](code_demo.png)
 
 - See [Extract Code from Screenshots](CODE.md) for further details and examples.
 
