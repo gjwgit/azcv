@@ -83,7 +83,7 @@ $ ml tag azcv img.jpg
 The *ocr* command is useful for extracting text from a variety of
 images. See the specific examples:
 
-![](https://sharpie51.files.wordpress.com/2010/02/street_sign_for_abbey_road_in_westminster_london_england_img_1461.jpg)
+![](abbey_with_bb_text.jpg)
 
 ```console
 $ ml ocr azcv img.jpg
