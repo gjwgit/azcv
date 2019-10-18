@@ -51,7 +51,7 @@ $ ml configure azcv
 In addition to the *demo* presented below, the *azcv* package provides
 a number of useful command line tools.
 
-**Landmarks and Tags**
+### Landmarks and Tags
 
 The *landmark* command takes an image (url or path to a local file)
 and identifies the main landmark contained within the image. The
@@ -78,7 +78,7 @@ $ ml tag azcv img.jpg
 ```
 - See [Landmarks and Tags](TAGS.md) for further details and examples.
 
-**Optical Character Recognition to Read Street Signs**
+### Optical Character Recognition to Read Street Signs
 
 The *ocr* command is useful for extracting text from a variety of
 images.
@@ -99,7 +99,7 @@ $ ml ocr azcv img.jpg
 - See [Reading Street Signs](STREET.md) for further details and examples.
 
 
-**Extracting Text from Handwriting using OCR**
+### Extracting Text from Handwriting using OCR
 
 Even handwriting is recognisable with today's OCR. Once again the
 bounding box of the text together with the text itself is returned by
@@ -121,7 +121,7 @@ is shown.
 
 - See [Extract Code from Screenshots](CODE.md) for further details and examples.
 
-**Thumbnails**
+## Thumbnails
 
 Thumbnails require more than simply generating a small square section
 from an image. Ideally it is in some way representative of the
