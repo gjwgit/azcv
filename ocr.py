@@ -24,9 +24,9 @@ from mlhub.utils import get_cmd_cwd
 
 from azure.cognitiveservices.vision.computervision import ComputerVisionClient
 from azure.cognitiveservices.vision.computervision import VERSION as azver
-from msrest.authentication import CognitiveServicesCredentials
-from azure.cognitiveservices.vision.computervision.models import TextRecognitionMode
 from azure.cognitiveservices.vision.computervision.models import TextOperationStatusCodes
+from azure.cognitiveservices.vision.computervision.models import TextRecognitionMode
+from msrest.authentication import CognitiveServicesCredentials
 
 # ----------------------------------------------------------------------
 # Parse command line arguments
