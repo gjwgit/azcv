@@ -28,6 +28,7 @@ import os
 import io 			# Create local image.
 import time
 
+from distutils.version import StrictVersion as ver
 from textwrap import fill
 from PIL import Image
 
