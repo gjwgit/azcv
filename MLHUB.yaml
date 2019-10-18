@@ -14,7 +14,7 @@ dependencies:
     - azure-cognitiveservices-vision-computervision
   files:
     - https://mlhub.ai/empty.txt: private.txt
-    - README.md
+    - docs/README.md: README.md
     - demo.py
     - ocr.py
     - landmark.py
