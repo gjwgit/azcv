@@ -11,7 +11,7 @@ Here are a few examples of handwriting extraction.
 ![](http://www.handwrittenocr.com/images/Handwriting/16.jpg)
 
 ``` console
-$ ml ocr azcv --handwritten http://www.handwrittenocr.com/images/Handwriting/16.jpg
+$ ml ocr azcv http://www.handwrittenocr.com/images/Handwriting/16.jpg
 237.0 91.0 469.0 92.0 468.0 124.0 236.0 123.0,Education First
 188.0 157.0 287.0 158.0 286.0 184.0 187.0 183.0,always
 290.0 156.0 424.0 159.0 423.0 184.0 289.0 181.0,dream
@@ -41,7 +41,7 @@ $ ml ocr azcv --handwritten http://www.handwrittenocr.com/images/Handwriting/16.
 ```
 ![](http://www.handwrittenocr.com/images/Handwriting/1.jpg)
 ```console
-$ ml ocr azcv --handwritten http://www.handwrittenocr.com/images/Handwriting/1.jpg
+$ ml ocr azcv http://www.handwrittenocr.com/images/Handwriting/1.jpg
 274.0 141.0 507.0 102.0 520.0 198.0 299.0 240.0,if the
 143.0 276.0 603.0 254.0 606.0 318.0 146.0 340.0,only prayer
 108.0 411.0 587.0 371.0 593.0 438.0 114.0 479.0,you said was
@@ -55,7 +55,7 @@ $ ml ocr azcv --handwritten http://www.handwrittenocr.com/images/Handwriting/1.j
 ![](http://www.handwrittenocr.com/images/Handwriting/9.jpg)
 
 ```console
-$ ml ocr azcv --handwritten http://www.handwrittenocr.com/images/Handwriting/9.jpg
+$ ml ocr azcv http://www.handwrittenocr.com/images/Handwriting/9.jpg
 6.0 45.0 549.0 35.0 550.0 65.0 7.0 75.0,Reading a handwritten article about hand .
 4.0 86.0 549.0 78.0 550.0 109.0 5.0 117.0,writing , in a 215-century magazine, is like
 6.0 132.0 527.0 123.0 527.0 150.0 7.0 160.0,listening to your great-great- grandfather
