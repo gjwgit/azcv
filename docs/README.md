@@ -128,7 +128,7 @@ from an image. Ideally it is in some way representative of the
 image. The *thumbnail* command will choose a "good" region of the
 image to display as a thumbnail.
 
-![](thumbnail_demo.png)
+![](eiffel_thumbnail.png)
 
 ```console
 $ ml thumbnail azcv img.jpg
