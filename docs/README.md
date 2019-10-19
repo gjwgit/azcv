@@ -84,7 +84,7 @@ $ ml tag azcv https://www.wayoutback.com.au/assets/Uploads/Uluru.jpg
 0.93,canyon
 ...
 ```
-- See [Landmarks and Tags](TAGS.md) for further details and examples.
+See [Landmarks and Tags](TAGS.md) for further details and examples.
 
 **Optical Character Recognition to Read Street Signs**
 
@@ -106,7 +106,7 @@ $ ml ocr azcv https://farm4.staticflickr.com/3883/15144849957_f326e03f75_b.jpg
 ...
 ```
 
-- See [Reading Street Signs](STREET.md) for further details and examples.
+See [Reading Street Signs](STREET.md) for further details and examples.
 
 
 **Extracting Text from Handwriting using OCR**
@@ -117,7 +117,7 @@ the command.
 
 ![](handwriting_demo.png)
 
-- See [Extract Text for Handwriting](HAND_WRITING.md) for further details and examples.
+See [Extract Text for Handwriting](HAND_WRITING.md) for further details and examples.
 
 **Extract Programming Code from Screenshots using OCR**
 
@@ -129,7 +129,7 @@ is shown.
 
 ![](code_demo.png)
 
-- See [Extract Code from Screenshots](CODE.md) for further details and examples.
+See [Extract Code from Screenshots](CODE.md) for further details and examples.
 
 **Thumbnails**
 
@@ -144,7 +144,7 @@ image to display as a thumbnail.
 $ ml thumbnail azcv img.jpg
 img-thumbnail.jpg
 ```
-- See [Thumbnail Examples](THUMBNAIL.md) for further details and examples.
+See [Thumbnail Examples](THUMBNAIL.md) for further details and examples.
 
 ## Demonstration
 
