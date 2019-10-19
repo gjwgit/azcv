@@ -33,3 +33,13 @@ $ ml thumbnail azcv https://access.togaware.com/landmark01.jpg
 landmark02-thumbnail.jpg
 ```
 ![](borobodur_thumbnail.png)
+
+
+```console
+$ ml thumbnail azcv https://www.wayoutback.com.au/assets/Uploads/Uluru.jpg
+Uluru-thumbnail.jpg
+```
+Notice how the whole of Uluru is included in the thumbnail. This
+illustrates how the model can identify the best thumbnail tuned to the
+main object of the photo.
+![](uluru_thumbnail.png)
