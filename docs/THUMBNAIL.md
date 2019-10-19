@@ -20,19 +20,16 @@ to the file name and saved locally.
 $ ml thumbnail azcv https://images.pexels.com/photos/338515/pexels-photo-338515.jpeg
 pexels-photo-338515-thumbnail.jpeg
 ```
-![](https://images.pexels.com/photos/338515/pexels-photo-338515.jpeg)
-![](pexels-photo-338515-thumbnail.jpeg)
+![](eiffel_thumb.png)
 
 ```console
 $ ml thumbnail azcv http://cdn1.thr.com/sites/default/files/2013/11/marina_bay_sands_singapore_a_l.jpg
 marina_bay_sands_singapore_a_l-thumbnail.jpg
 ```
-![](http://cdn1.thr.com/sites/default/files/2013/11/marina_bay_sands_singapore_a_l.jpg)
-![](marina_bay_sands_singapore_a_l-thumbnail.jpg)
+![](marina_thumbnail.png)
 
 ```console
 $ ml thumbnail azcv https://access.togaware.com/landmark01.jpg
 landmark02-thumbnail.jpg
 ```
-![](https://access.togaware.com/landmark01.jpg)
-![](landmark01-thumbnail.jpg)
+![](borobodur_thumbnail.png)
