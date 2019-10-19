@@ -239,7 +239,7 @@ url1 = "http://www.public-domain-photos.com/free-stock-photos-4/"
 url2 = "travel/san-francisco/golden-gate-bridge-in-san-francisco.jpg"
 url  = url1 + url2
 
-mlcat("Generate Interesting Thumbnail",
+mlcat("Generate Good Thumbnails",
 """A utility provided by the service can generate a thumbnail (JPG) of an image. 
 The thumbnail does not need to be in the same proportions as the original
 image and indeed we will often want to create square thumbnails. In creating a

@@ -145,12 +145,11 @@ $ ml demo azcv
 Azure Computer Vision API
 =========================
 
-Welcome to a demo of pre-built models for Computer Vision. This Azure 
-Cognitive Service supports various operations related to Computer Vision.
-This MLHub package demonstrates the various services. Other MLHub packages
-exist for specific tasks like identifying the landmark in an image
-(azlandmark), recoginising words in an image (azocr) and generating
-thumbnails from images (azthumb).
+Welcome to a demo of pre-built models for Computer Vision available as 
+Cognitive Services on Azure.  Azure supports various operations related to
+Computer Vision and this package demonstrates them and provides command line
+tools for specific tasks, including tag, describe, landmark, ocr, and
+thumbnail.
 
 An Azure resource is required to access this service (and to run this command).
 See the README for details of a free subscription. If you have a subscription
@@ -173,13 +172,12 @@ We can analyze an image for certain features with analyze_image(). We use the
 visual_features= property to set the types of analysis to perform on the image. 
 Common values are VisualFeatureTypes.tags and VisualFeatureTypes.description. 
 
-For our demonstration we will analyze the following image:
+For our demonstration we will analyze the following image which we will also 
+display momentarily:
 
 Location: https://upload.wikimedia.org/
 Path:     wikipedia/commons/thumb/1/12/Broadway_and_Times_Square_by_night.jpg/
 Filename: 450px-Broadway_and_Times_Square_by_night.jpg
-
-Press Enter to continue: 
 
 Close the graphic window using Ctrl-w.
 
@@ -196,18 +194,18 @@ We list the tags for the image together with a measure of confidence.
 
 Confidence: 1.00 Tag: skyscraper
 Confidence: 0.99 Tag: building
-Confidence: 0.98 Tag: outdoor
+Confidence: 0.97 Tag: outdoor
 Confidence: 0.92 Tag: light
-Confidence: 0.91 Tag: street
+Confidence: 0.88 Tag: street
 Confidence: 0.87 Tag: downtown
 Confidence: 0.86 Tag: cityscape
 Confidence: 0.80 Tag: sky
-Confidence: 0.79 Tag: city
+Confidence: 0.77 Tag: city
 Confidence: 0.70 Tag: street light
+Confidence: 0.63 Tag: people
 Confidence: 0.59 Tag: car
-Confidence: 0.58 Tag: people
-Confidence: 0.42 Tag: busy
-Confidence: 0.28 Tag: night
+Confidence: 0.36 Tag: busy
+Confidence: 0.33 Tag: night
 
 Press Enter to continue: 
 
@@ -231,14 +229,14 @@ Analyze an Image by Domain
 
 We can specify a subject domain within which to analyze an image. For example,
 below we use the landmarks domain to identify the landmark in an image. See the
-separate azlandmark MLHub package for a standalone demonstration and tool.
+landmark command for a command line tool to identify the landmark in a local or
+remote image file.
 
-For our demonstration we will analyze the following image:
+For our demonstration we will analyze the following image which we will also 
+display momentarily.
 
 Location: https://images.pexels.com/photos/338515/pexels-photo-338515.jpeg
       
-Press Enter to continue: 
-
 Close the graphic window using Ctrl-w.
 
 Press Enter to continue: 
@@ -257,7 +255,8 @@ We can obtain a language-based text description of an image and can request
 several descriptions for our further text analysis for keywords associated
 with the image. 
 
-For our demonstration we will analyze the following image:
+For our demonstration we will analyze the following image which we will also 
+display momentarily:
 
 Location: http://www.public-domain-photos.com/
 Path:     free-stock-photos-4/travel/san-francisco/
@@ -289,23 +288,75 @@ Text From Image
 We can identify text from an image using Text Recognition Mode. This mode 
 supports both handwritten and typed text. The results include the text as well
 as the bounding box coordinates for the text so that the image itself can be
-marked up with the identified text. See the standalone MLHub package azocr
-which can be used as a tool for extracting text from any supplied image.
+marked up with the identified text. See the ocr command to utilise this
+functionality as a command line tool for extracting text from any supplied
+image.
 
-For our demonstration we will analyze the following image:
+For our demonstration we will analyze the following image which we will also 
+display momentarily:
 
-Location: https://azurecomcdn.azureedge.net/
-Hash:     cvt-1979217d3d0d31c5c87cbd991bccfee2d184b55eeb4081200012bdaf6a65601a/
-Filename: images/shared/cognitive-services-demos/read-text/read-1-thumbnail.png
-
-Press Enter to continue: 
+    http://www.handwrittenocr.com/images/Handwriting/16.jpg
 
 Close the graphic window using Ctrl-w.
 
-Press Enter to continue: 
+Press Enter to continue:
 ```
-![](https://azurecomcdn.azureedge.net/cvt-1979217d3d0d31c5c87cbd991bccfee2d184b55eeb4081200012bdaf6a65601a/images/shared/cognitive-services-demos/read-text/read-1-thumbnail.png)
+![](http://www.handwrittenocr.com/images/Handwriting/16.jpg)
 ```console
+Found "Education First" at [237.0, 91.0, 469.0, 92.0, 468.0, 124.0, 236.0, 123.0]
+
+Found "always" at [188.0, 157.0, 287.0, 158.0, 286.0, 184.0, 187.0, 183.0]
+
+Found "dream" at [290.0, 156.0, 424.0, 159.0, 423.0, 184.0, 289.0, 181.0]
+
+Found "of a world" at [426.0, 159.0, 661.0, 154.0, 662.0, 179.0, 427.0, 184.0]
+
+Found "where" at [32.0, 187.0, 110.0, 189.0, 109.0, 213.0, 31.0, 211.0]
+
+Found "see" at [250.0, 188.0, 293.0, 188.0, 293.0, 209.0, 250.0, 211.0]
+
+Found "every" at [352.0, 185.0, 434.0, 188.0, 433.0, 216.0, 351.0, 213.0]
+
+Found "child , girl or" at [458.0, 185.0, 682.0, 184.0, 683.0, 210.0, 459.0, 211.0]
+
+Found "boy," at [39.0, 216.0, 100.0, 217.0, 99.0, 244.0, 39.0, 242.0]
+
+Found "holding" at [103.0, 214.0, 226.0, 217.0, 226.0, 244.0, 102.0, 240.0]
+
+Found "books" at [279.0, 216.0, 356.0, 217.0, 355.0, 240.0, 278.0, 239.0]
+
+Found "in her/his hands," at [393.0, 213.0, 695.0, 214.0, 694.0, 239.0, 393.0, 239.0]
+
+Found "wearing" at [37.0, 244.0, 136.0, 246.0, 135.0, 274.0, 36.0, 271.0]
+
+Found "school" at [204.0, 247.0, 298.0, 248.0, 297.0, 270.0, 203.0, 269.0]
+
+Found "uniform and going to" at [305.0, 245.0, 675.0, 243.0, 676.0, 271.0, 306.0, 272.0]
+
+Found "School : g" at [33.0, 277.0, 169.0, 271.0, 171.0, 296.0, 34.0, 301.0]
+
+Found "will" at [221.0, 276.0, 295.0, 274.0, 296.0, 297.0, 222.0, 299.0]
+
+Found "struggle to make this" at [301.0, 274.0, 676.0, 272.0, 677.0, 297.0, 302.0, 299.0]
+
+Found "today's dream , tomorrow's reality. 9" at [41.0, 304.0, 631.0, 302.0, 632.0, 329.0, 42.0, 331.0]
+
+Found "always believe" at [31.0, 334.0, 260.0, 333.0, 261.0, 359.0, 32.0, 360.0]
+
+Found "that even one look ," at [269.0, 333.0, 673.0, 332.0, 674.0, 358.0, 270.0, 359.0]
+
+Found "one pen , one child , one teacher can" at [35.0, 365.0, 666.0, 362.0, 667.0, 387.0, 36.0, 390.0]
+
+Found "change" at [33.0, 395.0, 122.0, 394.0, 123.0, 417.0, 34.0, 418.0]
+
+Found "the" at [180.0, 394.0, 223.0, 394.0, 222.0, 417.0, 180.0, 416.0]
+
+Found "world ." at [224.0, 390.0, 359.0, 391.0, 358.0, 418.0, 223.0, 416.0]
+
+Found "malala yousafzai" at [443.0, 416.0, 682.0, 422.0, 681.0, 450.0, 442.0, 444.0]
+
+Press Enter to continue: 
+
 Found "Sorry!" at [11, 35, 58, 32, 59, 48, 12, 51]
 
 Found "Have a" at [84, 42, 135, 34, 138, 50, 87, 57]
@@ -320,15 +371,19 @@ Found "Bye !" at [123, 96, 153, 95, 154, 112, 123, 113]
 
 Press Enter to continue: 
 
-==================
-Generate Thumbnail
-==================
+========================
+Generate Good Thumbnails
+========================
 
 A utility provided by the service can generate a thumbnail (JPG) of an image. 
 The thumbnail does not need to be in the same proportions as the original
-image. Here we create a square 50x50 thumbnail.
+image and indeed we will often want to create square thumbnails. In creating a
+thumbnail though we also want to capture the most interesting part of the image.
+This service will create such a thumbnail. Here we create a square 100x100
+thumbnail.
 
-For our demonstration we will analyze the following image:
+For our demonstration we will analyze the following image which we will also 
+display momentarily:
 
 Site: http://www.public-domain-photos.com/free-stock-photos-4/
 Path: travel/san-francisco/golden-gate-bridge-in-san-francisco.jpg
