@@ -1,5 +1,5 @@
-Use Case: Generating Good Thumbnails
-====================================
+Generating Good Thumbnails
+==========================
 
 Here we demonstrate one specific capability of Azure Computer Vision
 cognitive service, generating thumbnails from photos, as exposed
