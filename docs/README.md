@@ -60,7 +60,7 @@ confidence of the identification is also returned.
 ![](http://cdn1.thr.com/sites/default/files/2013/11/marina_bay_sands_singapore_a_l.jpg)
 
 ```console
-$ ml landmark azcv img.jpg
+$ ml landmark azcv http://cdn1.thr.com/sites/default/files/2013/11/marina_bay_sands_singapore_a_l.jpg
 0.95,Marina Bay Sands
 ```
 
@@ -71,9 +71,17 @@ image. Each tag has a confidence.
 ![](https://www.wayoutback.com.au/assets/Uploads/Uluru.jpg)
 
 ```console
-$ ml tag azcv img.jpg
+$ ml tag azcv https://www.wayoutback.com.au/assets/Uploads/Uluru.jpg
+1.00,sky
+1.00,outdoor
+1.00,sunset
+0.99,grass
+0.99,mountain
+0.99,nature
 0.96,landscape
-0.86,desert
+0.94,cloud
+0.94,plant
+0.93,canyon
 ...
 ```
 - See [Landmarks and Tags](TAGS.md) for further details and examples.
@@ -91,8 +99,10 @@ bounding boxes are returned together with the identified text.
 ![](semarang.jpg)
 
 ```console
-$ ml ocr azcv img.jpg
+$ ml ocr azcv https://farm4.staticflickr.com/3883/15144849957_f326e03f75_b.jpg
 341.0 122.0 606.0 120.0 607.0 158.0 342.0 160.0,SEMARANG
+251.0 200.0 559.0 199.0 560.0 237.0 252.0 238.0,PURWODADI
+251.0 250.0 456.0 249.0 456.0 288.0 252.0 289.0,BLORA
 ...
 ```
 
