@@ -42,4 +42,5 @@ Uluru-thumbnail.jpg
 Notice how the whole of Uluru is included in the thumbnail. This
 illustrates how the model can identify the best thumbnail tuned to the
 main object of the photo.
+
 ![](uluru_thumbnail.png)
