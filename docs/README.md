@@ -70,14 +70,14 @@ $ ml categroy azcv https://raw.githubusercontent.com/Azure-Samples/cognitive-ser
 
 **Landmarks and Tags**
 
-The *landmark* command takes an image
-and identifies the main landmark contained within the image. The
+The *landmarks* command takes an image
+and identifies the main landmarks contained within the image. The
 confidence of the identification is also returned.
 
 ![](http://cdn1.thr.com/sites/default/files/2013/11/marina_bay_sands_singapore_a_l.jpg)
 
 ```console
-$ ml landmark azcv http://cdn1.thr.com/sites/default/files/2013/11/marina_bay_sands_singapore_a_l.jpg
+$ ml landmarks azcv http://cdn1.thr.com/sites/default/files/2013/11/marina_bay_sands_singapore_a_l.jpg
 0.95,Marina Bay Sands
 ```
 
@@ -345,8 +345,8 @@ Analyze an Image by Domain
 ==========================
 
 We can specify a subject domain within which to analyze an image. For example,
-below we use the landmarks domain to identify the landmark in an image. See the
-landmark command for a command line tool to identify the landmark in a local or
+below we use the landmarks domain to identify the landmarks in an image. See the
+landmarks command for a command line tool to identify the landmarks in a local or
 remote image file.
 
 For our demonstration we will analyze the following image which we will also 

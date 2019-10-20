@@ -21,7 +21,7 @@ itself.
 ![](https://images.pexels.com/photos/338515/pexels-photo-338515.jpeg)
 
 ```console
-$ ml landmark azcv https://images.pexels.com/photos/338515/pexels-photo-338515.jpeg
+$ ml landmarks azcv https://images.pexels.com/photos/338515/pexels-photo-338515.jpeg
 0.97,Eiffel Tower
 
 $ ml tag azcv https://images.pexels.com/photos/338515/pexels-photo-338515.jpeg
@@ -39,7 +39,7 @@ $ ml describe azcv https://images.pexels.com/photos/338515/pexels-photo-338515.j
 ```
 ![](http://cdn1.thr.com/sites/default/files/2013/11/marina_bay_sands_singapore_a_l.jpg)
 ```console
-$ ml landmark azcv http://cdn1.thr.com/sites/default/files/2013/11/marina_bay_sands_singapore_a_l.jpg
+$ ml landmarks azcv http://cdn1.thr.com/sites/default/files/2013/11/marina_bay_sands_singapore_a_l.jpg
 0.97,Marina Bay Sands
 
 $ ml tag azcv http://cdn1.thr.com/sites/default/files/2013/11/marina_bay_sands_singapore_a_l.jpg
@@ -66,7 +66,7 @@ $ ml describe azcv http://cdn1.thr.com/sites/default/files/2013/11/marina_bay_sa
 ```
 ![](https://www.wayoutback.com.au/assets/Uploads/Uluru.jpg)
 ```console
-$ ml landmark azcv https://www.wayoutback.com.au/assets/Uploads/Uluru.jpg
+$ ml landmarks azcv https://www.wayoutback.com.au/assets/Uploads/Uluru.jpg
 1.0,Uluru
 
 $ ml tag azcv https://www.wayoutback.com.au/assets/Uploads/Uluru.jpg
@@ -97,7 +97,7 @@ $ ml describe azcv https://www.wayoutback.com.au/assets/Uploads/Uluru.jpg
 ```
 ![](https://access.togaware.com/landmark02.jpg)
 ```console
-$ ml landmark azcv https://access.togaware.com/landmark02.jpg
+$ ml landmarks azcv https://access.togaware.com/landmark02.jpg
 0.98,Taipei 101
 
 $ ml tag azcv https://access.togaware.com/landmark02.jpg
@@ -117,12 +117,12 @@ $ ml describe azcv https://access.togaware.com/landmark02.jpg
 ```
 ![](https://access.togaware.com/landmark01.jpg)
 ```console
-$ ml landmark azcv https://access.togaware.com/landmark01.jpg
+$ ml landmarks azcv https://access.togaware.com/landmark01.jpg
 1.0,Borobudur
 ```
 ![](https://www.arrivalguides.com/s3/ag-images-eu/18/20870ca6f7bc086749ea747ec0c8c86d.jpg)
 ```console
-$ ml landmark azcv https://www.arrivalguides.com/s3/ag-images-eu/18/20870ca6f7bc086749ea747ec0c8c86d.jpg
+$ ml landmarks azcv https://www.arrivalguides.com/s3/ag-images-eu/18/20870ca6f7bc086749ea747ec0c8c86d.jpg
 0.96,Ha Long Bay
 ```
 

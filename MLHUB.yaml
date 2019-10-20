@@ -17,7 +17,7 @@ dependencies:
     - docs/README.md: README.md
     - demo.py
     - ocr.py
-    - landmark.py
+    - landmarks.py
     - tags.py
     - describe.py
     - thumbnail.py
@@ -35,7 +35,8 @@ commands:
   objects   : Detect objects within the image.
   brands    : Identify brands in an image.
   ocr       : Extract text from images.
-  landmark  : Identify landmark in a photo.
+  landmarks : Identify landmarks in a photo.
+  celebrities : Identify celebrities in a photo.
   thumbnail : Create a good/informative thumbnail from an image.
   faces     : Detect faces in an image.
   adult     : Check if the image if of adult or racy material.
