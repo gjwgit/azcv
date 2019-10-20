@@ -71,6 +71,7 @@ else:
         analysis = client.analyze_image_in_stream(fstream, image_features)
 
 for brand in analysis.brands:
-        print(f"{brand.rectangle.x} {brand.rectangle.x + brand.rectangle.w} " +
-              f"{brand.rectangle.y} {brand.rectangle.y + brand.rectangle.h}," +
+        print(f"{brand.rectangle.x} {brand.rectangle.y} " +
+              f"{brand.rectangle.x + brand.rectangle.w} " +
+              f"{brand.rectangle.y + brand.rectangle.h}," +
               f"{brand.confidence:.2f},{brand.name}")
