@@ -71,7 +71,7 @@ else:
         analysis = client.analyze_image_in_stream(fstream, image_features)
 
 for face in analysis.faces:
-        print(f"{face.gender},{face.age}," +
-              f"{face.face_rectangle.left},{face.face_rectangle.top}," +
-              f"{face.face_rectangle.left + face.face_rectangle.width}," +
-              f"{face.face_rectangle.top + face.face_rectangle.height}")
+        print(f"{face.face_rectangle.left} {face.face_rectangle.top} " +
+              f"{face.face_rectangle.left + face.face_rectangle.width} " +
+              f"{face.face_rectangle.top + face.face_rectangle.height}," +
+              f"{face.gender},{face.age}")
