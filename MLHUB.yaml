@@ -3,7 +3,7 @@ meta:
   name         : azcv
   title        : Azure Computer Vision.
   keywords     : azure, computer vision, ocr, thumbnail, image to text, cloud
-  version      : 2.3.4
+  version      : 2.4.0
   languages    : py
   display      : demo
   license      : mit
@@ -21,10 +21,18 @@ dependencies:
     - tags.py
     - describe.py
     - thumbnail.py
+    - category.py
+    - objects.py
+    - brands.py
+    - faces.py
 commands:
   demo      : Demonstrate the functionality of computer vision models.
   tag       : Extract tags for an image.
   describe  : Describe the main element(s) of the image.
+  category  : Image category based on a taxonomy of 86 concepts.
+  objects   : Detect objects within the image.
+  brands    : Identify brands in an image.
   ocr       : Extract text from images.
   landmark  : Identify landmark in a photo.
   thumbnail : Create a good/informative thumbnail from an image.
+  faces     : Detect faces in an image.
