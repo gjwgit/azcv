@@ -1,5 +1,5 @@
-Use Case: Reading Handwritten Text
-==================================
+Reading Handwritten Text
+========================
 
 Here we demonstrate one specific capability of Azure Computer Vision
 cognitive service, extracting text from an image of handwritten text,
