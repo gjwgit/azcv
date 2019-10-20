@@ -1,5 +1,5 @@
-Use Case: Reading Street Signs
-==============================
+Reading Street Signs
+====================
 
 Here we demonstrate one specific capability of Azure Computer Vision
 cognitive service, extracting text from photos, as exposed through the
