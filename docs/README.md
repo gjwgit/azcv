@@ -31,7 +31,7 @@ Vision SDK for
 Python](https://docs.microsoft.com/en-us/azure/cognitive-services/Computer-vision/quickstarts-sdk/python-sdk)
 Quick Start guide.
 
-# Usage
+## Usage
 
 - To install mlhub (Ubuntu 18.04 LTS)
 
@@ -46,14 +46,14 @@ $ ml install   azcv
 $ ml configure azcv
 ```
 
-# Command Line Tools
+## Command Line Tools
 
 In addition to the *demo* presented below, the *azcv* package provides
 a number of useful command line tools. Below we demonstrate a number
 of these. Most commands take an image as a parameter which may be a
 url or a path to a local file.
 
-## Image Category
+**Image Category**
 
 The *category* command takes an image and categorises it based on a
 taxonomy-based of [86
@@ -68,7 +68,7 @@ $ ml categroy azcv https://raw.githubusercontent.com/Azure-Samples/cognitive-ser
 0.04,outdoor_
 ```
 
-## Landmarks and Tags
+**Landmarks and Tags**
 
 The *landmark* command takes an image
 and identifies the main landmark contained within the image. The
@@ -103,7 +103,7 @@ $ ml tag azcv https://www.wayoutback.com.au/assets/Uploads/Uluru.jpg
 ```
 See [Landmarks and Tags](TAGS.md) for further details and examples.
 
-## Object Bounding Boxes
+**Object Bounding Boxes**
 
 The *objects* command returns the bounding box of any identified
 objects within the image.
@@ -119,7 +119,7 @@ $ ml objects azcv https://raw.githubusercontent.com/Azure-Samples/cognitive-serv
 116 60 419 386
 ```
 
-## Optical Character Recognition to Read Street Signs
+**Optical Character Recognition to Read Street Signs**
 
 The *ocr* command is useful for extracting text from a variety of
 images.
@@ -142,7 +142,7 @@ $ ml ocr azcv https://farm4.staticflickr.com/3883/15144849957_f326e03f75_b.jpg
 See [Reading Street Signs](STREET.md) for further details and examples.
 
 
-## Extracting Text from Handwriting using OCR
+**Extracting Text from Handwriting using OCR**
 
 Even handwriting is recognisable with today's OCR. Once again the
 bounding box of the text together with the text itself is returned by
@@ -152,7 +152,7 @@ the command.
 
 See [Extract Text for Handwriting](HAND_WRITING.md) for further details and examples.
 
-## Extract Programming Code from Screenshots using OCR
+**Extract Programming Code from Screenshots using OCR**
 
 Imagine the use case where we may have access to an image of some
 programming code and want to recover that code to include it into an
@@ -164,7 +164,7 @@ is shown.
 
 See [Extract Code from Screenshots](CODE.md) for further details and examples.
 
-## Thumbnails
+**Thumbnails**
 
 Thumbnails require more than simply generating a small square section
 from an image. Ideally it is in some way representative of the
@@ -179,7 +179,7 @@ img-thumbnail.jpg
 ```
 See [Thumbnail Examples](THUMBNAIL.md) for further details and examples.
 
-## Detecting Brands
+**Detecting Brands**
 
 ![](brands_bb.png)
 
@@ -189,7 +189,7 @@ $ ml brands azcv https://docs.microsoft.com/en-us/azure/cognitive-services/compu
 58 260 86 149,0.70,Microsoft
 ```
 
-## Detecting Faces
+**Detecting Faces**
 
 ![](faces_bb.png)
 
@@ -203,7 +203,7 @@ Female,18,235,158,311,234
 Female,8,323,163,391,231
 ```
 
-## Adult Material
+**Adult Material**
 
 Check if an image contains adult material.
 
