@@ -1,5 +1,5 @@
-Use Case: Extract Programming Code from Photos
-==============================================
+Extract Programming Code from Photos
+====================================
 
 Here we demonstrate one specific capability of Azure Computer Vision
 cognitive service, extracting text from an image of code written in
