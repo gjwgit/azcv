@@ -222,7 +222,8 @@ $ ml adult azcv https://xxx/ad03.jpg
 
 The output consists of a boolean to indicate if it is not a black and
 white image, the accent (most vibrant) colour, the dominant background
-and foreground, and then a list of dominant colors.
+and foreground, and then a list of dominant colors. In the examples
+below we include the accent colour beside the original image.
 
 ![](mountain_vista_accent.png)
 
