@@ -81,14 +81,14 @@ $ ml landmarks azcv http://cdn1.thr.com/sites/default/files/2013/11/marina_bay_s
 0.95,Marina Bay Sands
 ```
 
-The *tag* command takes an image (url or path to a local file) and
+The *tags* command takes an image (url or path to a local file) and
 generates a collection of tags that identify key elements of the
 image. Each tag has a confidence.
 
 ![](https://www.wayoutback.com.au/assets/Uploads/Uluru.jpg)
 
 ```console
-$ ml tag azcv https://www.wayoutback.com.au/assets/Uploads/Uluru.jpg
+$ ml tags azcv https://www.wayoutback.com.au/assets/Uploads/Uluru.jpg
 1.00,sky
 1.00,outdoor
 1.00,sunset

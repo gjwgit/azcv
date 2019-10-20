@@ -24,7 +24,7 @@ itself.
 $ ml landmarks azcv https://images.pexels.com/photos/338515/pexels-photo-338515.jpeg
 0.97,Eiffel Tower
 
-$ ml tag azcv https://images.pexels.com/photos/338515/pexels-photo-338515.jpeg
+$ ml tags azcv https://images.pexels.com/photos/338515/pexels-photo-338515.jpeg
 1.00,sky
 0.99,outdoor
 0.98,tower
@@ -42,7 +42,7 @@ $ ml describe azcv https://images.pexels.com/photos/338515/pexels-photo-338515.j
 $ ml landmarks azcv http://cdn1.thr.com/sites/default/files/2013/11/marina_bay_sands_singapore_a_l.jpg
 0.97,Marina Bay Sands
 
-$ ml tag azcv http://cdn1.thr.com/sites/default/files/2013/11/marina_bay_sands_singapore_a_l.jpg
+$ ml tags azcv http://cdn1.thr.com/sites/default/files/2013/11/marina_bay_sands_singapore_a_l.jpg
 0.99,sky
 0.99,ship
 0.99,water
@@ -69,7 +69,7 @@ $ ml describe azcv http://cdn1.thr.com/sites/default/files/2013/11/marina_bay_sa
 $ ml landmarks azcv https://www.wayoutback.com.au/assets/Uploads/Uluru.jpg
 1.0,Uluru
 
-$ ml tag azcv https://www.wayoutback.com.au/assets/Uploads/Uluru.jpg
+$ ml tags azcv https://www.wayoutback.com.au/assets/Uploads/Uluru.jpg
 1.00,sky
 1.00,outdoor
 1.00,sunset
@@ -100,7 +100,7 @@ $ ml describe azcv https://www.wayoutback.com.au/assets/Uploads/Uluru.jpg
 $ ml landmarks azcv https://access.togaware.com/landmark02.jpg
 0.98,Taipei 101
 
-$ ml tag azcv https://access.togaware.com/landmark02.jpg
+$ ml tags azcv https://access.togaware.com/landmark02.jpg
 1.00,building
 0.99,outdoor
 0.99,sky
@@ -129,20 +129,20 @@ $ ml landmarks azcv https://www.arrivalguides.com/s3/ag-images-eu/18/20870ca6f7b
 *How Many Tags Identified in an Image*
 
 ```console
-$ ml tag azcv img.jpg | wc -l
+$ ml tags azcv img.jpg | wc -l
 6
 ```
 *How Many High Confidence Tags Identified*
 
 ```console
-$ ml tag azcv img.jpg | awk '$1 > 0.90 {print}' | wc -l
+$ ml tags azcv img.jpg | awk '$1 > 0.90 {print}' | wc -l
 5
 ```
 
 *Identify Tags from a Folder of Images*
 
 ```console
-$ for f in *.jpg; do echo ==== $f ====; ml tag azcv $f; done
+$ for f in *.jpg; do echo ==== $f ====; ml tags azcv $f; done
 ==== 20190610_133243.jpg ====
 1.00,indoor
 0.99,furniture
