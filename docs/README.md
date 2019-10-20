@@ -56,7 +56,8 @@ url or a path to a local file.
 **Image Category**
 
 The *category* command takes an image and categorises it based on a
-taxonomy-based of 86 concepts.
+taxonomy-based of [86
+concepts](https://docs.microsoft.com/en-us/azure/cognitive-services/Computer-vision/concept-categorizing-images).
 
 ```console
 ml categroy azcv https://raw.githubusercontent.com/Azure-Samples/cognitive-services-sample-data-files/master/ComputerVision/Images/landmark.jpg
