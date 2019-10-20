@@ -13,7 +13,7 @@ generation.
 
 A free Azure subscription allowing up to 20,000 transactions per month
 is available from <https://azure.microsoft.com/free/>. After
-subscribing visit <https://ms.portal.azure.com> and Create a resource
+subscribing visit <https://portal.azure.com> and Create a resource
 under AI and Machine Learning called Cognitive Services. Once created
 you can access the web API subscription key and endpoint from the
 portal. This will be prompted for in the demo.
@@ -216,6 +216,40 @@ $ ml adult azcv https://xxx/ad02.jpg
 
 $ ml adult azcv https://xxx/ad03.jpg
 0.00,0.99   # Quite racy but not regarded as adult material
+```
+
+**Color Schemes**
+
+The output consists of a boolean to indicate if it is not a black and
+white image, the accent (most vibrant) colour, the dominant background
+and foreground, and then a list of dominant colors.
+
+![](https://docs.microsoft.com/en-us/azure/cognitive-services/Computer-vision/images/mountain_vista.png)
+
+```console
+$ ml color azcv https://docs.microsoft.com/en-us/azure/cognitive-services/Computer-vision/images/mountain_vista.png
+True,BB6D10,Black,Black,Black White
+```
+
+![](https://docs.microsoft.com/en-us/azure/cognitive-services/Computer-vision/images/flower.png)
+
+```console
+$ ml color azcv https://docs.microsoft.com/en-us/azure/cognitive-services/Computer-vision/images/flower.png
+True,C6A205,Black,White,Black White Green 
+```
+
+![](https://docs.microsoft.com/en-us/azure/cognitive-services/Computer-vision/images/bw_buildings.png)
+
+```console
+$ ml color azcv https://docs.microsoft.com/en-us/azure/cognitive-services/Computer-vision/images/bw_buildings.png
+False,282828,White,Grey,Grey White 
+```
+
+![](https://docs.microsoft.com/en-us/azure/cognitive-services/Computer-vision/images/house_yard.png)
+
+```console
+$ ml color axcv https://docs.microsoft.com/en-us/azure/cognitive-services/Computer-vision/images/house_yard.png
+True,448215,Green,Green,Green
 ```
 
 ## Demonstration
