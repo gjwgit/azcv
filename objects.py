@@ -69,6 +69,6 @@ else:
         analysis = client.detect_objects_in_stream(fstream)
 
 for object in analysis.objects:
-    print(f"{object.rectangle.x},{object.rectangle.y}," +
-          f"{object.rectangle.x + object.rectangle.w}," +
+    print(f"{object.rectangle.x} {object.rectangle.y} " +
+          f"{object.rectangle.x + object.rectangle.w} " +
           f"{object.rectangle.y + object.rectangle.h}")

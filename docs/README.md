@@ -108,15 +108,15 @@ See [Landmarks and Tags](TAGS.md) for further details and examples.
 The *objects* command returns the bounding box of any identified
 objects within the image.
 
-![](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-sample-data-files/master/ComputerVision/Images/objects.jpg)
+![](objects_bb.png)
 
 
 ```console
 ml objects azcv https://raw.githubusercontent.com/Azure-Samples/cognitive-services-sample-data-files/master/ComputerVision/Images/objects.jpg
-213,85,365,208
-218,179,402,384
-238,298,417,416
-116,60,419,386
+213 85 365 208
+218 179 402 384
+238 298 417 416
+116 60 419 386
 ```
 
 **Optical Character Recognition to Read Street Signs**
