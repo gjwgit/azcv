@@ -185,13 +185,13 @@ See [Thumbnail Examples](THUMBNAIL.md) for further details and examples.
 
 ```console
 ml brands azcv https://docs.microsoft.com/en-us/azure/cognitive-services/computer-vision/images/gray-shirt-logo.jpg
-0.62,Microsoft,58,113,106,152
-0.70,Microsoft,58,260,86,149
+58 113 106 152,0.62,Microsoft
+58 260 86 149,0.70,Microsoft
 ```
 
 **Detecting Faces**
 
-![](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-sample-data-files/master/ComputerVision/Images/faces.jpg)
+![](faces_bb.png)
 
 ```console
 ml faces azcv https://raw.githubusercontent.com/Azure-Samples/cognitive-services-sample-data-files/master/ComputerVision/Images/faces.jpg
