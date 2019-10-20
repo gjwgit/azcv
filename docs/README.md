@@ -59,6 +59,8 @@ The *category* command takes an image and categorises it based on a
 taxonomy-based of [86
 concepts](https://docs.microsoft.com/en-us/azure/cognitive-services/Computer-vision/concept-categorizing-images).
 
+![](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-sample-data-files/master/ComputerVision/Images/landmark.jpg)
+
 ```console
 ml categroy azcv https://raw.githubusercontent.com/Azure-Samples/cognitive-services-sample-data-files/master/ComputerVision/Images/landmark.jpg
 0.32,building_
@@ -105,6 +107,9 @@ See [Landmarks and Tags](TAGS.md) for further details and examples.
 
 The *objects* command returns the bounding box of any identified
 objects within the image.
+
+![](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-sample-data-files/master/ComputerVision/Images/objects.jpg)
+
 
 ```console
 ml objects azcv https://raw.githubusercontent.com/Azure-Samples/cognitive-services-sample-data-files/master/ComputerVision/Images/objects.jpg
@@ -176,6 +181,8 @@ See [Thumbnail Examples](THUMBNAIL.md) for further details and examples.
 
 **Detecting Brands**
 
+![](https://docs.microsoft.com/en-us/azure/cognitive-services/computer-vision/images/gray-shirt-logo.jpg)
+
 ```console
 ml brands azcv https://docs.microsoft.com/en-us/azure/cognitive-services/computer-vision/images/gray-shirt-logo.jpg
 0.62,Microsoft,58,113,106,152
@@ -183,6 +190,8 @@ ml brands azcv https://docs.microsoft.com/en-us/azure/cognitive-services/compute
 ```
 
 **Detecting Faces**
+
+![](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-sample-data-files/master/ComputerVision/Images/faces.jpg)
 
 ```console
 ml faces azcv https://raw.githubusercontent.com/Azure-Samples/cognitive-services-sample-data-files/master/ComputerVision/Images/faces.jpg
