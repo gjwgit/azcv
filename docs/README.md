@@ -62,7 +62,7 @@ concepts](https://docs.microsoft.com/en-us/azure/cognitive-services/Computer-vis
 ![](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-sample-data-files/master/ComputerVision/Images/landmark.jpg)
 
 ```console
-ml categroy azcv https://raw.githubusercontent.com/Azure-Samples/cognitive-services-sample-data-files/master/ComputerVision/Images/landmark.jpg
+$ ml categroy azcv https://raw.githubusercontent.com/Azure-Samples/cognitive-services-sample-data-files/master/ComputerVision/Images/landmark.jpg
 0.32,building_
 0.00,others_
 0.04,outdoor_
@@ -112,7 +112,7 @@ objects within the image.
 
 
 ```console
-ml objects azcv https://raw.githubusercontent.com/Azure-Samples/cognitive-services-sample-data-files/master/ComputerVision/Images/objects.jpg
+$ ml objects azcv https://raw.githubusercontent.com/Azure-Samples/cognitive-services-sample-data-files/master/ComputerVision/Images/objects.jpg
 213 85 365 208
 218 179 402 384
 238 298 417 416
@@ -184,7 +184,7 @@ See [Thumbnail Examples](THUMBNAIL.md) for further details and examples.
 ![](brands_bb.png)
 
 ```console
-ml brands azcv https://docs.microsoft.com/en-us/azure/cognitive-services/computer-vision/images/gray-shirt-logo.jpg
+$ ml brands azcv https://docs.microsoft.com/en-us/azure/cognitive-services/computer-vision/images/gray-shirt-logo.jpg
 58 113 106 152,0.62,Microsoft
 58 260 86 149,0.70,Microsoft
 ```
@@ -194,13 +194,28 @@ ml brands azcv https://docs.microsoft.com/en-us/azure/cognitive-services/compute
 ![](faces_bb.png)
 
 ```console
-ml faces azcv https://raw.githubusercontent.com/Azure-Samples/cognitive-services-sample-data-files/master/ComputerVision/Images/faces.jpg
+$ ml faces azcv https://raw.githubusercontent.com/Azure-Samples/cognitive-services-sample-data-files/master/ComputerVision/Images/faces.jpg
 Male,39,118,159,212,253
 Male,54,492,111,582,201
 Female,55,18,153,102,237
 Female,33,386,166,467,247
 Female,18,235,158,311,234
 Female,8,323,163,391,231
+```
+
+**Adult Material**
+
+Check if an image contains adult material.
+
+```console
+$ ml adult azcv https://xxx/ad01.jpg
+0.72,1.00   # Somewhat adult but very racy
+
+$ ml adult azcv https://xxx/ad02.jpg
+0.02,0.03   # Unlikely to contain adult material
+
+$ ml adult azcv https://xxx/ad03.jpg
+0.00,0.99   # Quite racy but not regarded as adult material
 ```
 
 ## Demonstration
