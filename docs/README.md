@@ -103,6 +103,22 @@ $ ml tag azcv https://www.wayoutback.com.au/assets/Uploads/Uluru.jpg
 ```
 See [Landmarks and Tags](TAGS.md) for further details and examples.
 
+**Celebrities**
+
+```console
+$ ml celebrities azcv https://raw.githubusercontent.com/Azure-Samples/cognitive-services-sample-data-files/master/ComputerVision/Images/faces.jpg
+1.00,Bern Collaco
+
+$ ml celebrities azcv https://btsdiary.files.wordpress.com/2018/05/5b2f1-32121566_1259390040861517_2564742387981090816_n.jpg
+1.00,DJ Khaled
+0.85,Rap Monster
+
+$ ml celebrities azcv https://res.cloudinary.com/uktv/image/upload/v1402498133/mztwkl0sze26zjpc0xdh.jpg
+1.00,Bradley Cooper
+0.94,Ellen DeGeneres
+0.76,Brad Pitt
+```
+
 **Object Bounding Boxes**
 
 The *objects* command returns the bounding box of any identified
