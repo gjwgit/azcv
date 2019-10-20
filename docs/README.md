@@ -181,7 +181,7 @@ See [Thumbnail Examples](THUMBNAIL.md) for further details and examples.
 
 **Detecting Brands**
 
-![](https://docs.microsoft.com/en-us/azure/cognitive-services/computer-vision/images/gray-shirt-logo.jpg)
+![](brands_bb.png)
 
 ```console
 ml brands azcv https://docs.microsoft.com/en-us/azure/cognitive-services/computer-vision/images/gray-shirt-logo.jpg
