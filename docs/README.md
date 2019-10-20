@@ -224,28 +224,28 @@ The output consists of a boolean to indicate if it is not a black and
 white image, the accent (most vibrant) colour, the dominant background
 and foreground, and then a list of dominant colors.
 
-![](https://docs.microsoft.com/en-us/azure/cognitive-services/Computer-vision/images/mountain_vista.png)
+![](mountain_vista_accent.png)
 
 ```console
 $ ml color azcv https://docs.microsoft.com/en-us/azure/cognitive-services/Computer-vision/images/mountain_vista.png
 True,BB6D10,Black,Black,Black White
 ```
 
-![](https://docs.microsoft.com/en-us/azure/cognitive-services/Computer-vision/images/flower.png)
+![](flower_accent.png)
 
 ```console
 $ ml color azcv https://docs.microsoft.com/en-us/azure/cognitive-services/Computer-vision/images/flower.png
 True,C6A205,Black,White,Black White Green 
 ```
 
-![](https://docs.microsoft.com/en-us/azure/cognitive-services/Computer-vision/images/bw_buildings.png)
+![](bw_buildings_accent.png)
 
 ```console
 $ ml color azcv https://docs.microsoft.com/en-us/azure/cognitive-services/Computer-vision/images/bw_buildings.png
 False,282828,White,Grey,Grey White 
 ```
 
-![](https://docs.microsoft.com/en-us/azure/cognitive-services/Computer-vision/images/house_yard.png)
+![](house_yard_accent.png)
 
 ```console
 $ ml color axcv https://docs.microsoft.com/en-us/azure/cognitive-services/Computer-vision/images/house_yard.png
