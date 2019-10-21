@@ -569,6 +569,7 @@ Press Enter to continue:
 Close the graphic window using Ctrl-w.
 ```
 ![thumbnail](sample_thumbnail.jpg)
+
 ```console
 Thank you for exploring the 'azcv' package.
 ```
