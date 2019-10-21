@@ -30,7 +30,7 @@ dependencies:
     - color.py
 commands:
   demo      : Demonstrate the functionality of computer vision models.
-  tag       : Extract tags for an image.
+  tags      : Extract tags for an image.
   describe  : Describe the main element(s) of the image.
   category  : Image category based on a taxonomy of 86 concepts.
   objects   : Detect objects within the image.
