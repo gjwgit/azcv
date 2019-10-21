@@ -28,6 +28,7 @@ dependencies:
     - faces.py
     - adult.py
     - color.py
+    - type.py
 commands:
   demo      : Demonstrate the functionality of computer vision models.
   tags      : Extract tags for an image.
@@ -40,5 +41,6 @@ commands:
   celebrities : Identify celebrities in a photo.
   thumbnail : Create a good/informative thumbnail from an image.
   faces     : Detect faces in an image.
-  adult     : Check if the image if of adult or racy material.
+  adult     : Check if the image is of adult or racy material.
   color     : Returns the color scheme of the image.
+  type      : Check if the image is clipart/line drawing.
