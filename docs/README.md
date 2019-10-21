@@ -221,17 +221,20 @@ Female,8,323,163,391,231
 
 **Adult Material**
 
-Check if an image contains adult material.
+Check if an image contains adult material. The first result is an
+indication 0-1 of whether the image appears to contain adult material
+whilst the second is an indication of whether the image might be
+considered as racy.
 
 ```console
-$ ml adult azcv https://xxx/ad01.jpg
-0.72,1.00   # Somewhat adult but very racy
+$ ml adult azcv https://aaa/aaa01.jpg
+0.72,1.00
 
-$ ml adult azcv https://xxx/ad02.jpg
-0.02,0.03   # Unlikely to contain adult material
+$ ml adult azcv https://aaa/aaa02.jpg
+0.02,0.03
 
-$ ml adult azcv https://xxx/ad03.jpg
-0.00,0.99   # Quite racy but not regarded as adult material
+$ ml adult azcv https://aaa/aaa03.jpg
+0.00,0.99
 ```
 
 **Color Schemes**
