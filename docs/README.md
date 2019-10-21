@@ -271,6 +271,10 @@ True,448215,Green,Green,Green
 
 **Image Type**
 
+An image may be regarded as clip art and/or a line drawing. The *type*
+command assesses whether the image is good/ok clip art in the first
+result and whether or not it is a line drawing as the second result.
+
 ![](https://docs.microsoft.com/en-us/azure/cognitive-services/Computer-vision/images/cheese_clipart.png)
 
 ```console
