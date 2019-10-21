@@ -269,6 +269,36 @@ $ ml color axcv https://docs.microsoft.com/en-us/azure/cognitive-services/Comput
 True,448215,Green,Green,Green
 ```
 
+**Image Type**
+
+![](https://docs.microsoft.com/en-us/azure/cognitive-services/Computer-vision/images/cheese_clipart.png)
+
+```console
+$ ml type azcv https://docs.microsoft.com/en-us/azure/cognitive-services/Computer-vision/images/cheese_clipart.png
+good,no
+```
+
+![](https://docs.microsoft.com/en-us/azure/cognitive-services/Computer-vision/images/house_yard.png)
+
+```console
+$ ml type azcv https://docs.microsoft.com/en-us/azure/cognitive-services/Computer-vision/images/house_yard.png
+no,no
+```
+
+![](https://docs.microsoft.com/en-us/azure/cognitive-services/Computer-vision/images/lion_drawing.png)
+
+```console
+$ ml type azcv https://docs.microsoft.com/en-us/azure/cognitive-services/Computer-vision/images/lion_drawing.png
+ok,yes
+```
+
+![](https://docs.microsoft.com/en-us/azure/cognitive-services/Computer-vision/images/flower.png)
+
+```console
+$ ml type azcv https://docs.microsoft.com/en-us/azure/cognitive-services/Computer-vision/images/flower.png
+no,no
+```
+
 ## Demonstration
 
 ```console
