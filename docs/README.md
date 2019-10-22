@@ -6,17 +6,18 @@ Cognitive Services. This service analyses images to extract
 descriptions and text found in the images. This package is part of the
 [Azure on MLHub](https://github.com/Azure/mlhub) repository.
 
-In addition to the demonstration this package provides a collection of
-commands that turn the service into useful *command line tools* for
-word recognition from images, landmark identification, and thumbnail
-generation.
+In addition to the *demo* command this package provides a collection
+of commands that turn the service into useful *command line tools* for
+word recognition from images, landmark identification, thumbnail
+generation, and many much more functionality.
 
 A free Azure subscription allowing up to 20,000 transactions per month
 is available from <https://azure.microsoft.com/free/>. After
 subscribing visit <https://portal.azure.com> and Create a resource
 under AI and Machine Learning called Cognitive Services. Once created
 you can access the web API subscription key and endpoint from the
-portal. This will be prompted for in the demo.
+portal. This will be prompted for when running a command, and then
+saved to file to reduce the need for repeated authentication requests.
 
 Please note that these Azure models, unlike the MLHub models in
 general, use *closed source services* which have no guarantee of
@@ -24,11 +25,10 @@ ongoing availability and do not come with the freedom to modify and
 share.
 
 Visit the github repository for more details:
-<https://github.com/Azure/azcv>
+<https://github.com/azure/azcv>
 
-The Python code is based on the [Azure Cognitive Services Computer
-Vision SDK for
-Python](https://docs.microsoft.com/en-us/azure/cognitive-services/Computer-vision/quickstarts-sdk/python-sdk)
+The Python code is based on the [Computer Vision client library for
+Python Quickstart](https://docs.microsoft.com/en-us/azure/cognitive-services/Computer-vision/quickstarts-sdk/python-sdk)
 Quick Start guide.
 
 ## Usage
