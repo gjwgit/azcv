@@ -1,10 +1,10 @@
 # Azure Computer Vision
 
 This [MLHub](https://mlhub.ai) package provides a quick introduction
-to the pre-built Computer Vision model provided through Azure's
-Cognitive Services. This service analyses images to extract
-descriptions and text found in the images. This package is part of the
-[Azure on MLHub](https://github.com/Azure/mlhub) repository.
+to the pre-built Azure Computer Vision models. This service analyses
+images to extract descriptions and text found in the images. This
+package is part of the [Azure on
+MLHub](https://github.com/Azure/mlhub) repository.
 
 In addition to the *demo* command this package provides a collection
 of commands that turn the service into useful *command line tools* for
@@ -30,6 +30,26 @@ Visit the github repository for more details:
 The Python code is based on the [Computer Vision client library for
 Python Quickstart](https://docs.microsoft.com/en-us/azure/cognitive-services/Computer-vision/quickstarts-sdk/python-sdk)
 Quick Start guide.
+
+## Quick Start Command Line Examples
+
+```console
+ml demo azcv
+ml categroy azcv https://raw.githubusercontent.com/Azure-Samples/cognitive-services-sample-data-files/master/ComputerVision/Images/landmark.jpg
+ml landmarks azcv http://cdn1.thr.com/sites/default/files/2013/11/marina_bay_sands_singapore_a_l.jpg
+ml tags azcv https://www.wayoutback.com.au/assets/Uploads/Uluru.jpg
+ml celebrities azcv https://res.cloudinary.com/uktv/image/upload/v1402498133/mztwkl0sze26zjpc0xdh.jpg
+ml objects azcv https://raw.githubusercontent.com/Azure-Samples/cognitive-services-sample-data-files/master/ComputerVision/Images/objects.jpg
+ml ocr azcv https://farm4.staticflickr.com/3883/15144849957_f326e03f75_b.jpg
+ml ocr azcv http://www.handwrittenocr.com/images/Handwriting/16.jpg
+ml thumbnail azcv https://www.wayoutback.com.au/assets/Uploads/Uluru.jpg
+ml brands azcv https://docs.microsoft.com/en-us/azure/cognitive-services/computer-vision/images/gray-shirt-logo.jpg
+ml faces azcv https://raw.githubusercontent.com/Azure-Samples/cognitive-services-sample-data-files/master/ComputerVision/Images/faces.jpg
+ml color azcv https://docs.microsoft.com/en-us/azure/cognitive-services/Computer-vision/images/mountain_vista.png
+ml type azcv https://docs.microsoft.com/en-us/azure/cognitive-services/Computer-vision/images/cheese_clipart.png
+```
+
+
 
 ## Usage
 
