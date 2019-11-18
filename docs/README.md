@@ -4,15 +4,12 @@ This [MLHub](https://mlhub.ai) package provides command line tools
 that utilise pre-built models from [Azure Computer
 Vision](https://docs.microsoft.com/en-us/azure/cognitive-services/Computer-vision). Individual
 command line tools are packaged for common computer vision tasks
-including image analysis to extract descriptions and text found in the
-images. The package also provides an interactive demonstration as an
-overview of the capabilities of the service. This package is part of
-the [Azure on MLHub](https://github.com/Azure/mlhub) repository.
-
-In addition to the *demo* command this package provides a collection
-of commands that turn the service into useful *command line tools* for
-word recognition from images, landmark identification, thumbnail
-generation, and many much more functionality.
+including image analysis to extract descriptions of the images, word
+recognition from images, landmark identification, thumbnail
+generation, and more. The package also provides an interactive
+demonstration as an overview of the capabilities of the service. This
+package is part of the [Azure on
+MLHub](https://github.com/Azure/mlhub) repository.
 
 A free Azure subscription allowing up to 20,000 transactions per month
 is available from <https://azure.microsoft.com/free/>. After
