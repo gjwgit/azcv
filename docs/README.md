@@ -1,10 +1,13 @@
 # Azure Computer Vision
 
-This [MLHub](https://mlhub.ai) package provides a quick introduction
-to the pre-built Azure Computer Vision models. This service analyses
-images to extract descriptions and text found in the images. This
-package is part of the [Azure on
-MLHub](https://github.com/Azure/mlhub) repository.
+This [MLHub](https://mlhub.ai) package provides command line tools
+that utilise pre-built models from [Azure Computer
+Vision](https://docs.microsoft.com/en-us/azure/cognitive-services/Computer-vision). Individual
+command line tools are packaged for common computer vision tasks
+including image analysis to extract descriptions and text found in the
+images. The package also provides an interactive demonstration as an
+overview of the capabilities of the service. This package is part of
+the [Azure on MLHub](https://github.com/Azure/mlhub) repository.
 
 In addition to the *demo* command this package provides a collection
 of commands that turn the service into useful *command line tools* for
@@ -49,8 +52,6 @@ ml color azcv https://docs.microsoft.com/en-us/azure/cognitive-services/Computer
 ml type azcv https://docs.microsoft.com/en-us/azure/cognitive-services/Computer-vision/images/cheese_clipart.png
 ```
 
-
-
 ## Usage
 
 - To install mlhub (Ubuntu 18.04 LTS)
@@ -69,11 +70,11 @@ $ ml configure azcv
 ## Command Line Tools
 
 In addition to the *demo* presented below, the *azcv* package provides
-a number of useful command line tools. Below we demonstrate a number
-of these. Most commands take an image as a parameter which may be a
-url or a path to a local file.
+useful command line tools. Below we demonstrate a number of
+these. Most commands take an image as a parameter which may be a url
+or a path to a local file.
 
-**Image Category**
+**category**
 
 The *category* command takes an image and categorises it based on a
 taxonomy-based of [86
