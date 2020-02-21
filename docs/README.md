@@ -25,7 +25,7 @@ ongoing availability and do not come with the freedom to modify and
 share.
 
 Visit the github repository for more details:
-<https://github.com/azure/azcv>
+<https://github.com/gjwgit/azcv>
 
 The Python code is based on the [Computer Vision client library for
 Python Quickstart](https://docs.microsoft.com/en-us/azure/cognitive-services/Computer-vision/quickstarts-sdk/python-sdk)
