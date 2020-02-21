@@ -4,7 +4,7 @@ Reading Handwritten Text
 Here we demonstrate one specific capability of Azure Computer Vision
 cognitive service, extracting text from an image of handwritten text,
 as exposed through the [MLHub](https://mlhub.ai) package
-[azcv](https://github.com/Azure/azcv).
+[azcv](https://github.com/gjwgit/azcv).
 
 Here are a few examples of handwriting extraction.
 

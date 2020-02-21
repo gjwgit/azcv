@@ -4,7 +4,7 @@ Generating Good Thumbnails
 Here we demonstrate one specific capability of Azure Computer Vision
 cognitive service, generating thumbnails from photos, as exposed
 through the [MLHub](https://mlhub.ai) package
-[azcv](https://github.com/Azure/azcv).
+[azcv](https://github.com/gjwgit/azcv).
 
 Generating a thumbnail from a photo may sound like a pretty simple
 task. However, what should go into the thumbnail to give the most

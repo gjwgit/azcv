@@ -4,7 +4,7 @@ Reading Street Signs
 Here we demonstrate one specific capability of Azure Computer Vision
 cognitive service, extracting text from photos, as exposed through the
 [MLHub](https://mlhub.ai) package 
-[azcv](https://github.com/Azure/azcv).
+[azcv](https://github.com/gjwgit/azcv).
 
 Extracting text from photos is crucial in the context of autonomous
 vehicles where seeing and understanding street signs plays an

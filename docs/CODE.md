@@ -4,7 +4,7 @@ Extract Programming Code from Photos
 Here we demonstrate one specific capability of Azure Computer Vision
 cognitive service, extracting text from an image of code written in
 Python, as exposed through the [MLHub](https://mlhub.ai) package
-[azcv](https://github.com/Azure/azcv).
+[azcv](https://github.com/gjwgit/azcv).
 
 If all you have is an image of some code but would like to replicate
 the code without retyping it all, here's an approach. The following
