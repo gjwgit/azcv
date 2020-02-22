@@ -8,7 +8,7 @@ as exposed through the [MLHub](https://mlhub.ai) package
 
 Here are a few examples of handwriting extraction.
 
-![](http://www.handwrittenocr.com/images/Handwriting/16.jpg)
+![](handwritting_malala.jpg)
 
 ``` console
 $ ml ocr azcv http://www.handwrittenocr.com/images/Handwriting/16.jpg
