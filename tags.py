@@ -70,7 +70,7 @@ else:
         # https://docs.microsoft.com/en-us/azure/cognitive-services/custom-vision-service/limits-and-quotas
         size=os.path.getsize(path)/1000000
         if size > 4:
-            print(f"The image file is too large at {round(size,2)} MB > 4.00 MB. Reduce and try again.")
+            print(f"The image file is too large for Azure at {size:.2} MB > 4.0 MB. Reduce and try again.")
             print(f"    {path}")
             print("\nFor example, use imagemagick's convert command:")
             print(f"    $ convert {path} -resize 25% new.jpg\n")
