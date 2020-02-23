@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 
-# Copyright (c) Microsoft Corporation. All rights reserved.
+# Original code Copyright (c) Microsoft Corporation. All rights reserved.
+# New code Copyright (c) Graham.Williams@Togaware. All rights reserved.
 # Licensed under the MIT License.
-# Author: Graham.Williams@microsoft.com
+# Author: Graham.Williams@togaware.com.com
 #
 # A command line script to propose tags for an image.
 #
@@ -23,8 +24,6 @@ from mlhub.utils import get_cmd_cwd
 from msrest.authentication import CognitiveServicesCredentials
 from azure.cognitiveservices.vision.computervision import ComputerVisionClient
 from azure.cognitiveservices.vision.computervision.models import VisualFeatureTypes
-#from azure.cognitiveservices.vision.computervision.models import TextRecognitionMode
-#from azure.cognitiveservices.vision.computervision.models import TextOperationStatusCodes
 
 # Defaults.
 
@@ -68,6 +67,14 @@ if is_url(url):
 else:
     path = os.path.join(get_cmd_cwd(), url)
     with open(path, 'rb') as fstream:
+        # https://docs.microsoft.com/en-us/azure/cognitive-services/custom-vision-service/limits-and-quotas
+        size=os.path.getsize(path)/1000000
+        if size > 4:
+            print(f"The image file is too large at {round(size,2)} MB > 4.00 MB. Reduce and try again.")
+            print(f"    {path}")
+            print("\nFor example, use imagemagick's convert command:")
+            print(f"    $ convert {path} -resize 25% new.jpg\n")
+            exit()
         analysis = client.analyze_image_in_stream(fstream, visual_features=[VisualFeatureTypes.tags])
 
 for tag in analysis.tags:
