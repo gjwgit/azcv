@@ -16,6 +16,7 @@ import os
 import sys
 import time
 import argparse
+import requests
 
 from distutils.version import StrictVersion as ver
 
@@ -23,7 +24,6 @@ from mlhub.pkg import azkey, is_url
 from mlhub.utils import get_cmd_cwd
 
 from azure.cognitiveservices.vision.computervision import ComputerVisionClient
-from azure.cognitiveservices.vision.computervision.models._models_py3 import ComputerVisionErrorException
 from azure.cognitiveservices.vision.computervision import VERSION as azver
 from azure.cognitiveservices.vision.computervision.models import TextOperationStatusCodes
 from azure.cognitiveservices.vision.computervision.models import TextRecognitionMode
@@ -92,12 +92,12 @@ numberOfCharsInOperationId = 36
 
 if ver(azver) > ver("0.3.0"):
     if is_url(url):
-        try:
-            rawHttpResponse = client.batch_read_file(url, custom_headers,  raw)
-        except ComputerVisionErrorException as e:
-            print(f"Error: {e}")
-            print(f"       Check that '{url}' exists.")
+        request = requests.get(url)
+        if request.status_code != 200:
+            print(f"The URL does not appear to exist. Please check.")
+            print(f"    {url}")
             quit()
+        rawHttpResponse = client.batch_read_file(url, custom_headers,  raw)
     else:
         path = os.path.join(get_cmd_cwd(), url)
         with open(path, 'rb') as fstream:
