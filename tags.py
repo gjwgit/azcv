@@ -63,6 +63,11 @@ client = ComputerVisionClient(endpoint, credentials)
 url = args.path
 
 if is_url(url):
+    request = requests.get(url)
+    if request.status_code != 200:
+        print(f"The URL does not appear to exist. Please check.")
+        print(f"    {url}")
+        quit()
     analysis = client.analyze_image(url, visual_features=[VisualFeatureTypes.tags])
 else:
     path = os.path.join(get_cmd_cwd(), url)
