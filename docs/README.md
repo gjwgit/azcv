@@ -40,7 +40,7 @@ ml landmarks azcv http://cdn1.thr.com/sites/default/files/2013/11/marina_bay_san
 ml tags azcv https://www.wayoutback.com.au/assets/Uploads/Uluru.jpg
 ml celebrities azcv https://res.cloudinary.com/uktv/image/upload/v1402498133/mztwkl0sze26zjpc0xdh.jpg
 ml objects azcv https://raw.githubusercontent.com/Azure-Samples/cognitive-services-sample-data-files/master/ComputerVision/Images/objects.jpg
-ml ocr azcv https://github.com/gjwgit/azcv/raw/master/images/20200223_185439_ryley_handwriting.jpg
+ml ocr azcv https://github.com/gjwgit/azcv/raw/master/images/mycat.png
 ml ocr azcv https://farm4.staticflickr.com/3883/15144849957_f326e03f75_b.jpg
 ml thumbnail azcv https://www.wayoutback.com.au/assets/Uploads/Uluru.jpg
 ml brands azcv https://docs.microsoft.com/en-us/azure/cognitive-services/computer-vision/images/gray-shirt-logo.jpg
