@@ -8,10 +8,50 @@ as exposed through the [MLHub](https://mlhub.ai) package
 
 Here are a few examples of handwriting extraction.
 
+![](https://github.com/gjwgit/azcv/raw/master/images/mycat.png)
+
+This image contains sample hand writing from two gifted 9 year old
+year 4 students and users of mlhub: Ryley Nolan and Grace
+Patterson. (Used and accredited with permission.)
+
+``` console
+ ml ocr azcv https://github.com/gjwgit/azcv/raw/master/images/mycat.png
+
+51.0 43.0 666.0 51.0 665.0 84.0 51.0 76.0,My cats name is freckles . She like's to climb up
+39.0 94.0 691.0 104.0 690.0 137.0 38.0 127.0,high. She is 2 years old. She likes to play a lot of games.
+37.0 146.0 676.0 155.0 675.0 188.0 36.0 180.0,She likes to sleep on my bed sometimes, She wakes me
+25.0 203.0 680.0 204.0 680.0 238.0 24.0 236.0,up in the morning for food. Our cat runs away from my
+39.0 251.0 542.0 254.0 541.0 291.0 38.0 287.0,little brother , I love my cat freckels,
+19.0 346.0 444.0 358.0 443.0 389.0 18.0 377.0,My Cats name is Mr Tiger!
+21.0 404.0 495.0 419.0 494.0 451.0 20.0 436.0,He is fluffy and is fun to play with
+15.0 468.0 586.0 479.0 585.0 508.0 14.0 498.0,My cat knows his way around our house
+16.0 535.0 726.0 546.0 725.0 574.0 15.0 562.0,My cat can be silly and really smart when he brings Rodents to our house .
+13.0 593.0 688.0 608.0 687.0 637.0 12.0 622.0,II love my cat and wouldn't change a thing about him !
+```
+
+If you are not interested in the bounding boxes:
+
+``` console
+$ ml ocr azcv https://github.com/gjwgit/azcv/raw/master/images/mycat.png | cut -d, -f2-
+
+My cats name is freckles . She like's to climb up
+high. She is 2 years old. She likes to play a lot of games.
+She likes to sleep on my bed sometimes, She wakes me
+up in the morning for food. Our cat runs away from my
+little brother , I love my cat freckels,
+My Cats name is Mr Tiger!
+He is fluffy and is fun to play with
+My cat knows his way around our house
+My cat can be silly and really smart when he brings Rodents to our house .
+II love my cat and wouldn't change a thing about him !
+```
+
+
 ![](handwritting_malala.jpg)
 
 ``` console
 $ ml ocr azcv http://www.handwrittenocr.com/images/Handwriting/16.jpg
+
 237.0 91.0 469.0 92.0 468.0 124.0 236.0 123.0,Education First
 188.0 157.0 287.0 158.0 286.0 184.0 187.0 183.0,always
 290.0 156.0 424.0 159.0 423.0 184.0 289.0 181.0,dream
@@ -39,29 +79,3 @@ $ ml ocr azcv http://www.handwrittenocr.com/images/Handwriting/16.jpg
 224.0 390.0 359.0 391.0 358.0 418.0 223.0 416.0,world .
 443.0 416.0 682.0 422.0 681.0 450.0 442.0 444.0,malala yousafzai
 ```
-![](http://www.handwrittenocr.com/images/Handwriting/1.jpg)
-```console
-$ ml ocr azcv http://www.handwrittenocr.com/images/Handwriting/1.jpg
-274.0 141.0 507.0 102.0 520.0 198.0 299.0 240.0,if the
-143.0 276.0 603.0 254.0 606.0 318.0 146.0 340.0,only prayer
-108.0 411.0 587.0 371.0 593.0 438.0 114.0 479.0,you said was
-149.0 522.0 569.0 516.0 570.0 588.0 150.0 594.0,thank you,
-84.0 663.0 606.0 644.0 609.0 716.0 87.0 735.0,that would be
-185.0 795.0 503.0 778.0 506.0 848.0 189.0 866.0,enough.
-498.0 898.0 606.0 871.0 615.0 910.0 507.0 937.0,master
-537.0 927.0 619.0 907.0 629.0 942.0 545.0 963.0,copart
-```
-
-![](http://www.handwrittenocr.com/images/Handwriting/9.jpg)
-
-```console
-$ ml ocr azcv http://www.handwrittenocr.com/images/Handwriting/9.jpg
-6.0 45.0 549.0 35.0 550.0 65.0 7.0 75.0,Reading a handwritten article about hand .
-4.0 86.0 549.0 78.0 550.0 109.0 5.0 117.0,writing , in a 215-century magazine, is like
-6.0 132.0 527.0 123.0 527.0 150.0 7.0 160.0,listening to your great-great- grandfather
-6.0 175.0 542.0 163.0 543.0 193.0 7.0 206.0,shout in the middle of a crowded multiplex
-8.0 217.0 550.0 207.0 551.0 237.0 9.0 248.0,about the incomparable glories of vaudeville
-7.0 259.0 545.0 249.0 546.0 277.0 8.0 287.0,and the lost art of wearing hats in public.
-8.0 300.0 557.0 287.0 558.0 313.0 9.0 325.0,And yet, somehow, here we are . Certain vestigial
-```
-
