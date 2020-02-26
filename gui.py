@@ -57,11 +57,11 @@ class MLHub(wx.Frame):
         vbox.Add((-1, 10))
 
         hbox3 = wx.BoxSizer(wx.HORIZONTAL)
-        bt_identify = wx.Button(panel, label="Identify")
-        bt_identify.Bind(wx.EVT_BUTTON, self.OnIdentify)
-        hbox3.Add(bt_identify, flag=wx.RIGHT, border=10)
-        self.st_identity = wx.StaticText(panel, label=DEFAULT_ID)
-        hbox3.Add(self.st_identity, flag=wx.LEFT | wx.RIGHT | wx.ALIGN_CENTER_VERTICAL)
+        bt_ocr = wx.Button(panel, label="OCR")
+        bt_ocr.Bind(wx.EVT_BUTTON, self.OnOCR)
+        hbox3.Add(bt_ocr, flag=wx.RIGHT, border=10)
+#        self.st_identity = wx.StaticText(panel, label=DEFAULT_ID)
+#        hbox3.Add(self.st_identity, flag=wx.LEFT | wx.RIGHT | wx.ALIGN_CENTER_VERTICAL)
         vbox.Add(hbox3, flag=wx.EXPAND | wx.LEFT | wx.RIGHT | wx.TOP, border=10)
 
         vbox.Add((-1, 10))
@@ -105,19 +105,20 @@ class MLHub(wx.Frame):
                 # Recenter the image
                 self.hbox2.Layout()
 
-    def OnIdentify(self, event):
+    def OnOCR(self, event):
         wait = wx.BusyCursor()
         path = self.tc_path.GetValue()
         if path == DEFAULT_PATH:
-            path = "cache/images/sample.jpg"
+            path = "cache/images/mycat.jpg"
         results = subprocess.check_output(["ml", "ocr", "azcv", path])
         del(wait)
-        r = results.decode("utf-8").split("\n")[0].split(",")
-        certainty = r[0]
-        identified = " or".join(r[1:len(r)])
-        self.st_identity.SetLabel(f"{identified} [{certainty}]")
+#        r = results.decode("utf-8").split("\n")[0].split(",")
+#        certainty = r[0]
+#        identified = " or".join(r[1:len(r)])
+#        self.st_identity.SetLabel(f"{identified} [{certainty}]")
 	# Show all identifications on the command line.
         print(path)
+        print(results)
         print(results.decode("utf-8"))
 
     def OnClose(self, event):
