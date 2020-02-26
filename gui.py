@@ -14,7 +14,9 @@ import subprocess
 import re
 
 MODEL = "Azure Computer Vision"
-CMD = ["ml", "ocr", "azcv"]
+CMD_OCR = ["ml", "ocr", "azcv"]
+CMD_TAGS = ["ml", "tags", "azcv"]
+CMD_DESCRIBE = ["ml", "describe", "azcv"]
 
 DEFAULT_PATH = "Enter a local path to an image (jpg, png) file"
 DEFAULT_IMAGE = os.path.join(os.getcwd(), "cache/images/mycat.png")
@@ -65,9 +67,19 @@ class MLHub(wx.Frame):
         vbox.Add((-1, 10))
 
         hbox3 = wx.BoxSizer(wx.HORIZONTAL)
+        # OCR
         bt_ocr = wx.Button(panel, label="OCR")
         bt_ocr.Bind(wx.EVT_BUTTON, self.OnOCR)
         hbox3.Add(bt_ocr, flag=wx.RIGHT, border=10)
+        # TAGS
+        bt_tags = wx.Button(panel, label="Tags")
+        bt_tags.Bind(wx.EVT_BUTTON, self.OnTAGS)
+        hbox3.Add(bt_tags, flag=wx.RIGHT, border=10)
+        # DESCRIBE
+        bt_describe = wx.Button(panel, label="Describe")
+        bt_describe.Bind(wx.EVT_BUTTON, self.OnDESCRIBE)
+        hbox3.Add(bt_describe, flag=wx.RIGHT, border=10)
+        # Add to the panel.
         vbox.Add(hbox3, flag=wx.EXPAND | wx.LEFT | wx.RIGHT | wx.TOP, border=10)
 
         vbox.Add((-1, 10))
@@ -116,13 +128,47 @@ class MLHub(wx.Frame):
         path = self.tc_path.GetValue()
         if path == DEFAULT_PATH:
             path = DEFAULT_IMAGE
-        cmd = CMD.copy()
+        cmd = CMD_OCR.copy()
         cmd.append(path)
 	# Show the command line.
         print("$ " + " ".join(cmd))
         results = subprocess.check_output(cmd)
         del(wait)
         r = re.sub('^.*?,', '', re.sub('\n.*?,', '\n', results.decode("utf-8")))
+        self.st_results.SetLabel(r)
+        self.hbox2.Layout()
+	# Show the command line results.
+        print(results.decode("utf-8"))
+
+    def OnTAGS(self, event):
+        wait = wx.BusyCursor()
+        path = self.tc_path.GetValue()
+        if path == DEFAULT_PATH:
+            path = DEFAULT_IMAGE
+        cmd = CMD_TAGS.copy()
+        cmd.append(path)
+	# Show the command line.
+        print("$ " + " ".join(cmd))
+        results = subprocess.check_output(cmd)
+        del(wait)
+        r = re.sub(r'^(.*?),', r'[\1] ', re.sub(r'\n(.*?),', r'\n[\1] ', results.decode("utf-8")))
+        self.st_results.SetLabel(r)
+        self.hbox2.Layout()
+	# Show the command line results.
+        print(results.decode("utf-8"))
+
+    def OnDESCRIBE(self, event):
+        wait = wx.BusyCursor()
+        path = self.tc_path.GetValue()
+        if path == DEFAULT_PATH:
+            path = DEFAULT_IMAGE
+        cmd = CMD_DESCRIBE.copy()
+        cmd.append(path)
+	# Show the command line.
+        print("$ " + " ".join(cmd))
+        results = subprocess.check_output(cmd)
+        del(wait)
+        r = re.sub(r'^(.*?),', r'[\1] ', re.sub(r'\n(.*?),', r'\n[\1] ', results.decode("utf-8")))
         self.st_results.SetLabel(r)
         self.hbox2.Layout()
 	# Show the command line results.
