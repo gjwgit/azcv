@@ -14,10 +14,10 @@ import subprocess
 import re
 
 MODEL = "Azure Computer Vision"
+CMD = ["ml", "ocr", "azcv"]
 
 DEFAULT_PATH = "Enter a local path to an image (jpg, png) file"
-DEFAULT_IMAGE = "cache/images/mycat.png"
-
+DEFAULT_IMAGE = os.path.join(os.getcwd(), "cache/images/mycat.png")
 DEFAULT_ID = "Results will appear here ..."
 
 WILDCARD = "Images (*.jpg,*.png)|*.jpg;*.png|" \
@@ -61,7 +61,7 @@ class MLHub(wx.Frame):
         self.st_results = wx.StaticText(panel, label=DEFAULT_ID)
         self.hbox2.Add(self.st_results, flag=wx.LEFT | wx.RIGHT | wx.ALIGN_CENTER_VERTICAL)
         vbox.Add(self.hbox2, proportion=1, flag=wx.LEFT|wx.RIGHT|wx.EXPAND, border=10)
-        
+
         vbox.Add((-1, 10))
 
         hbox3 = wx.BoxSizer(wx.HORIZONTAL)
@@ -116,13 +116,16 @@ class MLHub(wx.Frame):
         path = self.tc_path.GetValue()
         if path == DEFAULT_PATH:
             path = DEFAULT_IMAGE
-        results = subprocess.check_output(["ml", "ocr", "azcv", path])
+        cmd = CMD.copy()
+        cmd.append(path)
+	# Show the command line.
+        print("$ " + " ".join(cmd))
+        results = subprocess.check_output(cmd)
         del(wait)
         r = re.sub('^.*?,', '', re.sub('\n.*?,', '\n', results.decode("utf-8")))
         self.st_results.SetLabel(r)
         self.hbox2.Layout()
-	# Show all OCR on the command line.
-        print(path)
+	# Show the command line results.
         print(results.decode("utf-8"))
 
     def OnClose(self, event):
