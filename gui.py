@@ -15,6 +15,9 @@ import subprocess
 MODEL = "Azure Computer Vision"
 
 DEFAULT_PATH = "Enter a local path to an image (jpg, png) file"
+DEFAULT_IMAGE = "cache/images/mycat.png"
+
+DEFAULT_ID = "Results will appear here ..."
 
 WILDCARD = "Images (*.jpg,*.png)|*.jpg;*.png|" \
            "All files (*.*)|*.*"
@@ -49,19 +52,20 @@ class MLHub(wx.Frame):
         vbox.Add((-1, 10))
 
         self.hbox2 = wx.BoxSizer(wx.HORIZONTAL)
-        sample = wx.Bitmap("cache/images/mycat.png", wx.BITMAP_TYPE_ANY)
+        sample = wx.Bitmap(DEFAULT_IMAGE, wx.BITMAP_TYPE_ANY)
+        sample = self.ScaleBitmap(sample, 500, 300)
         self.sb_sample = wx.StaticBitmap(panel, wx.ID_ANY, sample)
         self.hbox2.Add(self.sb_sample, proportion=1, flag=wx.EXPAND)
         vbox.Add(self.hbox2, proportion=1, flag=wx.LEFT|wx.RIGHT|wx.EXPAND, border=10)
-
+        self.st_results = wx.StaticText(panel, label=DEFAULT_ID)
+        self.hbox2.Add(self.st_results, flag=wx.LEFT | wx.RIGHT | wx.ALIGN_CENTER_VERTICAL)
+        
         vbox.Add((-1, 10))
 
         hbox3 = wx.BoxSizer(wx.HORIZONTAL)
         bt_ocr = wx.Button(panel, label="OCR")
         bt_ocr.Bind(wx.EVT_BUTTON, self.OnOCR)
         hbox3.Add(bt_ocr, flag=wx.RIGHT, border=10)
-#        self.st_identity = wx.StaticText(panel, label=DEFAULT_ID)
-#        hbox3.Add(self.st_identity, flag=wx.LEFT | wx.RIGHT | wx.ALIGN_CENTER_VERTICAL)
         vbox.Add(hbox3, flag=wx.EXPAND | wx.LEFT | wx.RIGHT | wx.TOP, border=10)
 
         vbox.Add((-1, 10))
@@ -109,16 +113,13 @@ class MLHub(wx.Frame):
         wait = wx.BusyCursor()
         path = self.tc_path.GetValue()
         if path == DEFAULT_PATH:
-            path = "cache/images/mycat.jpg"
+            path = DEFAULT_IMAGE
         results = subprocess.check_output(["ml", "ocr", "azcv", path])
         del(wait)
-#        r = results.decode("utf-8").split("\n")[0].split(",")
-#        certainty = r[0]
-#        identified = " or".join(r[1:len(r)])
-#        self.st_identity.SetLabel(f"{identified} [{certainty}]")
-	# Show all identifications on the command line.
+        r = results.decode("utf-8")
+        self.st_results.SetLabel(r)
+	# Show all OCR on the command line.
         print(path)
-        print(results)
         print(results.decode("utf-8"))
 
     def OnClose(self, event):
