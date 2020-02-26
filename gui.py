@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 """
-A GUI for MLHub from the Objects model
+A MLHub GUI for AZCV
 
 author: Graham Williams
 website: mlhub.ai
@@ -15,7 +15,6 @@ import subprocess
 MODEL = "Azure Computer Vision"
 
 DEFAULT_PATH = "Enter a local path to an image (jpg, png) file"
-DEFAULT_ID   = "Identified as ..."
 
 WILDCARD = "Images (*.jpg,*.png)|*.jpg;*.png|" \
            "All files (*.*)|*.*"
@@ -50,7 +49,7 @@ class MLHub(wx.Frame):
         vbox.Add((-1, 10))
 
         self.hbox2 = wx.BoxSizer(wx.HORIZONTAL)
-        sample = wx.Bitmap("cache/images/sample.jpg", wx.BITMAP_TYPE_ANY)
+        sample = wx.Bitmap("cache/images/mycat.png", wx.BITMAP_TYPE_ANY)
         self.sb_sample = wx.StaticBitmap(panel, wx.ID_ANY, sample)
         self.hbox2.Add(self.sb_sample, proportion=1, flag=wx.EXPAND)
         vbox.Add(self.hbox2, proportion=1, flag=wx.LEFT|wx.RIGHT|wx.EXPAND, border=10)
