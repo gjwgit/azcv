@@ -14,12 +14,12 @@ import subprocess
 import re
 
 MODEL = "Azure Computer Vision"
-CMD_OCR = "ml ocr azcv"
-CMD_TAGS = "ml tags azcv"
-CMD_DESCRIBE = "ml describe azcv"
-CMD_LANDMARKS = "ml landmarks azcv"
-CMD_FACES = "ml faces azcv"
-CMD_CELEBRITIES = "ml celebrities azcv"
+CMD_OCR = ["ml", "ocr", "azcv"]
+CMD_TAGS = ["ml", "tags", "azcv"]
+CMD_DESCRIBE = ["ml", "describe", "azcv"]
+CMD_LANDMARKS = ["ml", "landmarks", "azcv"]
+CMD_FACES = ["ml", "faces", "azcv"]
+CMD_CELEBRITIES = ["ml", "celebrities", "azcv"]
 
 DEFAULT_PATH = "Enter a local path to an image (jpg, png) file"
 DEFAULT_IMAGE = os.path.join(os.getcwd(), "cache/images/mycat.png")
@@ -145,10 +145,11 @@ class MLHub(wx.Frame):
         path = self.tc_path.GetValue()
         if path == DEFAULT_PATH:
             path = DEFAULT_IMAGE
-        cmd = f"{CMD_OCR} {path}"
+        cmd = CMD_OCR.copy()
+        cmd.append(path)
 	# Show the command line.
-        print("$ " + cmd)
-        results = subprocess.check_output(cmd, shell=True)
+        print("$ " + " ".join(cmd))
+        results = subprocess.check_output(cmd)
         r = re.sub('^.*?,', '', re.sub('\n.*?,', '\n', results.decode("utf-8")))
         self.st_results.SetLabel(r)
         self.hbox2.Layout()
@@ -161,10 +162,11 @@ class MLHub(wx.Frame):
         path = self.tc_path.GetValue()
         if path == DEFAULT_PATH:
             path = DEFAULT_IMAGE
-        cmd = f"{CMD_TAGS} {path}"
+        cmd = CMD_TAGS.copy()
+        cmd.append(path)
 	# Show the command line.
-        print("$ " + cmd)
-        results = subprocess.check_output(cmd, shell=True)
+        print("$ " + " ".join(cmd))
+        results = subprocess.check_output(cmd)
         if len(results) == 0:
             self.st_results.SetLabel(NO_RESULTS)
         else:
@@ -180,10 +182,11 @@ class MLHub(wx.Frame):
         path = self.tc_path.GetValue()
         if path == DEFAULT_PATH:
             path = DEFAULT_IMAGE
-        cmd = f"{CMD_DESCRIBE} {path}"
+        cmd = CMD_DESCRIBE.copy()
+        cmd.append(path)
 	# Show the command line.
-        print("$ " + cmd)
-        results = subprocess.check_output(cmd, shell=True)
+        print("$ " + " ".join(cmd))
+        results = subprocess.check_output(cmd)
         if len(results) == 0:
             self.st_results.SetLabel(NO_RESULTS)
         else:
@@ -199,10 +202,11 @@ class MLHub(wx.Frame):
         path = self.tc_path.GetValue()
         if path == DEFAULT_PATH:
             path = DEFAULT_IMAGE
-        cmd = f"{CMD_LANDMARKS} {path}"
+        cmd = CMD_LANDMARKS.copy()
+        cmd.append(path)
 	# Show the command line.
-        print("$ " + cmd)
-        results = subprocess.check_output(cmd, shell=True)
+        print("$ " + " ".join(cmd))
+        results = subprocess.check_output(cmd)
         if len(results) == 0:
             self.st_results.SetLabel(NO_RESULTS)
         else:
@@ -218,10 +222,11 @@ class MLHub(wx.Frame):
         path = self.tc_path.GetValue()
         if path == DEFAULT_PATH:
             path = DEFAULT_IMAGE
-        cmd = f"{CMD_FACES} {path}"
+        cmd = CMD_FACES.copy()
+        cmd.append(path)
 	# Show the command line.
-        print("$ " + cmd)
-        results = subprocess.check_output(cmd, shell=True)
+        print("$ " + " ".join(cmd))
+        results = subprocess.check_output(cmd)
         if len(results) == 0:
             self.st_results.SetLabel(NO_RESULTS)
         else:
@@ -237,10 +242,11 @@ class MLHub(wx.Frame):
         path = self.tc_path.GetValue()
         if path == DEFAULT_PATH:
             path = DEFAULT_IMAGE
-        cmd = f"{CMD_CELEBRITIES} {path}"
+        cmd = CMD_CELEBRITIES.copy()
+        cmd.append(path)
 	# Show the command line.
-        print("$ " + cmd)
-        results = subprocess.check_output(cmd, shell=True)
+        print("$ " + " ".join(cmd))
+        results = subprocess.check_output(cmd)
         if len(results) == 0:
             self.st_results.SetLabel(NO_RESULTS)
         else:
