@@ -175,7 +175,9 @@ url1 = "https://azurecomcdn.azureedge.net/"
 url2 = "cvt-1979217d3d0d31c5c87cbd991bccfee2d184b55eeb4081200012bdaf6a65601a/"
 url3 = "images/shared/cognitive-services-demos/read-text/read-1-thumbnail.png"
 url = url1 + url2 + url3
+# The following has disappeared.
 url = "http://www.handwrittenocr.com/images/Handwriting/16.jpg"
+url = "https://github.com/gjwgit/azcv/raw/master/images/mycat.png"
 
 mlcat("Text From Image",
 """We can identify text from an image using Text Recognition Mode. This mode 
