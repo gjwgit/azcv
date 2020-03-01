@@ -10,8 +10,6 @@ meta:
   author       : Graham.Williams@togaware.com
   url          : https://github.com/gjwgit/azcv
 dependencies:
-  python3:
-    - wxgtk4.0 # Should be a ml configure dependency
   pip3:
     - azure-cognitiveservices-vision-computervision
   files:
