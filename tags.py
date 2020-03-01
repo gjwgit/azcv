@@ -17,6 +17,7 @@
 
 import os
 import argparse
+import requests
 
 from mlhub.pkg import azkey, is_url
 from mlhub.utils import get_cmd_cwd
