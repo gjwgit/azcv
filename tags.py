@@ -66,10 +66,14 @@ url = args.path
 if is_url(url):
     request = requests.get(url)
     if request.status_code != 200:
-        print(f"The URL does not appear to exist. Please check.")
-        print(f"    {url}")
+        print(f"Error: The URL does not appear to exist. Please check.\n{url}")
         quit()
-    analysis = client.analyze_image(url, visual_features=[VisualFeatureTypes.tags])
+    try:
+        analysis = client.analyze_image(url, visual_features=[VisualFeatureTypes.tags])
+    except Exception as e:
+        print(f"Error: {e}\n{url}")
+        quit()
+    
 else:
     path = os.path.join(get_cmd_cwd(), url)
     with open(path, 'rb') as fstream:
@@ -81,8 +85,12 @@ else:
             print("\nFor example, use imagemagick's convert command:")
             print(f"    $ convert {path} -resize 25% new.jpg\n")
             exit()
-        analysis = client.analyze_image_in_stream(fstream, visual_features=[VisualFeatureTypes.tags])
-
+        try:
+            analysis = client.analyze_image_in_stream(fstream, visual_features=[VisualFeatureTypes.tags])
+        except Exception as e:
+            print(f"Error: {e}\n{path}")
+            quit()
+   
 for tag in analysis.tags:
     if tag.confidence > 0.2:
         print("{:4.2f},{}".format(round(tag.confidence, 2), tag.name))
