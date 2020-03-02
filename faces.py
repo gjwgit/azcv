@@ -13,6 +13,7 @@ from azure.cognitiveservices.vision.computervision import ComputerVisionClient
 
 import os
 import argparse
+import requests
 from textwrap import fill
 
 from mlhub.pkg import azkey, is_url
@@ -64,11 +65,23 @@ image_features = ["faces"]
 # Send provided image (url or path) to azure to analyse.
 
 if is_url(path):
-    analysis = client.analyze_image(path, image_features)
+    request = requests.get(path)
+    if request.status_code != 200:
+        print(f"Error: The URL does not appear to exist. Please check.\n{path}")
+        quit()
+    try:
+        analysis = client.analyze_image(path, image_features)
+    except Exception as e:
+        print(f"Error: {e}\n{path}")
+        quit()
 else:
     path = os.path.join(get_cmd_cwd(), path)
     with open(path, 'rb') as fstream:
-        analysis = client.analyze_image_in_stream(fstream, image_features)
+        try:
+            analysis = client.analyze_image_in_stream(fstream, image_features)
+        except Exception as e:
+            print(f"Error: {e}\n{path}")
+            quit()
 
 for face in analysis.faces:
         print(f"{face.face_rectangle.left} {face.face_rectangle.top} " +
