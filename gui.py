@@ -44,6 +44,7 @@ class MLHub(wx.Frame):
         # self.Bind(wx.EVT_CLOSE, self.OnClose)
 
         self.images_dir = os.path.join(os.getcwd(), "cache/images")
+        self.last_browse_dir = ""
         
         panel = wx.Panel(self)
 
@@ -119,9 +120,13 @@ class MLHub(wx.Frame):
         return(result)
 
     def OnBrowse(self, event):
+        if self.last_browse_dir == "":
+            default_dir = self.images_dir
+        else:
+            default_dir = self.last_browse_dir
         dlg = wx.FileDialog(self,
                             message="Choose a file",
-                            defaultDir=self.images_dir, 
+                            defaultDir=default_dir, 
                             defaultFile="",
                             wildcard=WILDCARD,
                             style=wx.FD_OPEN | wx.FD_MULTIPLE | wx.FD_CHANGE_DIR
@@ -129,6 +134,7 @@ class MLHub(wx.Frame):
         if dlg.ShowModal() == wx.ID_OK:
             paths = dlg.GetPaths()
             if len(paths):
+                self.last_browse_dir = os.path.dirname(paths[0])
                 # Display path in text control.
                 self.tc_path.SetValue(paths[0])
                 # Update the image display.
