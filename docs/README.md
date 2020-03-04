@@ -35,6 +35,7 @@ Quick Start guide.
 
 ```console
 ml demo azcv
+ml gui azcv
 ml category azcv https://raw.githubusercontent.com/Azure-Samples/cognitive-services-sample-data-files/master/ComputerVision/Images/landmark.jpg
 ml landmarks azcv http://cdn1.thr.com/sites/default/files/2013/11/marina_bay_sands_singapore_a_l.jpg
 ml tags azcv https://www.wayoutback.com.au/assets/Uploads/Uluru.jpg
