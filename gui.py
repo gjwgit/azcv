@@ -23,7 +23,7 @@ CMD_CELEBRITIES = ["ml", "celebrities", "azcv"]
 
 DEFAULT_PATH = "Enter a local path to an image (jpg, png) file"
 DEFAULT_IMAGE = os.path.join(os.getcwd(), "cache/images/mycat.png")
-DEFAULT_ID = "Results will appear here ..."
+DEFAULT_TEXT = "Results will appear here ..."
 
 NO_RESULTS = "No results returned from the model."
 
@@ -66,7 +66,7 @@ class MLHub(wx.Frame):
         self.sb_sample = wx.StaticBitmap(panel, wx.ID_ANY, sample)
         self.hbox2.Add(self.sb_sample, flag=wx.EXPAND)
         self.hbox2.Add((10, -1))
-        self.st_results = wx.StaticText(panel, label=DEFAULT_ID)
+        self.st_results = wx.StaticText(panel, label=DEFAULT_TEXT)
         self.hbox2.Add(self.st_results, flag=wx.LEFT | wx.RIGHT | wx.ALIGN_CENTER_VERTICAL)
         vbox.Add(self.hbox2, proportion=1, flag=wx.LEFT|wx.RIGHT|wx.EXPAND, border=10)
 
@@ -142,7 +142,7 @@ class MLHub(wx.Frame):
                 sample = self.ScaleBitmap(sample, 500, 300)
                 self.sb_sample.SetBitmap(sample)
                 # Update the Identification text.
-                self.st_results.SetLabel(DEFAULT_ID)
+                self.st_results.SetLabel(DEFAULT_TEXT)
                 # Recenter the image
                 self.hbox2.Layout()
 
@@ -156,8 +156,11 @@ class MLHub(wx.Frame):
 	# Show the command line.
         print("$ " + " ".join(cmd))
         results = subprocess.check_output(cmd)
-        r = re.sub('^.*?,', '', re.sub('\n.*?,', '\n', results.decode("utf-8")))
-        self.st_results.SetLabel(r)
+        if len(results) == 0:
+            self.st_results.SetLabel(NO_RESULTS)
+        else:
+            r = re.sub('^.*?,', '', re.sub('\n.*?,', '\n', results.decode("utf-8")))
+            self.st_results.SetLabel(r)
         self.hbox2.Layout()
 	# Show the command line results.
         print(results.decode("utf-8"))
