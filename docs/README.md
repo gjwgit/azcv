@@ -7,9 +7,7 @@ command line tools are packaged for common computer vision tasks
 including image analysis to extract descriptions of the images, word
 recognition from images, landmark identification, thumbnail
 generation, and more. The package also provides an interactive
-demonstration as an overview of the capabilities of the service. This
-package is part of the [Azure on
-MLHub](https://github.com/Azure/mlhub) repository.
+demonstration as an overview of the capabilities of the service.
 
 A free Azure subscription allowing up to 20,000 transactions per month
 is available from <https://azure.microsoft.com/free/>. After
