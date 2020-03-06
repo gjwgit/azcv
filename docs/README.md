@@ -65,6 +65,13 @@ $ ml install   azcv
 $ ml configure azcv
 ```
 
+* To run a canned demonstration or an interactive GUI:
+
+```console
+$ ml demo azcv
+$ ml gui azcv
+```
+
 ## Command Line Tools
 
 In addition to the *demo* presented below, the *azcv* package provides
