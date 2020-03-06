@@ -11,7 +11,7 @@ demonstration as an overview of the capabilities of the service.
 
 A free Azure subscription allowing up to 5,000 transactions per month
 with a maximum of 20 per minute (according to [Azure
-Pricing](https://azure.microsoft.com/en-gb/pricing/details/cognitive-services/computer-vision/)
+Pricing](https://azure.microsoft.com/en-gb/pricing/details/cognitive-services/computer-vision/))
 is available from <https://azure.microsoft.com/free/>. After
 subscribing visit <https://portal.azure.com> and Create a resource
 under AI and Machine Learning called Cognitive Services. Once created
