@@ -1,13 +1,17 @@
 # Azure Computer Vision
 
-This [MLHub](https://mlhub.ai) package provides command line tools
-that utilise pre-built models from [Azure Computer
+This [MLHub](https://mlhub.ai) package provides a demonstration, a
+graphical user interface, and command line tools that utilise
+pre-built models from [Azure Computer
 Vision](https://docs.microsoft.com/en-us/azure/cognitive-services/Computer-vision). Individual
 command line tools are packaged for common computer vision tasks
 including image analysis to extract descriptions of the images, word
 recognition from images, landmark identification, thumbnail
-generation, and more. The package also provides an interactive
-demonstration as an overview of the capabilities of the service.
+generation, and more. The command line tools can be used within
+command pipelines for tasks including the tagging of personal photos
+folder, analysis of images from a cameras monitoring a bird feeder,
+reading street signs to support a driver, and reading handwritten
+texts.
 
 A free Azure subscription allowing up to 5,000 transactions per month
 with a maximum of 20 per minute (according to [Azure
