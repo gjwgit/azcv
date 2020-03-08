@@ -133,7 +133,7 @@ See [Landmarks and Tags](TAGS.md) for further details and examples.
 
 **Faces**
 
-![](https://g3n1u5.com/mlhub/gala.png)
+![](gala.png)
 
 ```console
 $ wget https://g3n1u5.com/mlhub/gala.png -O img.png
@@ -145,22 +145,30 @@ $ cat img_bb.txt
 560 152 718 310,Male,53
 185 286 326 427,Female,28
 
-$ cat img_bb.txt | cut -d',' -f1 
+$ cat img_bb.txt | 
+  cut -d',' -f1 
 
 560 152 718 310
 185 286 326 427
 
-$ cat img_bb.txt | cut -d',' -f1 | xargs printf '-draw "rectangle %s,%s %s,%s" '
+$ cat img_bb.txt | 
+  cut -d',' -f1  | 
+  xargs printf '-draw "rectangle %s,%s %s,%s" '
 
 -draw "rectangle 560,152 718,310" -draw "rectangle 185,286 326,427"
 
-$ cat img_bb.txt | cut -d',' -f1 | xargs printf '-draw "rectangle %s,%s %s,%s" ' | 
+$ cat img_bb.txt | 
+  cut -d',' -f1  | 
+  xargs printf '-draw "rectangle %s,%s %s,%s" ' | 
   awk '{print "img.png -fill none -stroke red -strokewidth 5 " $0 "img_bb.png"}'
 
 img.png -fill none -stroke red -strokewidth 5 -draw "rectangle 560,152 718,310" -draw "rectangle 185,286 326,427" img_bb.png
 
-$ cat img_bb.txt | cut -d',' -f1 | xargs printf '-draw "rectangle %s,%s %s,%s" ' | 
-  awk '{print "img.png -fill none -stroke red -strokewidth 5 " $0 "img_bb.png"}' | xargs convert
+$ cat img_bb.txt |
+  cut -d',' -f1  | 
+  xargs printf '-draw "rectangle %s,%s %s,%s" ' | 
+  awk '{print "img.png -fill none -stroke red -strokewidth 5 " $0 "img_bb.png"}' |
+  xargs convert
 
 $ display img_bb.png
 ```
