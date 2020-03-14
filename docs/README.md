@@ -1,4 +1,5 @@
-# Azure Computer Vision
+Azure Computer Vision
+=====================
 
 This [MLHub](https://mlhub.ai) package provides a demonstration, a
 graphical user interface, and command line tools that utilise
@@ -35,7 +36,8 @@ The Python code is based on the [Computer Vision client library for
 Python Quickstart](https://docs.microsoft.com/en-us/azure/cognitive-services/Computer-vision/quickstarts-sdk/python-sdk)
 Quick Start guide.
 
-## Quick Start Command Line Examples
+Quick Start Command Line Examples
+---------------------------------
 
 ```console
 ml category azcv https://raw.githubusercontent.com/Azure-Samples/cognitive-services-sample-data-files/master/ComputerVision/Images/landmark.jpg
@@ -52,12 +54,14 @@ ml color azcv https://docs.microsoft.com/en-us/azure/cognitive-services/Computer
 ml type azcv https://docs.microsoft.com/en-us/azure/cognitive-services/Computer-vision/images/cheese_clipart.png
 ```
 
-## Usage
+Usage
+-----
 
-- To install mlhub (Ubuntu 18.04 LTS)
+- To install and configure mlhub (Ubuntu 18.04 LTS)
 
 ```console
 $ pip3 install mlhub
+$ ml configure
 ```
 
 - To install and configure the demo:
