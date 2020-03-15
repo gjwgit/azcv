@@ -64,21 +64,24 @@ $ pip3 install mlhub
 $ ml configure
 ```
 
-- To install and configure the demo:
+- To install and configure the package:
 
 ```console
 $ ml install   azcv
 $ ml configure azcv
+$ ml readme    azcv
+$ ml commands  azcv
 ```
 
-* To run a canned demonstration or an interactive GUI:
+- To run a canned demonstration or an interactive GUI:
 
 ```console
 $ ml demo azcv
 $ ml gui azcv
 ```
 
-## Command Line Tools
+Command Line Tools
+------------------
 
 In addition to the *demo* presented below, the *azcv* package provides
 useful command line tools. Below we demonstrate a number of
@@ -382,7 +385,8 @@ $ ml type azcv https://docs.microsoft.com/en-us/azure/cognitive-services/Compute
 no,no
 ```
 
-## Demonstration
+Demonstration
+-------------
 
 ```console
 $ ml demo azcv
