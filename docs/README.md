@@ -1,6 +1,9 @@
 Azure Computer Vision
 =====================
 
+Documentation is also available at
+[ReadTheDocs](https://mlhub-azcv.readthedocs.io/en/latest/).
+
 This [MLHub](https://mlhub.ai) package provides a demonstration, a
 graphical user interface, and command line tools that utilise
 pre-built models from [Azure Computer
