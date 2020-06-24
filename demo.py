@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
-
+#
+# Time-stamp: <Monday 2020-06-08 19:53:55 AEST Graham Williams>
+#
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License.
 # Author: Graham.Williams@togaware.com
