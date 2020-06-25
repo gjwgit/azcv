@@ -306,17 +306,17 @@ Female,8,323,163,391,231
 Check if an image contains adult material. The first result is an
 indication 0-1 of whether the image appears to contain adult material
 whilst the second is an indication of whether the image might be
-considered as racy.
+considered as racy. The third is for gory content.
 
 ```console
 $ ml adult azcv https://aaa/aaa01.jpg
-0.72,1.00
+0.72,1.00,0.45
 
 $ ml adult azcv https://aaa/aaa02.jpg
-0.02,0.03
+0.02,0.03,0.92
 
 $ ml adult azcv https://aaa/aaa03.jpg
-0.00,0.99
+0.00,0.99,0.00
 ```
 
 **Color Schemes**
