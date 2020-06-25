@@ -71,4 +71,5 @@ else:
         analysis = client.analyze_image_in_stream(fstream, image_features)
 
 print(f"{analysis.adult.adult_score:.2f}," +
-      f"{analysis.adult.racy_score:.2f}")
+      f"{analysis.adult.racy_score:.2f}," +
+      f"{analysis.adult.gore_score:.2f}")
