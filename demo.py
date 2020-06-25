@@ -1,14 +1,16 @@
 # -*- coding: utf-8 -*-
 #
-# Time-stamp: <Monday 2020-06-08 19:53:55 AEST Graham Williams>
+# Time-stamp: <Thursday 2020-06-25 09:48:23 AEST Graham Williams>
 #
-# Copyright (c) Microsoft Corporation. All rights reserved.
+# Copyright (c) Togaware Pty Ltd. All rights reserved.
 # Licensed under the MIT License.
 # Author: Graham.Williams@togaware.com
 #
-# This demo is based on the Quick Start published on Azure.
+# ml demo azcv
 #
-# https://docs.microsoft.com/en-us/azure/cognitive-services/Computer-vision/quickstarts-sdk/python-sdk
+# This demo is based on the Quick Start.
+#
+# https://pypi.org/project/azure-cognitiveservices-vision-computervision
 
 from mlhub.pkg import azkey, azrequest, mlask, mlcat, mlpreview
 
@@ -27,7 +29,8 @@ thumbnail.
 # Import the required libraries.
 
 import os
-import io 			# Create local image.
+import io    # Create local image.
+import sys
 import time
 
 from distutils.version import StrictVersion as ver
@@ -39,10 +42,20 @@ from PIL import Image
 from azure.cognitiveservices.vision.computervision import ComputerVisionClient
 from azure.cognitiveservices.vision.computervision import VERSION as azver
 from azure.cognitiveservices.vision.computervision.models import VisualFeatureTypes
-from msrest.authentication import CognitiveServicesCredentials
-from azure.cognitiveservices.vision.computervision.models import TextRecognitionMode
-from azure.cognitiveservices.vision.computervision.models import TextOperationStatusCodes
+from azure.cognitiveservices.vision.computervision.models import OperationStatusCodes
 
+from msrest.authentication import CognitiveServicesCredentials
+
+if ver(azver) < ver("0.6.0"):
+    sys.exit(f"""*** WARNING *** Currently you have installed version {azver} of the
+Azure Cognitives Services Computer Vision library. This might have
+been installed automatically as part of the *configure* of the
+package. Some incompatible changes have emerged in recent
+upgrades. Please upgrade to the latest version of that library using:
+
+    pip3 install --upgrade azure-cognitiveservices-vision-computervision
+""")
+    
 # ----------------------------------------------------------------------
 # Request subscription key and endpoint from user.
 # ----------------------------------------------------------------------
@@ -182,17 +195,17 @@ url = "http://www.handwrittenocr.com/images/Handwriting/16.jpg"
 url = "https://github.com/gjwgit/azcv/raw/master/images/mycat.png"
 
 mlcat("Text From Image",
-"""We can identify text from an image using Text Recognition Mode. This mode 
-supports both handwritten and typed text. The results include the text as well
-as the bounding box coordinates for the text so that the image itself can be
-marked up with the identified text. See the ocr command to utilise this
-functionality as a command line tool for extracting text from any supplied
-image.
+f"""We now identify text from an imag. The results include the bounding
+box coordinates for the text as well as the text itself. Piping the
+output to other commands allows the image itself to be marked up with
+the identified text. See the *ocr* command to utilise this
+functionality as a command line tool for extracting text from any
+supplied image.
 
 For our demonstration we will analyze the following image which we will also 
 display momentarily:
 
-  {}""".format(url), begin="\n")
+  {url}""", begin="\n")
 
 mlpreview(url)
 
@@ -200,42 +213,39 @@ mlpreview(url)
 # get_read_operation_result(). The call to batch_read_file() is
 # asynchronous. In the results of the call to
 # get_read_operation_result(), we need to check if the first call
-# completed with TextOperationStatusCodes before extracting the text
+# completed with OperationStatusCodes before extracting the text
 # data. The results include the text as well as the bounding box
 # coordinates for the text.
 
-mode = TextRecognitionMode.handwritten
 raw = True
-custom_headers = None
 numberOfCharsInOperationId = 36
 
-# Async SDK call
-if ver(azver) > ver("0.3.0"):
-    rawHttpResponse = client.batch_read_file(url, custom_headers,  raw)
-else:
-    rawHttpResponse = client.batch_read_file(url, mode, custom_headers,  raw)
+# Asynchronous call.
 
-# Get ID from returned headers
+rawHttpResponse = client.read(url, raw=raw)
+
+# Get ID from returned headers.
+
 operationLocation = rawHttpResponse.headers["Operation-Location"]
 idLocation = len(operationLocation) - numberOfCharsInOperationId
 operationId = operationLocation[idLocation:]
 
-# SDK call
+# Wait for the result.
+
 while True:
-    result = client.get_read_operation_result(operationId)
-    if result.status not in ['NotStarted', 'Running']:
+    result = client.get_read_result(operationId)
+    if result.status not in [OperationStatusCodes.not_started,
+                             OperationStatusCodes.running]:
         break
     time.sleep(1)
 
 mlask(end="\n")
     
-# Get data.
+# Print the results.
 
-if result.status == TextOperationStatusCodes.succeeded:
-    for textResult in result.recognition_results:
-        for line in textResult.lines:
-            print('Found "{}" at [{}]\n'.format(line.text, ", ".join(map(str, line.bounding_box))))
-
+if result.status == OperationStatusCodes.succeeded:
+    for line in result.analyze_result.read_results[0].lines:
+        print(f'Found "{line.text}"\n  at [{", ".join(map(str, line.bounding_box))}]\n')
             
 mlask()
 
