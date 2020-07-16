@@ -2,7 +2,7 @@
 meta:
   name         : azcv
   title        : Azure Computer Vision.
-  keywords     : azure, computer vision, ocr, thumbnail, image to text, cloud, adult, object detection, brand detection, faces
+  keywords     : azure, computer vision, ocr, thumbnail, image to text, cloud, adult, object detection, brand detection, face detection
   version      : 2.6.0
   languages    : py
   display      : demo
