@@ -24,6 +24,7 @@ CMD_CELEBRITIES = ["ml", "celebrities", "azcv"]
 DEFAULT_PATH = "Enter a local path to an image (jpg, png) file"
 DEFAULT_IMAGE = os.path.join(os.getcwd(), "cache/images/mycat.png")
 DEFAULT_TEXT = "Results will appear here ..."
+DEFAULT_CMD_TEXT = "Commands will appear here ..."
 
 NO_RESULTS = "No results returned from the model."
 
@@ -71,6 +72,14 @@ class MLHub(wx.Frame):
         vbox.Add(self.hbox2, proportion=1, flag=wx.LEFT|wx.RIGHT|wx.EXPAND, border=10)
 
         vbox.Add((-1, 10))
+
+        self.hbox4 = wx.BoxSizer(wx.HORIZONTAL)
+        self.st_command = wx.StaticText(panel, label=DEFAULT_CMD_TEXT)
+        self.hbox4.Add(self.st_command, flag=wx.LEFT | wx.RIGHT | wx.ALIGN_CENTER_VERTICAL)
+        vbox.Add(self.hbox4, proportion=1, flag=wx.LEFT|wx.RIGHT|wx.EXPAND, border=10)
+
+        vbox.Add((-1, 10))
+        
 
         hbox3 = wx.BoxSizer(wx.HORIZONTAL)
         # OCR
@@ -155,6 +164,7 @@ class MLHub(wx.Frame):
         cmd.append(path)
 	# Show the command line.
         print("$ " + " ".join(cmd))
+        self.st_command.SetLabel("$ " + " ".join(cmd))
         results = subprocess.check_output(cmd)
         if len(results) == 0:
             self.st_results.SetLabel(NO_RESULTS)
@@ -175,6 +185,7 @@ class MLHub(wx.Frame):
         cmd.append(path)
 	# Show the command line.
         print("$ " + " ".join(cmd))
+        self.st_command.SetLabel("$ " + " ".join(cmd))
         results = subprocess.check_output(cmd)
         if len(results) == 0:
             self.st_results.SetLabel(NO_RESULTS)
@@ -195,6 +206,7 @@ class MLHub(wx.Frame):
         cmd.append(path)
 	# Show the command line.
         print("$ " + " ".join(cmd))
+        self.st_command.SetLabel("$ " + " ".join(cmd))
         results = subprocess.check_output(cmd)
         if len(results) == 0:
             self.st_results.SetLabel(NO_RESULTS)
@@ -215,6 +227,7 @@ class MLHub(wx.Frame):
         cmd.append(path)
 	# Show the command line.
         print("$ " + " ".join(cmd))
+        self.st_command.SetLabel("$ " + " ".join(cmd))
         results = subprocess.check_output(cmd)
         if len(results) == 0:
             self.st_results.SetLabel(NO_RESULTS)
@@ -235,6 +248,7 @@ class MLHub(wx.Frame):
         cmd.append(path)
 	# Show the command line.
         print("$ " + " ".join(cmd))
+        self.st_command.SetLabel("$ " + " ".join(cmd))
         results = subprocess.check_output(cmd)
         if len(results) == 0:
             self.st_results.SetLabel(NO_RESULTS)
@@ -255,6 +269,7 @@ class MLHub(wx.Frame):
         cmd.append(path)
 	# Show the command line.
         print("$ " + " ".join(cmd))
+        self.st_command.SetLabel("$ " + " ".join(cmd))
         results = subprocess.check_output(cmd)
         if len(results) == 0:
             self.st_results.SetLabel(NO_RESULTS)
