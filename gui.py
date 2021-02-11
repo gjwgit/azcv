@@ -121,9 +121,9 @@ class MLHub(wx.Frame):
         oar = w/h # Original aspect ratio
         par = width/height # Proposed aspect ratio
         if oar > par:
-            height = width / oar
+            height = int(width / oar)
         else:
-            width = height * oar
+            width = int(height * oar)
         image = image.Scale(width, height, wx.IMAGE_QUALITY_HIGH)
         result = wx.Bitmap(image)
         return(result)
