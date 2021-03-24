@@ -53,7 +53,7 @@ client = ComputerVisionClient(endpoint, credentials)
 
 url = args.path
 
-features = VisualFeatureTypes.image_type
+features = [VisualFeatureTypes.image_type]
 
 if is_url(url):
     analysis = client.analyze_image(url, features)
