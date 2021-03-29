@@ -83,7 +83,11 @@ if is_url(path):
 else:
     path = os.path.join(get_cmd_cwd(), path)
     with open(path, 'rb') as fstream:
-        analysis = client.detect_objects_in_stream(fstream)
+        try:
+            analysis = client.detect_objects_in_stream(fstream)
+        except Exception as e:
+            print(f"Error: {e}\n{path}")
+            sys.exit(1)
 
 for object in analysis.objects:
     print(f"{object.rectangle.x} {object.rectangle.y} " +

@@ -88,7 +88,11 @@ if is_url(path):
 else:
     path = os.path.join(get_cmd_cwd(), path)
     with open(path, 'rb') as fstream:
-        analysis = client.describe_image_in_stream(fstream, max_descriptions, language)
+        try:
+            analysis = client.describe_image_in_stream(fstream, max_descriptions, language)
+        except Exception as e:
+            print(f"Error: {e}\n{path}")
+            sys.exit(1)
 
 for caption in analysis.captions:
     print("{},{}".format(round(caption.confidence, 2), caption.text))

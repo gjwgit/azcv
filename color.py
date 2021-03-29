@@ -85,7 +85,11 @@ if is_url(path):
 else:
     path = os.path.join(get_cmd_cwd(), path)
     with open(path, 'rb') as fstream:
-        analysis = client.analyze_image_in_stream(fstream, image_features)
+        try:
+            analysis = client.analyze_image_in_stream(fstream, image_features)
+        except Exception as e:
+            print(f"Error: {e}\n{path}")
+            sys.exit(1)
 
 print(f"{not analysis.color.is_bw_img},{analysis.color.accent_color}," +
       f"{analysis.color.dominant_color_background}," +

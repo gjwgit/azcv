@@ -77,7 +77,11 @@ if is_url(url):
 else:
     path = os.path.join(get_cmd_cwd(), url)
     with open(path, 'rb') as fstream:
-        analysis = client.analyze_image_in_stream(fstream, features)
+        try:
+            analysis = client.analyze_image_in_stream(fstream, features)
+        except Exception as e:
+            print(f"Error: {e}\n{path}")
+            sys.exit(1)
 
 if analysis:
     ca = analysis.image_type.clip_art_type

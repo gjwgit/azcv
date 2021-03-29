@@ -85,7 +85,12 @@ if is_url(url):
 else:
     path = os.path.join(get_cmd_cwd(), url)
     with open(path, 'rb') as fstream:
-        analysis = client.generate_thumbnail_in_stream(width, height, fstream)
+        try:
+            analysis = client.generate_thumbnail_in_stream(width, height, fstream)
+        except Exception as e:
+            print(f"Error: {e}\n{path}")
+            sys.exit(1)
+
     sname = re.sub('\.(\w+)$', r'-thumbnail.\1', path)
 
 for x in analysis:

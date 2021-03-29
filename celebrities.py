@@ -76,7 +76,11 @@ if is_url(url):
 else:
     path = os.path.join(get_cmd_cwd(), url)
     with open(path, 'rb') as fstream:
-        analysis = client.analyze_image_by_domain_in_stream(domain, fstream)
+        try:
+            analysis = client.analyze_image_by_domain_in_stream(domain, fstream)
+        except Exception as e:
+            print(f"Error: {e}\n{path}")
+            sys.exit(1)
     
 for celeb in analysis.result["celebrities"]:
     print(f'{celeb["confidence"]:.2f},{celeb["name"]}')

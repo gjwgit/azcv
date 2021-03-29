@@ -82,7 +82,11 @@ if is_url(url):
 else:
     path = os.path.join(get_cmd_cwd(), url)
     with open(path, 'rb') as fstream:
-        rawHttpResponse = client.read_in_stream(fstream, raw=raw)
+        try:
+            rawHttpResponse = client.read_in_stream(fstream, raw=raw)
+        except Exception as e:
+            print(f"Error: {e}\n{path}")
+            sys.exit(1)
 
 # Get ID from returned headers.
 
