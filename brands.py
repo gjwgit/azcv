@@ -13,7 +13,9 @@ from azure.cognitiveservices.vision.computervision import ComputerVisionClient
 
 import os
 import argparse
-from textwrap import fill
+import urllib.error
+import urllib.request
+import sys
 
 from mlhub.pkg import azkey, is_url
 from mlhub.utils import get_cmd_cwd
@@ -64,7 +66,22 @@ image_features = ["brands"]
 # Send provided image (url or path) to azure to analyse.
 
 if is_url(path):
-    analysis = client.analyze_image(path, image_features)
+    try:
+        headers = {'User-Agent': 'Mozilla/5.0'}
+        req = urllib.request.Request(path, headers=headers)
+
+        if urllib.request.urlopen(req).status == 200:
+            try:
+                analysis = client.analyze_image(path, image_features)
+            except Exception:
+                print("Error: Image URL is not accessible")
+                print(path)
+                sys.exit(1)
+
+    except urllib.error.URLError:
+        print("Error: Image URL is not available.")
+        print(path)
+        sys.exit(1)
 else:
     path = os.path.join(get_cmd_cwd(), path)
     with open(path, 'rb') as fstream:
