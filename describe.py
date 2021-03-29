@@ -14,7 +14,9 @@ from azure.cognitiveservices.vision.computervision.models import VisualFeatureTy
 
 import os
 import argparse
-from textwrap import fill
+import sys
+import urllib.error
+import urllib.request
 
 from mlhub.pkg import azkey, is_url
 from mlhub.utils import get_cmd_cwd
@@ -67,7 +69,23 @@ language = "en"
 max_descriptions = 3
 
 if is_url(path):
-    analysis = client.describe_image(path, max_descriptions, language)
+    try:
+        headers = {'User-Agent': 'Mozilla/5.0'}
+        req = urllib.request.Request(path, headers=headers)
+
+        if urllib.request.urlopen(req).status == 200:
+            try:
+                analysis = client.describe_image(path, max_descriptions, language)
+            except Exception:
+                print("Error: Image URL is not accessible")
+                print(path)
+                sys.exit(1)
+
+    except urllib.error.URLError:
+        print("Error: Image URL is not available.")
+        print(path)
+        sys.exit(1)
+
 else:
     path = os.path.join(get_cmd_cwd(), path)
     with open(path, 'rb') as fstream:
