@@ -76,7 +76,8 @@ if is_url(url):
                 sys.exit(1)
 
     except urllib.error.URLError:
-        print("The Image URL: "+url +" is not available now. ")
+        print("Error: Image URL is not available.")
+        print(url)
         sys.exit(1)
 
 else:
