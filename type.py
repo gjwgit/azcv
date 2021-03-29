@@ -63,10 +63,17 @@ if is_url(url):
         headers = {'User-Agent': 'Mozilla/5.0'}
         req = urllib.request.Request(url, headers=headers)
         if urllib.request.urlopen(req).status == 200:
-            analysis = client.analyze_image(url, features)
+            try:
+                analysis = client.analyze_image(url, features)
+            except Exception:
+                print("Error: Image URL is not accessible")
+                print(url)
+                sys.exit(1)
+
     except urllib.error.URLError:
-        analysis = ""
-        print("The url is not available now. ")
+        print("The Image URL: "+url +" is not available now. ")
+        sys.exit(1)
+
 else:
     path = os.path.join(get_cmd_cwd(), url)
     with open(path, 'rb') as fstream:
