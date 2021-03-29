@@ -20,6 +20,9 @@ import argparse
 from mlhub.pkg import azkey, is_url
 from mlhub.utils import get_cmd_cwd
 
+import urllib.error
+import urllib.request
+
 # ----------------------------------------------------------------------
 # Parse command line arguments
 # ----------------------------------------------------------------------
@@ -53,32 +56,51 @@ client = ComputerVisionClient(endpoint, credentials)
 
 url = args.path
 
-features = VisualFeatureTypes.image_type
+features = [VisualFeatureTypes.image_type]
 
 if is_url(url):
-    analysis = client.analyze_image(url, features)
+    try:
+        headers = {'User-Agent': 'Mozilla/5.0'}
+        req = urllib.request.Request(url, headers=headers)
+        if urllib.request.urlopen(req).status == 200:
+            try:
+                analysis = client.analyze_image(url, features)
+            except Exception as e:
+                print(f"Error: {e}\n{url}")
+                sys.exit(1)
+
+    except urllib.error.URLError:
+        print("Error: The URL does not appear to exist. Please check.")
+        print(url)
+        sys.exit(1)
+
 else:
     path = os.path.join(get_cmd_cwd(), url)
     with open(path, 'rb') as fstream:
-        analysis = client.analyze_image_in_stream(fstream, features)
+        try:
+            analysis = client.analyze_image_in_stream(fstream, features)
+        except Exception as e:
+            print(f"Error: {e}\n{path}")
+            sys.exit(1)
 
-ca = analysis.image_type.clip_art_type
-ld = analysis.image_type.line_drawing_type
+if analysis:
+    ca = analysis.image_type.clip_art_type
+    ld = analysis.image_type.line_drawing_type
 
-cat = ""
-if ca == 0:
-    cat = "no"
-elif ca == 1:
-    cat = "ambiguous"
-elif ca == 2:
-    cat = "ok"
-elif ca == 3:
-    cat = "good"
+    cat = ""
+    if ca == 0:
+        cat = "no"
+    elif ca == 1:
+        cat = "ambiguous"
+    elif ca == 2:
+        cat = "ok"
+    elif ca == 3:
+        cat = "good"
 
-ldt = ""
-if ld == 0:
-    ldt = "no"
-elif ld == 1:
-    ldt = "yes"
+    ldt = ""
+    if ld == 0:
+        ldt = "no"
+    elif ld == 1:
+        ldt = "yes"
 
-print(f"{cat},{ldt}")
+    print(f"{cat},{ldt}")

@@ -16,6 +16,8 @@ import os
 import sys
 #import time
 import argparse
+import urllib.error
+import urllib.request
 
 from mlhub.pkg import azkey, is_url
 from mlhub.utils import get_cmd_cwd
@@ -61,11 +63,30 @@ domain = "landmarks"
 language = "en"
 
 if is_url(url):
-    analysis = client.analyze_image_by_domain(domain, url, language)
+    try:
+        headers = {'User-Agent': 'Mozilla/5.0'}
+        req = urllib.request.Request(url, headers=headers)
+
+        if urllib.request.urlopen(req).status == 200:
+            try:
+                analysis = client.analyze_image_by_domain(domain, url, language)
+            except Exception as e:
+                print(f"Error: {e}\n{url}")
+                sys.exit(1)
+
+    except urllib.error.URLError:
+        print("Error: The URL does not appear to exist. Please check.")
+        print(url)
+        sys.exit(1)
+
 else:
     path = os.path.join(get_cmd_cwd(), url)
     with open(path, 'rb') as fstream:
-        analysis = client.analyze_image_by_domain_in_stream(domain, fstream, language)
+        try:
+            analysis = client.analyze_image_by_domain_in_stream(domain, fstream, language)
+        except Exception as e:
+            print(f"Error: {e}\n{path}")
+            sys.exit(1)
     
 for landmark in analysis.result["landmarks"]:
     print('{},{}'.format(round(landmark["confidence"],2), landmark["name"], ))

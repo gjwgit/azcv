@@ -14,7 +14,9 @@ from azure.cognitiveservices.vision.computervision.models import VisualFeatureTy
 
 import os
 import argparse
-from textwrap import fill
+import sys
+import urllib.error
+import urllib.request
 
 from mlhub.pkg import azkey, is_url
 from mlhub.utils import get_cmd_cwd
@@ -67,11 +69,30 @@ language = "en"
 max_descriptions = 3
 
 if is_url(path):
-    analysis = client.describe_image(path, max_descriptions, language)
+    try:
+        headers = {'User-Agent': 'Mozilla/5.0'}
+        req = urllib.request.Request(path, headers=headers)
+
+        if urllib.request.urlopen(req).status == 200:
+            try:
+                analysis = client.describe_image(path, max_descriptions, language)
+            except Exception as e:
+                print(f"Error: {e}\n{path}")
+                sys.exit(1)
+
+    except urllib.error.URLError:
+        print("Error: The URL does not appear to exist. Please check.")
+        print(path)
+        sys.exit(1)
+
 else:
     path = os.path.join(get_cmd_cwd(), path)
     with open(path, 'rb') as fstream:
-        analysis = client.describe_image_in_stream(fstream, max_descriptions, language)
+        try:
+            analysis = client.describe_image_in_stream(fstream, max_descriptions, language)
+        except Exception as e:
+            print(f"Error: {e}\n{path}")
+            sys.exit(1)
 
 for caption in analysis.captions:
     print("{},{}".format(round(caption.confidence, 2), caption.text))

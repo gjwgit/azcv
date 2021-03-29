@@ -13,7 +13,9 @@ from azure.cognitiveservices.vision.computervision import ComputerVisionClient
 
 import os
 import argparse
-from textwrap import fill
+import urllib.error
+import urllib.request
+import sys
 
 from mlhub.pkg import azkey, is_url
 from mlhub.utils import get_cmd_cwd
@@ -62,11 +64,30 @@ path = args.path
 image_features = ["categories"]
 
 if is_url(path):
-    analysis = client.analyze_image(path, image_features)
+    try:
+        headers = {'User-Agent': 'Mozilla/5.0'}
+        req = urllib.request.Request(path, headers=headers)
+
+        if urllib.request.urlopen(req).status == 200:
+            try:
+                analysis = client.analyze_image(path, image_features)
+            except Exception as e:
+                print(f"Error: {e}\n{path}")
+                sys.exit(1)
+
+    except urllib.error.URLError:
+        print("Error: The URL does not appear to exist. Please check.")
+        print(path)
+        sys.exit(1)
+
 else:
     path = os.path.join(get_cmd_cwd(), path)
     with open(path, 'rb') as fstream:
-        analysis = client.analyze_image_in_stream(fstream, image_features)
+        try:
+            analysis = client.analyze_image_in_stream(fstream, image_features)
+        except Exception as e:
+            print(f"Error: {e}\n{path}")
+            sys.exit(1)
 
 for category in analysis.categories:
         print(f"{category.score:.2f},{category.name}")

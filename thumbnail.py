@@ -15,7 +15,10 @@ from azure.cognitiveservices.vision.computervision.models import VisualFeatureTy
 import os
 import argparse
 from urllib.parse import urlparse
-from textwrap import fill
+import urllib.error
+import urllib.request
+import sys
+
 from PIL import Image
 import io 			# Create local image.
 import re
@@ -62,13 +65,32 @@ width = 50
 height = 50
 
 if is_url(url):
-    analysis = client.generate_thumbnail(width, height, url)
-    sname = re.sub('\.(\w+)$', r'-thumbnail.\1', os.path.basename(urlparse(url).path))
-    sname = os.path.join(get_cmd_cwd(), sname)
+    try:
+        headers = {'User-Agent': 'Mozilla/5.0'}
+        req = urllib.request.Request(url, headers=headers)
+
+        if urllib.request.urlopen(req).status == 200:
+            try:
+                analysis = client.generate_thumbnail(width, height, url)
+            except Exception as e:
+                print(f"Error: {e}\n{url}")
+                sys.exit(1)
+        sname = re.sub('\.(\w+)$', r'-thumbnail.\1', os.path.basename(urlparse(url).path))
+        sname = os.path.join(get_cmd_cwd(), sname)
+
+    except urllib.error.URLError:
+        print("Error: The URL does not appear to exist. Please check.")
+        print(url)
+        sys.exit(1)
 else:
     path = os.path.join(get_cmd_cwd(), url)
     with open(path, 'rb') as fstream:
-        analysis = client.generate_thumbnail_in_stream(width, height, fstream)
+        try:
+            analysis = client.generate_thumbnail_in_stream(width, height, fstream)
+        except Exception as e:
+            print(f"Error: {e}\n{path}")
+            sys.exit(1)
+
     sname = re.sub('\.(\w+)$', r'-thumbnail.\1', path)
 
 for x in analysis:
