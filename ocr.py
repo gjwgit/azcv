@@ -73,7 +73,12 @@ if is_url(url):
         print(f"The URL does not appear to exist. Please check.")
         print(f"    {url}")
         quit()
-    rawHttpResponse = client.read(url, raw=raw)
+    try:
+        rawHttpResponse = client.read(url, raw=raw)
+    except Exception as e:
+        print(f"Error: {e}\n{url}")
+        quit()
+
 else:
     path = os.path.join(get_cmd_cwd(), url)
     with open(path, 'rb') as fstream:
