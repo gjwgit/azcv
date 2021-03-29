@@ -73,13 +73,12 @@ if is_url(path):
         if urllib.request.urlopen(req).status == 200:
             try:
                 analysis = client.analyze_image(path, image_features)
-            except Exception:
-                print("Error: Image URL is not accessible")
-                print(path)
+            except Exception as e:
+                print(f"Error: {e}\n{path}")
                 sys.exit(1)
 
     except urllib.error.URLError:
-        print("Error: Image URL is not available.")
+        print("Error: The URL does not appear to exist. Please check.")
         print(path)
         sys.exit(1)
 
