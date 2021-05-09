@@ -139,11 +139,11 @@ $ ml tags azcv https://www.wayoutback.com.au/assets/Uploads/Uluru.jpg
 0.93,canyon
 ...
 ```
-See [Landmarks and Tags](TAGS.md) for further details and examples.
+See [Landmarks and Tags](docs/TAGS.md) for further details and examples.
 
 **Faces**
 
-![](gala.png)
+![](docs/gala.png)
 
 ```console
 $ wget https://g3n1u5.com/mlhub/gala.png -O img.png
@@ -183,7 +183,7 @@ $ cat img_bb.txt |
 $ display img_bb.png
 ```
 
-![](gala_bb.png)
+![](docs/gala_bb.png)
 
 **Celebrities**
 
@@ -206,7 +206,7 @@ $ ml celebrities azcv https://res.cloudinary.com/uktv/image/upload/v1402498133/m
 The *objects* command returns the bounding box of any identified
 objects within the image.
 
-![](objects_bb.png)
+![](docs/objects_bb.png)
 
 
 ```console
@@ -227,7 +227,7 @@ signs. Here we use OCR to identify all text in the image, including
 the street sign, the bus text, and even text from a sign post. The
 bounding boxes are returned together with the identified text.
 
-![](semarang.jpg)
+![](docs/semarang.jpg)
 
 ```console
 $ ml ocr azcv https://farm4.staticflickr.com/3883/15144849957_f326e03f75_b.jpg
@@ -237,7 +237,7 @@ $ ml ocr azcv https://farm4.staticflickr.com/3883/15144849957_f326e03f75_b.jpg
 ...
 ```
 
-See [Reading Street Signs](STREET.md) for further details and examples.
+See [Reading Street Signs](docs/STREET.md) for further details and examples.
 
 
 **Extracting Text from Handwriting using OCR**
@@ -246,9 +246,9 @@ Even handwriting is recognisable with today's OCR. Once again the
 bounding box of the text together with the text itself is returned by
 the command.
 
-![](handwriting_demo.png)
+![](docs/handwriting_demo.png)
 
-See [Extract Text for Handwriting](HAND_WRITING.md) for further details and examples.
+See [Extract Text for Handwriting](docs/HAND_WRITING.md) for further details and examples.
 
 **Extract Programming Code from Screenshots using OCR**
 
@@ -258,9 +258,9 @@ actual program, without manually re-typing it. We can again use
 OCR. Here the bounding boxes have been filtered out and just the code
 is shown.
 
-![](code_demo.png)
+![](docs/code_demo.png)
 
-See [Extract Code from Screenshots](CODE.md) for further details and examples.
+See [Extract Code from Screenshots](docs/CODE.md) for further details and examples.
 
 **Thumbnails**
 
@@ -269,17 +269,17 @@ from an image. Ideally it is in some way representative of the
 image. The *thumbnail* command will choose a "good" region of the
 image to display as a thumbnail.
 
-![](eiffel_thumbnail.png)
+![](docs/eiffel_thumbnail.png)
 
 ```console
 $ ml thumbnail azcv img.jpg
 img-thumbnail.jpg
 ```
-See [Thumbnail Examples](THUMBNAIL.md) for further details and examples.
+See [Thumbnail Examples](docs/THUMBNAIL.md) for further details and examples.
 
 **Detecting Brands**
 
-![](brands_bb.png)
+![](docs/brands_bb.png)
 
 ```console
 $ ml brands azcv https://docs.microsoft.com/en-us/azure/cognitive-services/computer-vision/images/gray-shirt-logo.jpg
@@ -289,7 +289,7 @@ $ ml brands azcv https://docs.microsoft.com/en-us/azure/cognitive-services/compu
 
 **Detecting Faces**
 
-![](faces_bb.png)
+![](docs/faces_bb.png)
 
 ```console
 $ ml faces azcv https://raw.githubusercontent.com/Azure-Samples/cognitive-services-sample-data-files/master/ComputerVision/Images/faces.jpg
@@ -326,28 +326,28 @@ white image, the accent (most vibrant) colour, the dominant background
 and foreground, and then a list of dominant colors. In the examples
 below we include the accent colour beside the original image.
 
-![](mountain_vista_accent.png)
+![](docs/mountain_vista_accent.png)
 
 ```console
 $ ml color azcv https://docs.microsoft.com/en-us/azure/cognitive-services/Computer-vision/images/mountain_vista.png
 True,BB6D10,Black,Black,Black White
 ```
 
-![](flower_accent.png)
+![](docs/flower_accent.png)
 
 ```console
 $ ml color azcv https://docs.microsoft.com/en-us/azure/cognitive-services/Computer-vision/images/flower.png
 True,C6A205,Black,White,Black White Green 
 ```
 
-![](bw_buildings_accent.png)
+![](docs/bw_buildings_accent.png)
 
 ```console
 $ ml color azcv https://docs.microsoft.com/en-us/azure/cognitive-services/Computer-vision/images/bw_buildings.png
 False,282828,White,Grey,Grey White 
 ```
 
-![](house_yard_accent.png)
+![](docs/house_yard_accent.png)
 
 ```console
 $ ml color axcv https://docs.microsoft.com/en-us/azure/cognitive-services/Computer-vision/images/house_yard.png
@@ -651,7 +651,7 @@ Press Enter to continue:
 ```console
 Close the graphic window using Ctrl-w.
 ```
-![thumbnail](sample_thumbnail.jpg)
+![thumbnail](docs/sample_thumbnail.jpg)
 
 ```console
 Thank you for exploring the 'azcv' package.
