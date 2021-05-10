@@ -113,7 +113,7 @@ try:
     image_analysis = client.analyze_image(url, visual_features=[VisualFeatureTypes.tags])
 except Exception as e:
     print(f"Error: {e}", file=sys.stderr)
-    print("Please run ml configure azcv to update your configuration.", file=sys.stderr)
+    print("Please run ml configure azcv to update your private information.", file=sys.stderr)
     quit()
 
 for tag in image_analysis.tags:
@@ -162,7 +162,7 @@ try:
     analysis = client.analyze_image_by_domain(domain, url, language)
 except Exception as e:
     print(f"Error: {e}", file=sys.stderr)
-    print("Please run ml configure azcv to update your configuration.", file=sys.stderr)
+    print("Please run ml configure azcv to update your private information.", file=sys.stderr)
     quit()
 
 mlask()
@@ -199,7 +199,7 @@ try:
     analysis = client.describe_image(url, max_descriptions, language)
 except Exception as e:
     print(f"Error: {e}", file=sys.stderr)
-    print("Please run ml configure azcv to update your configuration.", file=sys.stderr)
+    print("Please run ml configure azcv to update your private information.", file=sys.stderr)
     quit()
 
 mlask(end="\n")
@@ -250,7 +250,7 @@ try:
     rawHttpResponse = client.read(url, raw=raw)
 except Exception as e:
     print(f"Error: {e}", file=sys.stderr)
-    print("Please run ml configure azcv to update your configuration.", file=sys.stderr)
+    print("Please run ml configure azcv to update your private information.", file=sys.stderr)
     quit()
 
 # Get ID from returned headers.
@@ -304,7 +304,7 @@ try:
     thumbnail = client.generate_thumbnail(width, height, url)
 except Exception as e:
     print(f"Error: {e}", file=sys.stderr)
-    print("Please run ml configure azcv to update your configuration.", file=sys.stderr)
+    print("Please run ml configure azcv to update your private information.", file=sys.stderr)
     quit()
 
 for x in thumbnail:
