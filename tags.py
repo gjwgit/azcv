@@ -18,18 +18,15 @@
 import os
 import argparse
 import requests
+import sys
 
-from mlhub.pkg import azkey, is_url
-from mlhub.utils import get_cmd_cwd
+from mlhub.pkg import is_url
+from mlhub.utils import get_cmd_cwd, get_private
 
 from msrest.authentication import CognitiveServicesCredentials
 from azure.cognitiveservices.vision.computervision import ComputerVisionClient
 from azure.cognitiveservices.vision.computervision.models import VisualFeatureTypes
 
-# Defaults.
-
-SERVICE   = "Computer Vision"
-KEY_FILE  = os.path.join(os.getcwd(), "private.txt")
 
 # ----------------------------------------------------------------------
 # Parse command line arguments
@@ -44,10 +41,22 @@ option_parser.add_argument(
 args = option_parser.parse_args()
 
 # ----------------------------------------------------------------------
-# Request subscription key and endpoint from user.
+# Request subscription key and location from user.
 # ----------------------------------------------------------------------
 
-subscription_key, endpoint = azkey(KEY_FILE, SERVICE, verbose=False)
+PRIVATE_FILE = "private.json"
+
+path = os.path.join(os.getcwd(), PRIVATE_FILE)
+
+private_dic = get_private(path, "azcv")
+
+if "key" not in private_dic:
+    print("There is no key in private.json. Please run ml configure azcv to upload your key.", file=sys.stderr)
+    sys.exit(1)
+
+subscription_key = private_dic["key"]
+
+endpoint = private_dic["endpoint"]
 
 # Set credentials.
 

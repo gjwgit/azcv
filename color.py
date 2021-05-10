@@ -17,8 +17,8 @@ import sys
 import urllib.error
 import urllib.request
 
-from mlhub.pkg import azkey, is_url
-from mlhub.utils import get_cmd_cwd
+from mlhub.pkg import is_url
+from mlhub.utils import get_cmd_cwd, get_private
 
 # ----------------------------------------------------------------------
 # Parse command line arguments
@@ -33,13 +33,22 @@ option_parser.add_argument(
 args = option_parser.parse_args()
 
 # ----------------------------------------------------------------------
+# Request subscription key and location from user.
+# ----------------------------------------------------------------------
 
-SERVICE   = "Computer Vision"
-KEY_FILE  = os.path.join(os.getcwd(), "private.txt")
+PRIVATE_FILE = "private.json"
 
-# Request subscription key and endpoint from user.
+path = os.path.join(os.getcwd(), PRIVATE_FILE)
 
-subscription_key, endpoint = azkey(KEY_FILE, SERVICE, verbose=False)
+private_dic = get_private(path, "azcv")
+
+if "key" not in private_dic:
+    print("There is no key in private.json. Please run ml configure azcv to upload your key.", file=sys.stderr)
+    sys.exit(1)
+
+subscription_key = private_dic["key"]
+
+endpoint = private_dic["endpoint"]
 
 # Set credentials.
 

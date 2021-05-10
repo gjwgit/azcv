@@ -10,7 +10,6 @@
 
 from msrest.authentication import CognitiveServicesCredentials
 from azure.cognitiveservices.vision.computervision import ComputerVisionClient
-from mlhub.utils import get_private
 
 import os
 import argparse
@@ -20,7 +19,7 @@ import urllib.error
 import urllib.request
 
 from mlhub.pkg import is_url
-from mlhub.utils import get_cmd_cwd
+from mlhub.utils import get_cmd_cwd, get_private
 
 # ----------------------------------------------------------------------
 # Parse command line arguments
@@ -50,7 +49,7 @@ if "key" not in private_dic:
 
 subscription_key = private_dic["key"]
 
-endpoint = private_dic["location"]
+endpoint = private_dic["endpoint"]
 
 # Set credentials.
 

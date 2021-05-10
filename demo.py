@@ -12,7 +12,8 @@
 #
 # https://pypi.org/project/azure-cognitiveservices-vision-computervision
 
-from mlhub.pkg import azkey, azrequest, mlask, mlcat, mlpreview
+from mlhub.pkg import mlask, mlcat, mlpreview
+from mlhub.utils import get_private
 
 mlcat("Azure Computer Vision API", """\
 Welcome to a demo of pre-built models for Computer Vision available as 
@@ -57,13 +58,22 @@ upgrades. Please upgrade to the latest version of that library using:
 """)
     
 # ----------------------------------------------------------------------
-# Request subscription key and endpoint from user.
+# Request subscription key and location from user.
 # ----------------------------------------------------------------------
 
-SERVICE   = "Computer Vision"
-KEY_FILE  = os.path.join(os.getcwd(), "private.txt")
+PRIVATE_FILE = "private.json"
 
-key, endpoint = azkey(KEY_FILE, SERVICE)
+path = os.path.join(os.getcwd(), PRIVATE_FILE)
+
+private_dic = get_private(path, "azcv")
+
+if "key" not in private_dic:
+    print("There is no key in private.json. Please run ml configure azcv to upload your key.", file=sys.stderr)
+    sys.exit(1)
+
+key = private_dic["key"]
+
+endpoint = private_dic["endpoint"]
 
 mlask()
 
