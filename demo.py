@@ -107,9 +107,13 @@ mlask(end="\n")
 
 mlcat("Tag Analysis",
 """We list the tags for the image together with a measure of confidence.
-""") 
+""")
 
-image_analysis = client.analyze_image(url, visual_features=[VisualFeatureTypes.tags])
+try:
+    image_analysis = client.analyze_image(url, visual_features=[VisualFeatureTypes.tags])
+except Exception as e:
+    print(f"Error: {e}\n{url}")
+    quit()
 
 for tag in image_analysis.tags:
     if tag.confidence > 0.2:
@@ -153,7 +157,11 @@ mlpreview(url)
 
 language = "en"
 
-analysis = client.analyze_image_by_domain(domain, url, language)
+try:
+    analysis = client.analyze_image_by_domain(domain, url, language)
+except Exception as e:
+    print(f"Error: {e}\n{url}")
+    quit()
 
 mlask()
 
@@ -185,7 +193,11 @@ max_descriptions = 3
 
 mlpreview(url)
 
-analysis = client.describe_image(url, max_descriptions, language)
+try:
+    analysis = client.describe_image(url, max_descriptions, language)
+except Exception as e:
+    print(f"Error: {e}\n{url}")
+    quit()
 
 mlask(end="\n")
 
@@ -231,8 +243,11 @@ raw = True
 numberOfCharsInOperationId = 36
 
 # Asynchronous call.
-
-rawHttpResponse = client.read(url, raw=raw)
+try:
+    rawHttpResponse = client.read(url, raw=raw)
+except Exception as e:
+    print(f"Error: {e}\n{url}")
+    quit()
 
 # Get ID from returned headers.
 
@@ -281,7 +296,11 @@ mlpreview(url)
 width = 50 
 height = 50
 
-thumbnail = client.generate_thumbnail(width, height, url)
+try:
+    thumbnail = client.generate_thumbnail(width, height, url)
+except Exception as e:
+    print(f"Error: {e}\n{url}")
+    quit()
 
 for x in thumbnail:
     image = Image.open(io.BytesIO(x))
