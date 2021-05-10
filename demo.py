@@ -162,9 +162,9 @@ for landmark in analysis.result["landmarks"]:
 
 mlask(begin="\n", end="\n")
 
-url1 = "http://www.public-domain-photos.com/"
-url2 = "free-stock-photos-4/travel/san-francisco/"
-url3 = "golden-gate-bridge-in-san-francisco.jpg"
+url1 = "https://cdn.britannica.com/"
+url2 = "95/94195-050-FCBF777E/"
+url3 = "Golden-Gate-Bridge-San-Francisco.jpg"
 url  = url1 + url2 + url3
 
 mlcat("Text Description of an Image",
@@ -272,7 +272,7 @@ thumbnail.
 For our demonstration we will analyze the following image which we will also 
 display momentarily:
 
-url:{}""".format(url), begin="\n")
+URL:{}""".format(url), begin="\n")
 
 mlpreview(url)
 
