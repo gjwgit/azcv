@@ -259,9 +259,7 @@ if result.status == OperationStatusCodes.succeeded:
             
 mlask()
 
-url1 = "http://www.public-domain-photos.com/free-stock-photos-4/"
-url2 = "travel/san-francisco/golden-gate-bridge-in-san-francisco.jpg"
-url  = url1 + url2
+url = "https://cdn.britannica.com/95/94195-050-FCBF777E/Golden-Gate-Bridge-San-Francisco.jpg"
 
 mlcat("Generate Good Thumbnails",
 """A utility provided by the service can generate a thumbnail (JPG) of an image. 
@@ -274,8 +272,7 @@ thumbnail.
 For our demonstration we will analyze the following image which we will also 
 display momentarily:
 
-Site: {}
-Path: {}""".format(url1, url2), begin="\n")
+url:{}""".format(url), begin="\n")
 
 mlpreview(url)
 
