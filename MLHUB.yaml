@@ -7,7 +7,8 @@ meta:
   languages    : py
   display      : demo
   license      : mit
-  private      : Computer Vision, key*, endpoint
+  private      :
+    Computer Vision : key*, endpoint
   author       : Graham.Williams@togaware.com
   url          : https://github.com/gjwgit/azcv
 dependencies:
