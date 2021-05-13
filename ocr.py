@@ -46,13 +46,13 @@ path = os.path.join(os.getcwd(), PRIVATE_FILE)
 
 private_dic = get_private(path, "azcv")
 
-if "key" not in private_dic:
+if "key" not in private_dic["Computer Vision"]:
     print("There is no key in private.json. Please run ml configure azcv to upload your key.", file=sys.stderr)
     sys.exit(1)
 
-key = private_dic["key"]
+key = private_dic["Computer Vision"]["key"]
 
-endpoint = private_dic["endpoint"]
+endpoint = private_dic["Computer Vision"]["endpoint"]
 
 # Set credentials.
 
