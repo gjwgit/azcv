@@ -33,7 +33,7 @@ option_parser.add_argument(
 args = option_parser.parse_args()
 
 # ----------------------------------------------------------------------
-# Request subscription key and location from user.
+# Request subscription key and endpoint from user.
 # ----------------------------------------------------------------------
 
 subscription_key, endpoint = reuqest_priv_info()
@@ -65,21 +65,18 @@ image_features = ["faces"]
 if is_url(path):
     request = requests.get(path)
     if request.status_code != 200:
-        print(f"Error: The URL does not appear to exist. Please check.\n{path}")
-        quit()
+        sys.exit(f"Error: The URL does not appear to exist. Please check.\n{path}")
     try:
         analysis = client.analyze_image(path, image_features)
     except Exception as e:
-        print(f"Error: {e}\n{path}")
-        quit()
+        sys.exit(f"Error: {e}\n{path}")
 else:
     path = os.path.join(get_cmd_cwd(), path)
     with open(path, 'rb') as fstream:
         try:
             analysis = client.analyze_image_in_stream(fstream, image_features)
         except Exception as e:
-            print(f"Error: {e}\n{path}")
-            quit()
+            sys.exit(f"Error: {e}\n{path}")
 
 for face in analysis.faces:
         print(f"{face.face_rectangle.left} {face.face_rectangle.top} " +

@@ -39,7 +39,7 @@ option_parser.add_argument(
 args = option_parser.parse_args()
 
 # ----------------------------------------------------------------------
-# Request subscription key and location from user.
+# Request subscription key and endpoint from user.
 # ----------------------------------------------------------------------
 
 subscription_key, endpoint = reuqest_priv_info()
@@ -70,23 +70,20 @@ if is_url(url):
             try:
                 analysis = client.generate_thumbnail(width, height, url)
             except Exception as e:
-                print(f"Error: {e}\n{url}")
-                sys.exit(1)
+                sys.exit(f"Error: {e}\n{url}")
         sname = re.sub('\.(\w+)$', r'-thumbnail.\1', os.path.basename(urlparse(url).path))
         sname = os.path.join(get_cmd_cwd(), sname)
 
     except urllib.error.URLError:
-        print("Error: The URL does not appear to exist. Please check.")
-        print(url)
-        sys.exit(1)
+        sys.exit("Error: The URL does not appear to exist. Please check."
+                 f"{url}")
 else:
     path = os.path.join(get_cmd_cwd(), url)
     with open(path, 'rb') as fstream:
         try:
             analysis = client.generate_thumbnail_in_stream(width, height, fstream)
         except Exception as e:
-            print(f"Error: {e}\n{path}")
-            sys.exit(1)
+            sys.exit(f"Error: {e}\n{path}")
 
     sname = re.sub('\.(\w+)$', r'-thumbnail.\1', path)
 

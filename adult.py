@@ -33,7 +33,7 @@ option_parser.add_argument(
 args = option_parser.parse_args()
 
 # ----------------------------------------------------------------------
-# Request subscription key and location from user.
+# Request subscription key and endpoint from user.
 # ----------------------------------------------------------------------
 
 subscription_key, endpoint = reuqest_priv_info()
@@ -71,13 +71,11 @@ if is_url(path):
                 analysis = client.analyze_image(path, image_features)
 
             except Exception as e:
-                print(f"Error: {e}\n{path}")
-                sys.exit(1)
+                sys.exit(f"Error: {e}\n{path}")
 
     except urllib.error.URLError:
-        print("Error: The URL does not appear to exist. Please check.")
-        print(path)
-        sys.exit(1)
+        sys.exit("Error: The URL does not appear to exist. Please check.\n"
+                 f"{path}")
 
 else:
     path = os.path.join(get_cmd_cwd(), path)
@@ -85,8 +83,7 @@ else:
         try:
             analysis = client.analyze_image_in_stream(fstream, image_features)
         except Exception as e:
-            print(f"Error: {e}\n{path}")
-            sys.exit(1)
+            sys.exit(f"Error: {e}\n{path}")
 
 
 print(f"{analysis.adult.adult_score:.2f}," +

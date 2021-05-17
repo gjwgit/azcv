@@ -3,7 +3,7 @@ from mlhub.pkg import get_private
 
 
 # ----------------------------------------------------------------------
-# Request subscription key and location from user.
+# Request subscription key and endpoint from user.
 # ----------------------------------------------------------------------
 
 def reuqest_priv_info():

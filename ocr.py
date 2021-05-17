@@ -37,7 +37,7 @@ option_parser.add_argument(
 args = option_parser.parse_args()
 
 # ----------------------------------------------------------------------
-# Request subscription key and location from user.
+# Request subscription key and endpoint from user.
 # ----------------------------------------------------------------------
 
 key, endpoint = reuqest_priv_info()
@@ -65,14 +65,12 @@ numberOfCharsInOperationId = 36
 if is_url(url):
     request = requests.get(url)
     if request.status_code != 200:
-        print(f"The URL does not appear to exist. Please check.")
-        print(f"    {url}")
-        quit()
+        sys.exit("The URL does not appear to exist. Please check.\n"
+                 f"{url}")
     try:
         rawHttpResponse = client.read(url, raw=raw)
     except Exception as e:
-        print(f"Error: {e}\n{url}")
-        quit()
+        sys.exit(f"Error: {e}\n{url}")
 
 else:
     path = os.path.join(get_cmd_cwd(), url)
@@ -80,8 +78,7 @@ else:
         try:
             rawHttpResponse = client.read_in_stream(fstream, raw=raw)
         except Exception as e:
-            print(f"Error: {e}\n{path}")
-            sys.exit(1)
+            sys.exit(f"Error: {e}\n{path}")
 
 # Get ID from returned headers.
 

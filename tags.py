@@ -41,7 +41,7 @@ option_parser.add_argument(
 args = option_parser.parse_args()
 
 # ----------------------------------------------------------------------
-# Request subscription key and location from user.
+# Request subscription key and endpoint from user.
 # ----------------------------------------------------------------------
 
 subscription_key, endpoint = reuqest_priv_info()
@@ -68,8 +68,7 @@ if is_url(url):
     try:
         analysis = client.analyze_image(url, visual_features=[VisualFeatureTypes.tags])
     except Exception as e:
-        print(f"Error: {e}\n{url}")
-        quit()
+        sys.exit(f"Error: {e}\n{url}")
     
 else:
     path = os.path.join(get_cmd_cwd(), url)
@@ -77,16 +76,14 @@ else:
         # https://docs.microsoft.com/en-us/azure/cognitive-services/custom-vision-service/limits-and-quotas
         size=os.path.getsize(path)/1000000
         if size > 4:
-            print(f"The image file is too large for Azure at {size:.2} MB > 4.0 MB. Reduce and try again.")
-            print(f"    {path}")
-            print("\nFor example, use imagemagick's convert command:")
-            print(f"    $ convert {path} -resize 25% new.jpg\n")
-            exit()
+            sys.exit("The image file is too large for Azure at {size:.2} MB > 4.0 MB. Reduce and try again."
+                     f"{path}\n"
+                     "For example, use imagemagick's convert command:\n"
+                     f"$ convert {path} -resize 25% new.jpg")
         try:
             analysis = client.analyze_image_in_stream(fstream, visual_features=[VisualFeatureTypes.tags])
         except Exception as e:
-            print(f"Error: {e}\n{path}")
-            quit()
+            sys.exit(f"Error: {e}\n{path}")
    
 for tag in analysis.tags:
     if tag.confidence > 0.2:
