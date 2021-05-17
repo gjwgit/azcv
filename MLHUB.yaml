@@ -31,6 +31,7 @@ dependencies:
     - color.py
     - type.py
     - gui.py
+    - utils.py
     - docs/handwritting_malala.jpg: images/handwritting_malala.jpg
     - https://github.com/gjwgit/azcv/raw/master/images/mycat.png: images/mycat.png
     - https://raw.githubusercontent.com/Azure-Samples/cognitive-services-sample-data-files/master/ComputerVision/Images/landmark.jpg: images/landmark.jpg
