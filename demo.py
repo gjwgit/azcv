@@ -12,8 +12,7 @@
 #
 # https://pypi.org/project/azure-cognitiveservices-vision-computervision
 
-from mlhub.pkg import mlask, mlcat, mlpreview
-from mlhub.utils import get_private
+from mlhub.pkg import mlask, mlcat, mlpreview, get_private
 
 mlcat("Azure Computer Vision API", """\
 Welcome to a demo of pre-built models for Computer Vision available as 

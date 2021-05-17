@@ -15,8 +15,7 @@ import time
 import argparse
 import requests
 
-from mlhub.pkg import is_url
-from mlhub.utils import get_cmd_cwd, get_private
+from mlhub.pkg import is_url, get_cmd_cwd, get_private
 
 from azure.cognitiveservices.vision.computervision import ComputerVisionClient
 from azure.cognitiveservices.vision.computervision import VERSION as azver

@@ -17,8 +17,7 @@ import requests
 import sys
 from textwrap import fill
 
-from mlhub.pkg import is_url
-from mlhub.utils import get_cmd_cwd, get_private
+from mlhub.pkg import is_url, get_cmd_cwd, get_private
 
 # ----------------------------------------------------------------------
 # Parse command line arguments
