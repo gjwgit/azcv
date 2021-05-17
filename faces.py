@@ -18,6 +18,7 @@ import sys
 from textwrap import fill
 
 from mlhub.pkg import is_url, get_cmd_cwd, get_private
+from utils import reuqest_priv_info
 
 # ----------------------------------------------------------------------
 # Parse command line arguments
@@ -35,15 +36,7 @@ args = option_parser.parse_args()
 # Request subscription key and location from user.
 # ----------------------------------------------------------------------
 
-PRIVATE_FILE = "private.json"
-
-path = os.path.join(os.getcwd(), PRIVATE_FILE)
-
-private_dic = get_private(path, "azcv")
-
-subscription_key = private_dic["Computer Vision"]["key"]
-
-endpoint = private_dic["Computer Vision"]["endpoint"]
+subscription_key, endpoint = reuqest_priv_info()
 
 # Set credentials.
 
