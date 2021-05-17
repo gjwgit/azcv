@@ -15,7 +15,7 @@ dependencies:
   pip3:
     - azure-cognitiveservices-vision-computervision
   files:
-    - README.md
+    - docs/README.md
     - demo.py
     - ocr.py
     - landmarks.py
