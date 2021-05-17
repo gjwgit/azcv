@@ -15,13 +15,10 @@ import time
 import argparse
 import requests
 
-from distutils.version import StrictVersion as ver
-
-from mlhub.pkg import azkey, is_url
-from mlhub.utils import get_cmd_cwd
+from mlhub.pkg import is_url, get_cmd_cwd
+from utils import request_priv_info
 
 from azure.cognitiveservices.vision.computervision import ComputerVisionClient
-from azure.cognitiveservices.vision.computervision import VERSION as azver
 from azure.cognitiveservices.vision.computervision.models import OperationStatusCodes
 
 from msrest.authentication import CognitiveServicesCredentials
@@ -39,13 +36,10 @@ option_parser.add_argument(
 args = option_parser.parse_args()
 
 # ----------------------------------------------------------------------
-
-SERVICE   = "Computer Vision"
-KEY_FILE  = os.path.join(os.getcwd(), "private.txt")
-
 # Request subscription key and endpoint from user.
+# ----------------------------------------------------------------------
 
-key, endpoint = azkey(KEY_FILE, SERVICE, verbose=False)
+key, endpoint = request_priv_info()
 
 # Set credentials.
 
@@ -70,14 +64,12 @@ numberOfCharsInOperationId = 36
 if is_url(url):
     request = requests.get(url)
     if request.status_code != 200:
-        print(f"The URL does not appear to exist. Please check.")
-        print(f"    {url}")
-        quit()
+        sys.exit("The URL does not appear to exist. Please check.\n"
+                 f"{url}")
     try:
         rawHttpResponse = client.read(url, raw=raw)
     except Exception as e:
-        print(f"Error: {e}\n{url}")
-        quit()
+        sys.exit(f"Error: {e}\n{url}")
 
 else:
     path = os.path.join(get_cmd_cwd(), url)
@@ -85,8 +77,7 @@ else:
         try:
             rawHttpResponse = client.read_in_stream(fstream, raw=raw)
         except Exception as e:
-            print(f"Error: {e}\n{path}")
-            sys.exit(1)
+            sys.exit(f"Error: {e}\n{path}")
 
 # Get ID from returned headers.
 

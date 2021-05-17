@@ -17,8 +17,8 @@ import os
 import sys
 import argparse
 
-from mlhub.pkg import azkey, is_url
-from mlhub.utils import get_cmd_cwd
+from mlhub.pkg import is_url, get_cmd_cwd
+from utils import request_priv_info
 
 import urllib.error
 import urllib.request
@@ -36,13 +36,10 @@ option_parser.add_argument(
 args = option_parser.parse_args()
 
 # ----------------------------------------------------------------------
-
-SERVICE   = "Computer Vision"
-KEY_FILE  = os.path.join(os.getcwd(), "private.txt")
-
 # Request subscription key and endpoint from user.
+# ----------------------------------------------------------------------
 
-subscription_key, endpoint = azkey(KEY_FILE, SERVICE, verbose=False)
+subscription_key, endpoint = request_priv_info()
 
 # Set credentials.
 
@@ -66,13 +63,11 @@ if is_url(url):
             try:
                 analysis = client.analyze_image(url, features)
             except Exception as e:
-                print(f"Error: {e}\n{url}")
-                sys.exit(1)
+                sys.exit(f"Error: {e}\n{url}")
 
     except urllib.error.URLError:
-        print("Error: The URL does not appear to exist. Please check.")
-        print(url)
-        sys.exit(1)
+        sys.exit("Error: The URL does not appear to exist. Please check.\n"
+                 f"{url}")
 
 else:
     path = os.path.join(get_cmd_cwd(), url)
@@ -80,8 +75,7 @@ else:
         try:
             analysis = client.analyze_image_in_stream(fstream, features)
         except Exception as e:
-            print(f"Error: {e}\n{path}")
-            sys.exit(1)
+            sys.exit(f"Error: {e}\n{path}")
 
 if analysis:
     ca = analysis.image_type.clip_art_type

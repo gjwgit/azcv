@@ -14,10 +14,10 @@ from azure.cognitiveservices.vision.computervision import ComputerVisionClient
 import os
 import argparse
 import requests
-from textwrap import fill
+import sys
 
-from mlhub.pkg import azkey, is_url
-from mlhub.utils import get_cmd_cwd
+from mlhub.pkg import is_url, get_cmd_cwd
+from utils import request_priv_info
 
 # ----------------------------------------------------------------------
 # Parse command line arguments
@@ -32,13 +32,10 @@ option_parser.add_argument(
 args = option_parser.parse_args()
 
 # ----------------------------------------------------------------------
-
-SERVICE   = "Computer Vision"
-KEY_FILE  = os.path.join(os.getcwd(), "private.txt")
-
 # Request subscription key and endpoint from user.
+# ----------------------------------------------------------------------
 
-subscription_key, endpoint = azkey(KEY_FILE, SERVICE, verbose=False)
+subscription_key, endpoint = request_priv_info()
 
 # Set credentials.
 
@@ -67,21 +64,18 @@ image_features = ["faces"]
 if is_url(path):
     request = requests.get(path)
     if request.status_code != 200:
-        print(f"Error: The URL does not appear to exist. Please check.\n{path}")
-        quit()
+        sys.exit(f"Error: The URL does not appear to exist. Please check.\n{path}")
     try:
         analysis = client.analyze_image(path, image_features)
     except Exception as e:
-        print(f"Error: {e}\n{path}")
-        quit()
+        sys.exit(f"Error: {e}\n{path}")
 else:
     path = os.path.join(get_cmd_cwd(), path)
     with open(path, 'rb') as fstream:
         try:
             analysis = client.analyze_image_in_stream(fstream, image_features)
         except Exception as e:
-            print(f"Error: {e}\n{path}")
-            quit()
+            sys.exit(f"Error: {e}\n{path}")
 
 for face in analysis.faces:
         print(f"{face.face_rectangle.left} {face.face_rectangle.top} " +

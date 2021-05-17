@@ -10,7 +10,6 @@
 
 from msrest.authentication import CognitiveServicesCredentials
 from azure.cognitiveservices.vision.computervision import ComputerVisionClient
-from azure.cognitiveservices.vision.computervision.models import VisualFeatureTypes
 
 import os
 import argparse
@@ -18,8 +17,8 @@ import sys
 import urllib.error
 import urllib.request
 
-from mlhub.pkg import azkey, is_url
-from mlhub.utils import get_cmd_cwd
+from mlhub.pkg import is_url, get_cmd_cwd
+from utils import request_priv_info
 
 # ----------------------------------------------------------------------
 # Parse command line arguments
@@ -34,13 +33,10 @@ option_parser.add_argument(
 args = option_parser.parse_args()
 
 # ----------------------------------------------------------------------
-
-SERVICE   = "Computer Vision"
-KEY_FILE  = os.path.join(os.getcwd(), "private.txt")
-
 # Request subscription key and endpoint from user.
+# ----------------------------------------------------------------------
 
-subscription_key, endpoint = azkey(KEY_FILE, SERVICE, verbose=False)
+subscription_key, endpoint = request_priv_info()
 
 # Set credentials.
 
@@ -77,13 +73,11 @@ if is_url(path):
             try:
                 analysis = client.describe_image(path, max_descriptions, language)
             except Exception as e:
-                print(f"Error: {e}\n{path}")
-                sys.exit(1)
+                sys.exit(f"Error: {e}\n{path}")
 
     except urllib.error.URLError:
-        print("Error: The URL does not appear to exist. Please check.")
-        print(path)
-        sys.exit(1)
+        sys.exit("Error: The URL does not appear to exist. Please check.\n"
+                 f"{path}")
 
 else:
     path = os.path.join(get_cmd_cwd(), path)
@@ -91,8 +85,7 @@ else:
         try:
             analysis = client.describe_image_in_stream(fstream, max_descriptions, language)
         except Exception as e:
-            print(f"Error: {e}\n{path}")
-            sys.exit(1)
+            sys.exit(f"Error: {e}\n{path}")
 
 for caption in analysis.captions:
     print("{},{}".format(round(caption.confidence, 2), caption.text))

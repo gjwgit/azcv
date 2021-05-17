@@ -17,9 +17,8 @@ import sys
 import argparse
 import urllib.error
 import urllib.request
-
-from mlhub.pkg import azkey, is_url
-from mlhub.utils import get_cmd_cwd
+from utils import request_priv_info
+from mlhub.pkg import is_url, get_cmd_cwd
 
 # ----------------------------------------------------------------------
 # Parse command line arguments
@@ -34,13 +33,10 @@ option_parser.add_argument(
 args = option_parser.parse_args()
 
 # ----------------------------------------------------------------------
-
-SERVICE   = "Computer Vision"
-KEY_FILE  = os.path.join(os.getcwd(), "private.txt")
-
 # Request subscription key and endpoint from user.
+# ----------------------------------------------------------------------
 
-subscription_key, endpoint = azkey(KEY_FILE, SERVICE, verbose=False)
+subscription_key, endpoint = request_priv_info()
 
 # Set credentials.
 
@@ -65,13 +61,11 @@ if is_url(url):
             try:
                 analysis = client.analyze_image_by_domain(domain, url)
             except Exception as e:
-                print(f"Error: {e}\n{url}")
-                sys.exit(1)
+                sys.exit(f"Error: {e}\n{url}")
 
     except urllib.error.URLError:
-        print("Error: The URL does not appear to exist. Please check.")
-        print(url)
-        sys.exit(1)
+        sys.exit("Error: The URL does not appear to exist. Please check. \n"
+                 f"{url}")
 
 else:
     path = os.path.join(get_cmd_cwd(), url)
@@ -79,8 +73,7 @@ else:
         try:
             analysis = client.analyze_image_by_domain_in_stream(domain, fstream)
         except Exception as e:
-            print(f"Error: {e}\n{path}")
-            sys.exit(1)
+            sys.exit(f"Error: {e}\n{path}")
     
 for celeb in analysis.result["celebrities"]:
     print(f'{celeb["confidence"]:.2f},{celeb["name"]}')

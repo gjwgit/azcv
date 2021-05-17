@@ -12,7 +12,8 @@
 #
 # https://pypi.org/project/azure-cognitiveservices-vision-computervision
 
-from mlhub.pkg import azkey, azrequest, mlask, mlcat, mlpreview
+from mlhub.pkg import mlask, mlcat, mlpreview
+from utils import request_priv_info
 
 mlcat("Azure Computer Vision API", """\
 Welcome to a demo of pre-built models for Computer Vision available as 
@@ -59,11 +60,7 @@ upgrades. Please upgrade to the latest version of that library using:
 # ----------------------------------------------------------------------
 # Request subscription key and endpoint from user.
 # ----------------------------------------------------------------------
-
-SERVICE   = "Computer Vision"
-KEY_FILE  = os.path.join(os.getcwd(), "private.txt")
-
-key, endpoint = azkey(KEY_FILE, SERVICE)
+key, endpoint = request_priv_info()
 
 mlask()
 
@@ -97,9 +94,13 @@ mlask(end="\n")
 
 mlcat("Tag Analysis",
 """We list the tags for the image together with a measure of confidence.
-""") 
+""")
 
-image_analysis = client.analyze_image(url, visual_features=[VisualFeatureTypes.tags])
+try:
+    image_analysis = client.analyze_image(url, visual_features=[VisualFeatureTypes.tags])
+except Exception as e:
+    sys.exit(f"Error: {e}\n{url}")
+
 
 for tag in image_analysis.tags:
     if tag.confidence > 0.2:
@@ -143,7 +144,10 @@ mlpreview(url)
 
 language = "en"
 
-analysis = client.analyze_image_by_domain(domain, url, language)
+try:
+    analysis = client.analyze_image_by_domain(domain, url, language)
+except Exception as e:
+    sys.exit(f"Error: {e}\n{url}")
 
 mlask()
 
@@ -152,9 +156,9 @@ for landmark in analysis.result["landmarks"]:
 
 mlask(begin="\n", end="\n")
 
-url1 = "http://www.public-domain-photos.com/"
-url2 = "free-stock-photos-4/travel/san-francisco/"
-url3 = "golden-gate-bridge-in-san-francisco.jpg"
+url1 = "https://cdn.britannica.com/"
+url2 = "95/94195-050-FCBF777E/"
+url3 = "Golden-Gate-Bridge-San-Francisco.jpg"
 url  = url1 + url2 + url3
 
 mlcat("Text Description of an Image",
@@ -175,7 +179,10 @@ max_descriptions = 3
 
 mlpreview(url)
 
-analysis = client.describe_image(url, max_descriptions, language)
+try:
+    analysis = client.describe_image(url, max_descriptions, language)
+except Exception as e:
+    sys.exit(f"Error: {e}\n{url}")
 
 mlask(end="\n")
 
@@ -221,8 +228,10 @@ raw = True
 numberOfCharsInOperationId = 36
 
 # Asynchronous call.
-
-rawHttpResponse = client.read(url, raw=raw)
+try:
+    rawHttpResponse = client.read(url, raw=raw)
+except Exception as e:
+    sys.exit(f"Error: {e}\n{url}")
 
 # Get ID from returned headers.
 
@@ -249,9 +258,7 @@ if result.status == OperationStatusCodes.succeeded:
             
 mlask()
 
-url1 = "http://www.public-domain-photos.com/free-stock-photos-4/"
-url2 = "travel/san-francisco/golden-gate-bridge-in-san-francisco.jpg"
-url  = url1 + url2
+url = "https://cdn.britannica.com/95/94195-050-FCBF777E/Golden-Gate-Bridge-San-Francisco.jpg"
 
 mlcat("Generate Good Thumbnails",
 """A utility provided by the service can generate a thumbnail (JPG) of an image. 
@@ -264,8 +271,7 @@ thumbnail.
 For our demonstration we will analyze the following image which we will also 
 display momentarily:
 
-Site: {}
-Path: {}""".format(url1, url2), begin="\n")
+URL:{}""".format(url), begin="\n")
 
 mlpreview(url)
 
@@ -274,7 +280,10 @@ mlpreview(url)
 width = 50 
 height = 50
 
-thumbnail = client.generate_thumbnail(width, height, url)
+try:
+    thumbnail = client.generate_thumbnail(width, height, url)
+except Exception as e:
+    sys.exit(f"Error: {e}\n{url}")
 
 for x in thumbnail:
     image = Image.open(io.BytesIO(x))
