@@ -12,8 +12,8 @@
 #
 # https://pypi.org/project/azure-cognitiveservices-vision-computervision
 
-from mlhub.pkg import mlask, mlcat, mlpreview, get_private
-from utils import reuqest_priv_info
+from mlhub.pkg import mlask, mlcat, mlpreview
+from utils import request_priv_info
 
 mlcat("Azure Computer Vision API", """\
 Welcome to a demo of pre-built models for Computer Vision available as 
@@ -60,7 +60,7 @@ upgrades. Please upgrade to the latest version of that library using:
 # ----------------------------------------------------------------------
 # Request subscription key and endpoint from user.
 # ----------------------------------------------------------------------
-key, endpoint = reuqest_priv_info()
+key, endpoint = request_priv_info()
 
 mlask()
 

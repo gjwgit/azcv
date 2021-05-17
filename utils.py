@@ -6,7 +6,7 @@ from mlhub.pkg import get_private
 # Request subscription key and endpoint from user.
 # ----------------------------------------------------------------------
 
-def reuqest_priv_info():
+def request_priv_info():
     PRIVATE_FILE = "private.json"
 
     path = os.path.join(os.getcwd(), PRIVATE_FILE)

@@ -15,11 +15,10 @@ import time
 import argparse
 import requests
 
-from mlhub.pkg import is_url, get_cmd_cwd, get_private
-from utils import reuqest_priv_info
+from mlhub.pkg import is_url, get_cmd_cwd
+from utils import request_priv_info
 
 from azure.cognitiveservices.vision.computervision import ComputerVisionClient
-from azure.cognitiveservices.vision.computervision import VERSION as azver
 from azure.cognitiveservices.vision.computervision.models import OperationStatusCodes
 
 from msrest.authentication import CognitiveServicesCredentials
@@ -40,7 +39,7 @@ args = option_parser.parse_args()
 # Request subscription key and endpoint from user.
 # ----------------------------------------------------------------------
 
-key, endpoint = reuqest_priv_info()
+key, endpoint = request_priv_info()
 
 # Set credentials.
 
