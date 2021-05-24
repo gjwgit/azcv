@@ -1,6 +1,10 @@
 Azure Computer Vision
 =====================
 
+See the [MLHub Desktop Survival
+Guide](https://survivor.togaware.com/mlhub/azcv.html) for
+documentation.
+
 This documentation is also published at 
 [Read The Docs](https://mlhub-azcv.readthedocs.io/en/latest/).
 
