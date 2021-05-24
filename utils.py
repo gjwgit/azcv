@@ -11,9 +11,8 @@ def request_priv_info():
 
     path = os.path.join(os.getcwd(), PRIVATE_FILE)
 
-    private_dic = get_private(path, "azcv")
+    values = get_private(path, "azcv", "Computer Vision")
 
-    subscription_key = private_dic["Computer Vision"]["key"]
+    subscription_key, endpoint = values
 
-    endpoint = private_dic["Computer Vision"]["endpoint"]
     return subscription_key, endpoint
