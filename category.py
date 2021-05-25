@@ -16,8 +16,7 @@ import argparse
 import urllib.error
 import urllib.request
 import sys
-from utils import request_priv_info
-from mlhub.pkg import is_url, get_cmd_cwd
+from mlhub.pkg import is_url, get_cmd_cwd, get_private
 
 # ----------------------------------------------------------------------
 # Parse command line arguments
@@ -35,7 +34,7 @@ args = option_parser.parse_args()
 # Request subscription key and endpoint from user.
 # ----------------------------------------------------------------------
 
-subscription_key, endpoint = request_priv_info()
+subscription_key, endpoint = get_private()
 
 # Set credentials.
 
