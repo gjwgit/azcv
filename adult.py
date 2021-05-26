@@ -70,7 +70,10 @@ if is_url(path):
                 analysis = client.analyze_image(path, image_features)
 
             except Exception as e:
-                sys.exit(f"Error: {e}\n{path}")
+                if "PermissionDenied" in str(e) or "Endpoint" in str(e):
+                    sys.exit("Please run 'ml configure azcv' to update your private information. ")
+                else:
+                    sys.exit(f"Error: {e}\n{path}")
 
     except urllib.error.URLError:
         sys.exit("Error: The URL does not appear to exist. Please check.\n"
@@ -82,7 +85,10 @@ else:
         try:
             analysis = client.analyze_image_in_stream(fstream, image_features)
         except Exception as e:
-            sys.exit(f"Error: {e}\n{path}")
+            if "PermissionDenied" in str(e) or "Endpoint" in str(e):
+                sys.exit("Please run 'ml configure azcv' to update your private information. ")
+            else:
+                sys.exit(f"Error: {e}\n{path}")
 
 
 print(f"{analysis.adult.adult_score:.2f}," +
