@@ -62,8 +62,7 @@ url = args.path
 if is_url(url):
     request = requests.get(url)
     if request.status_code != 200:
-        print(f"Error: The URL does not appear to exist. Please check.\n{url}")
-        quit()
+        sys.exit(f"Error: The URL does not appear to exist. Please check.\n{url}")
     try:
         analysis = client.analyze_image(url, visual_features=[VisualFeatureTypes.tags])
     except Exception as e:
