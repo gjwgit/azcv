@@ -67,14 +67,22 @@ if is_url(path):
     try:
         analysis = client.analyze_image(path, image_features)
     except Exception as e:
-        sys.exit(f"Error: {e}\n{path}")
+            if "PermissionDenied" in str(e) or "Endpoint" in str(e):
+                sys.exit(f"{e}\n"
+                         f"Please run 'ml configure azcv' to update your private information. ")
+            else:
+                sys.exit(f"Error: {e}\n{path}")
 else:
     path = os.path.join(get_cmd_cwd(), path)
     with open(path, 'rb') as fstream:
         try:
             analysis = client.analyze_image_in_stream(fstream, image_features)
         except Exception as e:
-            sys.exit(f"Error: {e}\n{path}")
+            if "PermissionDenied" in str(e) or "Endpoint" in str(e):
+                sys.exit(f"{e}\n"
+                         f"Please run 'ml configure azcv' to update your private information. ")
+            else:
+                sys.exit(f"Error: {e}\n{path}")
 
 for face in analysis.faces:
         print(f"{face.face_rectangle.left} {face.face_rectangle.top} " +

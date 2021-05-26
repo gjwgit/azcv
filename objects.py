@@ -69,7 +69,11 @@ if is_url(path):
             try:
                 analysis = client.detect_objects(path)
             except Exception as e:
-                sys.exit(f"Error: {e}\n{path}")
+                if "PermissionDenied" in str(e) or "Endpoint" in str(e):
+                    sys.exit(f"{e}\n"
+                             f"Please run 'ml configure azcv' to update your private information. ")
+                else:
+                    sys.exit(f"Error: {e}\n{path}")
 
     except urllib.error.URLError:
         sys.exit("Error: The URL does not appear to exist. Please check.\n"
@@ -80,7 +84,11 @@ else:
         try:
             analysis = client.detect_objects_in_stream(fstream)
         except Exception as e:
-            sys.exit(f"Error: {e}\n{path}")
+            if "PermissionDenied" in str(e) or "Endpoint" in str(e):
+                sys.exit(f"{e}\n"
+                         f"Please run 'ml configure azcv' to update your private information. ")
+            else:
+                sys.exit(f"Error: {e}\n{path}")
 
 for object in analysis.objects:
     print(f"{object.rectangle.x} {object.rectangle.y} " +

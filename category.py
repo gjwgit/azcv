@@ -68,7 +68,8 @@ if is_url(path):
                 analysis = client.analyze_image(path, image_features)
             except Exception as e:
                 if "PermissionDenied" in str(e) or "Endpoint" in str(e):
-                    sys.exit("Please run 'ml configure azcv' to update your private information. ")
+                    sys.exit(f"{e}\n"
+                             f"Please run 'ml configure azcv' to update your private information. ")
                 else:
                     sys.exit(f"Error: {e}\n{path}")
 
@@ -83,7 +84,8 @@ else:
             analysis = client.analyze_image_in_stream(fstream, image_features)
         except Exception as e:
             if "PermissionDenied" in str(e) or "Endpoint" in str(e):
-                sys.exit("Please run 'ml configure azcv' to update your private information. ")
+                sys.exit(f"{e}\n"
+                         f"Please run 'ml configure azcv' to update your private information. ")
             else:
                 sys.exit(f"Error: {e}\n{path}")
 
