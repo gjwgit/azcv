@@ -25,6 +25,7 @@ from mlhub.pkg import is_url, get_cmd_cwd, get_private
 from msrest.authentication import CognitiveServicesCredentials
 from azure.cognitiveservices.vision.computervision import ComputerVisionClient
 from azure.cognitiveservices.vision.computervision.models import VisualFeatureTypes
+from utils import catch_exception
 
 
 # ----------------------------------------------------------------------
@@ -66,11 +67,7 @@ if is_url(url):
     try:
         analysis = client.analyze_image(url, visual_features=[VisualFeatureTypes.tags])
     except Exception as e:
-        if "PermissionDenied" in str(e) or "Endpoint" in str(e):
-            sys.exit(f"{e}\n"
-                     f"Please run 'ml configure azcv' to update your private information. ")
-        else:
-            sys.exit(f"Error: {e}\n{url}")
+        catch_exception(e, url)
     
 else:
     path = os.path.join(get_cmd_cwd(), url)
@@ -85,11 +82,7 @@ else:
         try:
             analysis = client.analyze_image_in_stream(fstream, visual_features=[VisualFeatureTypes.tags])
         except Exception as e:
-            if "PermissionDenied" in str(e) or "Endpoint" in str(e):
-                sys.exit(f"{e}\n"
-                         f"lease run 'ml configure azcv' to update your private information. ")
-            else:
-                sys.exit(f"Error: {e}\n{path}")
+            catch_exception(e, path)
    
 for tag in analysis.tags:
     if tag.confidence > 0.2:

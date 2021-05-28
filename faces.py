@@ -17,6 +17,7 @@ import requests
 import sys
 
 from mlhub.pkg import is_url, get_cmd_cwd, get_private
+from utils import catch_exception
 
 # ----------------------------------------------------------------------
 # Parse command line arguments
@@ -67,22 +68,14 @@ if is_url(path):
     try:
         analysis = client.analyze_image(path, image_features)
     except Exception as e:
-            if "PermissionDenied" in str(e) or "Endpoint" in str(e):
-                sys.exit(f"{e}\n"
-                         f"Please run 'ml configure azcv' to update your private information. ")
-            else:
-                sys.exit(f"Error: {e}\n{path}")
+        catch_exception(e, path)
 else:
     path = os.path.join(get_cmd_cwd(), path)
     with open(path, 'rb') as fstream:
         try:
             analysis = client.analyze_image_in_stream(fstream, image_features)
         except Exception as e:
-            if "PermissionDenied" in str(e) or "Endpoint" in str(e):
-                sys.exit(f"{e}\n"
-                         f"Please run 'ml configure azcv' to update your private information. ")
-            else:
-                sys.exit(f"Error: {e}\n{path}")
+            catch_exception(e, path)
 
 for face in analysis.faces:
         print(f"{face.face_rectangle.left} {face.face_rectangle.top} " +

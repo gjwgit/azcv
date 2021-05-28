@@ -21,6 +21,7 @@ from azure.cognitiveservices.vision.computervision import ComputerVisionClient
 from azure.cognitiveservices.vision.computervision.models import OperationStatusCodes
 
 from msrest.authentication import CognitiveServicesCredentials
+from utils import catch_exception
 
 # ----------------------------------------------------------------------
 # Parse command line arguments
@@ -68,11 +69,7 @@ if is_url(url):
     try:
         rawHttpResponse = client.read(url, raw=raw)
     except Exception as e:
-        if "PermissionDenied" in str(e) or "Endpoint" in str(e):
-            sys.exit(f"{e}\n"
-                     f"Please run 'ml configure azcv' to update your private information. ")
-        else:
-            sys.exit(f"Error: {e}\n{url}")
+        catch_exception(e, url)
 
 else:
     path = os.path.join(get_cmd_cwd(), url)
@@ -80,11 +77,7 @@ else:
         try:
             rawHttpResponse = client.read_in_stream(fstream, raw=raw)
         except Exception as e:
-            if "PermissionDenied" in str(e) or "Endpoint" in str(e):
-                sys.exit(f"{e}\n"
-                         f"Please run 'ml configure azcv' to update your private information. ")
-            else:
-                sys.exit(f"Error: {e}\n{path}")
+            catch_exception(e, path)
 
 # Get ID from returned headers.
 
