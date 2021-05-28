@@ -19,6 +19,7 @@ import urllib.error
 import urllib.request
 
 from mlhub.pkg import is_url, get_cmd_cwd, get_private
+from utils import catch_exception
 
 # ----------------------------------------------------------------------
 # Parse command line arguments
@@ -66,7 +67,7 @@ if is_url(url):
             try:
                 analysis = client.analyze_image_by_domain(domain, url, language)
             except Exception as e:
-                sys.exit(f"Error: {e}\n{url}")
+                catch_exception(e, url)
 
     except urllib.error.URLError:
         sys.exit("Error: The URL does not appear to exist. Please check.\n"
@@ -78,7 +79,7 @@ else:
         try:
             analysis = client.analyze_image_by_domain_in_stream(domain, fstream, language)
         except Exception as e:
-            sys.exit(f"Error: {e}\n{path}")
+            catch_exception(e, path)
     
 for landmark in analysis.result["landmarks"]:
     print('{},{}'.format(round(landmark["confidence"],2), landmark["name"], ))

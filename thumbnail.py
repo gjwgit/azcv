@@ -23,6 +23,7 @@ import io 			# Create local image.
 import re
 
 from mlhub.pkg import is_url, get_cmd_cwd, get_private
+from utils import catch_exception
 
 # ----------------------------------------------------------------------
 # Parse command line arguments
@@ -68,7 +69,8 @@ if is_url(url):
             try:
                 analysis = client.generate_thumbnail(width, height, url)
             except Exception as e:
-                sys.exit(f"Error: {e}\n{url}")
+                catch_exception(e, url)
+
         sname = re.sub('\.(\w+)$', r'-thumbnail.\1', os.path.basename(urlparse(url).path))
         sname = os.path.join(get_cmd_cwd(), sname)
 
@@ -81,7 +83,7 @@ else:
         try:
             analysis = client.generate_thumbnail_in_stream(width, height, fstream)
         except Exception as e:
-            sys.exit(f"Error: {e}\n{path}")
+            catch_exception(e, path)
 
     sname = re.sub('\.(\w+)$', r'-thumbnail.\1', path)
 

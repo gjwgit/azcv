@@ -43,8 +43,8 @@ from azure.cognitiveservices.vision.computervision import ComputerVisionClient
 from azure.cognitiveservices.vision.computervision import VERSION as azver
 from azure.cognitiveservices.vision.computervision.models import VisualFeatureTypes
 from azure.cognitiveservices.vision.computervision.models import OperationStatusCodes
-
 from msrest.authentication import CognitiveServicesCredentials
+from utils import catch_exception
 
 if ver(azver) < ver("0.6.0"):
     sys.exit(f"""*** WARNING *** Currently you have installed version {azver} of the
@@ -98,7 +98,7 @@ mlcat("Tag Analysis",
 try:
     image_analysis = client.analyze_image(url, visual_features=[VisualFeatureTypes.tags])
 except Exception as e:
-    sys.exit(f"Error: {e}\n{url}")
+    catch_exception(e, url)
 
 
 for tag in image_analysis.tags:
@@ -146,7 +146,7 @@ language = "en"
 try:
     analysis = client.analyze_image_by_domain(domain, url, language)
 except Exception as e:
-    sys.exit(f"Error: {e}\n{url}")
+    catch_exception(e, url)
 
 mlask()
 
@@ -181,7 +181,7 @@ mlpreview(url)
 try:
     analysis = client.describe_image(url, max_descriptions, language)
 except Exception as e:
-    sys.exit(f"Error: {e}\n{url}")
+    catch_exception(e, url)
 
 mlask(end="\n")
 
@@ -230,7 +230,7 @@ numberOfCharsInOperationId = 36
 try:
     rawHttpResponse = client.read(url, raw=raw)
 except Exception as e:
-    sys.exit(f"Error: {e}\n{url}")
+    catch_exception(e, url)
 
 # Get ID from returned headers.
 
@@ -282,7 +282,7 @@ height = 50
 try:
     thumbnail = client.generate_thumbnail(width, height, url)
 except Exception as e:
-    sys.exit(f"Error: {e}\n{url}")
+    catch_exception(e, url)
 
 for x in thumbnail:
     image = Image.open(io.BytesIO(x))

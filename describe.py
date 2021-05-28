@@ -18,6 +18,7 @@ import urllib.error
 import urllib.request
 
 from mlhub.pkg import is_url, get_cmd_cwd,get_private
+from utils import catch_exception
 
 # ----------------------------------------------------------------------
 # Parse command line arguments
@@ -72,7 +73,7 @@ if is_url(path):
             try:
                 analysis = client.describe_image(path, max_descriptions, language)
             except Exception as e:
-                sys.exit(f"Error: {e}\n{path}")
+                catch_exception(e, path)
 
     except urllib.error.URLError:
         sys.exit("Error: The URL does not appear to exist. Please check.\n"
@@ -84,7 +85,7 @@ else:
         try:
             analysis = client.describe_image_in_stream(fstream, max_descriptions, language)
         except Exception as e:
-            sys.exit(f"Error: {e}\n{path}")
+            catch_exception(e, path)
 
 for caption in analysis.captions:
     print("{},{}".format(round(caption.confidence, 2), caption.text))

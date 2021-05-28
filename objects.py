@@ -19,6 +19,7 @@ import urllib.error
 import urllib.request
 
 from mlhub.pkg import is_url, get_cmd_cwd, get_private
+from utils import catch_exception
 
 # ----------------------------------------------------------------------
 # Parse command line arguments
@@ -69,7 +70,7 @@ if is_url(path):
             try:
                 analysis = client.detect_objects(path)
             except Exception as e:
-                sys.exit(f"Error: {e}\n{path}")
+                catch_exception(e, path)
 
     except urllib.error.URLError:
         sys.exit("Error: The URL does not appear to exist. Please check.\n"
@@ -80,7 +81,7 @@ else:
         try:
             analysis = client.detect_objects_in_stream(fstream)
         except Exception as e:
-            sys.exit(f"Error: {e}\n{path}")
+            catch_exception(e, path)
 
 for object in analysis.objects:
     print(f"{object.rectangle.x} {object.rectangle.y} " +
